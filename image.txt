@@ -1,0 +1,2 @@
+Slide = 2/1
+Single = 10/7
