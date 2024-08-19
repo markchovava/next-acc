@@ -11,7 +11,7 @@ import { FaChevronDown } from "react-icons/fa";
 
 export default function NavigationMain() {
   return (
-    <>
+    <div className='hidden lg:block'>
         <section id='top__links' className='bg-white drop-shadow-md'>
             <div className='mx-auto w-[90%] py-2 flex items-center justify-between'>
                 <div className='flex text-slate-800 items-center justify-start gap-3 text-xl'>
@@ -42,24 +42,26 @@ export default function NavigationMain() {
             <nav className=''>
                 <ul className='flex items-center justify-start gap-4 text-lg'>
                     <li className='hover:text-green-800 transition-all ease-in-out'>
-                        <Link href='#' className='hover:text-green-800 transition-all ease-in-out'>
+                        <Link href='/' className='hover:text-green-800 transition-all ease-in-out'>
                         Home</Link></li>
                     <li className='hover:text-green-800 transition-all ease-in-out'>
-                        <Link href='#' >
+                        <Link href='/about' >
                         About us</Link></li>
-                    <li className='hover:text-green-800 transition-all ease-in-out'><Link href='#' >
+                    <li className='hover:text-green-800 transition-all ease-in-out'>
+                        <Link href='oppotunity' >
                         Opportunites</Link></li>
                     <li className='hover:text-green-800 transition-all ease-in-out'>
                         <span className='cursor-pointer flex items-center justify-center gap-1 hover:text-green-800 transition-all ease-in-out'>
                         Meetings & Events <FaChevronDown /></span>
                     </li>
                     <li className='hover:text-green-800 transition-all ease-in-out'>
-                        <Link href='#'>Memberships</Link></li>
+                        <Link href='/membership'>
+                        Memberships</Link></li>
                     <li className='hover:text-green-800 transition-all ease-in-out'>
-                        <Link href='#'>Contact Us</Link></li>
+                        <Link href='/contact'>Contact Us</Link></li>
                 </ul>
             </nav>
         </section>
-    </>
+    </div>
   )
 }

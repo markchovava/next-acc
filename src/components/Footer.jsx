@@ -8,7 +8,7 @@ export default function Footer() {
   return (
     <>
         <section className='w-[100%] text-white bg-gradient-to-br from-yellow-700 to-orange-800'>
-            <div className='mx-auto pt-[4rem] pb-[2rem] w-[90%] grid grid-cols-4'>
+            <div className='mx-auto pt-[4rem] pb-[2rem] w-[90%] grid lg:grid-cols-4 grid-cols-2 lg:gap-4 gap-8'>
                 <div className='w-[100%]'>
                     <h3 className='font-medium text-xl tracking-wider mb-2'>
                         About Africa Capital Club</h3>

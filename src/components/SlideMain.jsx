@@ -32,7 +32,7 @@ export default function SlideMain() {
         slidesPerView={1} >
         
       
-        <SwiperSlide className='w-[100vw] aspect-[5/2] overflow-hidden'>
+        <SwiperSlide className='w-[100vw] lg:aspect-[5/2] aspect-[5/4] overflow-hidden'>
           <div 
             style={{ backgroundImage: `url('/assets/img/slide/04.jpg')`}}
             className='w-[100%] h-[100%] relative bg-no-repeat bg-cover'>
@@ -41,7 +41,7 @@ export default function SlideMain() {
               <div className='w-[100%] h-[100%] absolute z-20'>
                 <section className='mx-auto w-[90%] h-[100%] flex items-end justify-start'>
                   <div className='pb-[4rem]'>
-                    <h4 className='text-[3rem] lg:w-[50%] leading-tight mb-2'>
+                    <h4 className='lg:text-[3rem] text-[2rem] lg:w-[50%] leading-tight mb-2'>
                       Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.</h4>
                     <p className='lg:w-[50%] text-lg mb-4'>
                       Lorem ipsum dolor sit amet consectetur adipisicing elit. 
@@ -58,7 +58,7 @@ export default function SlideMain() {
           </div>
         </SwiperSlide>
 
-        <SwiperSlide className='w-[100vw] aspect-[5/2]'>
+        <SwiperSlide className='w-[100vw] lg:aspect-[5/2] aspect-[5/4] overflow-hidden'>
           <div 
             style={{ backgroundImage: `url('/assets/img/slide/05.jpg')`}}
             className='w-[100%] h-[100%] relative bg-no-repeat bg-cover'>
@@ -67,7 +67,7 @@ export default function SlideMain() {
               <div className='w-[100%] h-[100%] absolute z-20'>
                 <section className='mx-auto w-[90%] h-[100%] flex items-end justify-start'>
                   <div className='pb-[4rem]'>
-                    <h4 className='text-[3rem] lg:w-[50%] leading-tight mb-2'>
+                    <h4 className='lg:text-[3rem] text-[2rem] lg:w-[50%] leading-tight mb-2'>
                       Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.</h4>
                     <p className='lg:w-[50%] text-lg mb-4'>
                       Lorem ipsum dolor sit amet consectetur adipisicing elit. 
@@ -84,7 +84,7 @@ export default function SlideMain() {
           </div>
         </SwiperSlide>
         
-        <SwiperSlide className='w-[100vw] aspect-[5/2]'>
+        <SwiperSlide className='w-[100vw] lg:aspect-[5/2] aspect-[5/4] overflow-hidden'>
           <div 
             style={{ backgroundImage: `url('/assets/img/slide/01.jpg')`}}
             className='w-[100%] h-[100%] relative bg-no-repeat bg-cover'>
@@ -93,7 +93,7 @@ export default function SlideMain() {
               <div className='w-[100%] h-[100%] absolute z-20'>
                 <section className='mx-auto w-[90%] h-[100%] flex items-end justify-start'>
                   <div className='pb-[4rem]'>
-                    <h4 className='text-[3rem] lg:w-[50%] leading-tight mb-2'>
+                    <h4 className='lg:text-[3rem] text-[2rem] lg:w-[50%] leading-tight mb-2'>
                       Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.</h4>
                     <p className='lg:w-[50%] text-lg mb-4'>
                       Lorem ipsum dolor sit amet consectetur adipisicing elit. 
