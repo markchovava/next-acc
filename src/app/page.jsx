@@ -59,7 +59,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/*  */}
+      {/* EVENTS */}
       <section className="w-[100%] pt-[2rem] pb-[6rem]">
         <div className="mx-auto w-[90%]">
           <h3 className="lg:text-[2.5rem] text-[1.8rem] lg:w-[80%] w-[90%] leading-tight mb-3">
@@ -71,8 +71,8 @@ export default function Home() {
           <div className="group w-[100%] p-4 bg-white drop-shadow-md">
             <div className="w-[100%] aspect-[2/1] overflow-hidden mb-4">
               <Image
-                width={600} 
-                height={300} 
+                width={900} 
+                height={450} 
                 objectFit="cover"
                 src='/assets/img/slide/01.jpg' 
                 className="group-hover:scale-105 transition-all ease-in-out"
@@ -95,8 +95,8 @@ export default function Home() {
           <div className="group w-[100%] p-4 bg-white drop-shadow-md">
             <div className="w-[100%] aspect-[2/1] overflow-hidden mb-4">
               <Image
-                width={600} 
-                height={300} 
+                width={900} 
+                height={450} 
                 objectFit="cover"
                 src='/assets/img/slide/02.jpg' 
                 className="group-hover:scale-105 transition-all ease-in-out"
@@ -118,8 +118,8 @@ export default function Home() {
           <div className="group w-[100%] p-4 bg-white drop-shadow-md">
             <div className="w-[100%] aspect-[2/1] overflow-hidden mb-4">
               <Image
-                width={600} 
-                height={300} 
+                width={900} 
+                height={450} 
                 objectFit="cover"
                 src='/assets/img/slide/05.jpg' 
                 className="group-hover:scale-105 transition-all ease-in-out"
@@ -142,8 +142,8 @@ export default function Home() {
           <div className="group w-[100%] p-4 bg-white drop-shadow-md">
             <div className="w-[100%] aspect-[2/1] overflow-hidden mb-4">
               <Image
-                width={600} 
-                height={300} 
+                width={900} 
+                height={450} 
                 objectFit="cover"
                 src='/assets/img/slide/03.jpg' 
                 className="group-hover:scale-105 transition-all ease-in-out"

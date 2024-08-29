@@ -10,9 +10,14 @@
     @apply text-slate-800;
   }
 
+  .btn__primary {
+    @apply px-[4rem] py-5 text-white rounded-xl transition-all ease-in-out bg-gradient-to-br from-yellow-300 to-yellow-800 hover:to-yellow-400 hover:from-yellow-900 hover:drop-shadow-lg;
+  }
+
 }
 
 
+/* MAP */
 #africa__map path{
   fill: gray;
 }

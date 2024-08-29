@@ -1,9 +1,90 @@
+"use client";
+import { baseURL } from '@/api/baseURL';
+import { toastifyDarkBounce } from '@/libs/toastify';
+import { tokenAuth } from '@/tokens/tokenAuth';
+import { tokenRole } from '@/tokens/tokenRole';
+import axios from 'axios';
 import Link from 'next/link'
-import React from 'react'
+import { useRouter } from 'next/navigation';
+import React, { useEffect, useState } from 'react'
 import { FaGoogle } from "react-icons/fa";
+import { toast } from 'react-toastify';
+
+
 
 
 export default function LoginEdit() {
+  const router = useRouter();
+  const { setAuthToken } = tokenAuth()
+  const { setRoleToken } = tokenRole()
+  const [data, setData] = useState({});
+  const [isSubmit, setIsSubmit] = useState(false);
+  const [errMsg, setErrMsg] = useState({});
+  const handleInput = (e) => {
+    setData({...data, [e.target.name]: e.target.value})
+  }
+
+  const postData = async () => {
+      if(!data.email) {
+        const message = 'Email is required.';
+        setErrMsg({email: message});
+        toast.warn(message, toastifyDarkBounce)
+        setIsSubmit(false);
+        return;
+      }
+      if(!data.password) {
+        const message = 'Password is required.';
+        setErrMsg({password: message});
+        toast.warn(message, toastifyDarkBounce);
+        setIsSubmit(false);
+        return;
+      }
+      /*  */
+      const formData = {
+        email: data.email,
+        password: data.password,
+        name: data.name,
+      };
+      /*  */
+      try{
+        const result = await axios.post(`${baseURL}login`, formData)
+        .then((response) => {
+          if(response.data.status == 0){
+            const message = response.data.message;
+            setErrMsg({email: message});
+            toast.warn(message, toastifyDarkBounce);
+            setIsSubmit(false);
+            return;
+          }
+          if(response.data.status == 2){
+            const message = response.data.message;
+            setErrMsg({password: message});
+            toast.warn(message, toastifyDarkBounce);
+            setIsSubmit(false);
+            return;
+          }
+          if(response.data.status == 1){
+            toast.success(response.data.message, toastifyDarkBounce);
+            setRoleToken(response.data.role_level);
+            setAuthToken(response.data.auth_token);
+            router.push('/'); 
+            setIsSubmit(false);    
+          }
+        
+        })
+        } catch (error) {
+            console.error(`Error: ${error}`);
+            setIsSubmit(false); 
+      }
+  }
+
+  useEffect(() => {
+    isSubmit == true && postData();
+  }, [isSubmit]);
+
+
+
+
   return (
     <>
         <section className='w-[100%] py-[5rem]'>
@@ -13,15 +94,29 @@ export default function LoginEdit() {
                     <p className='mb-2 font-light'>Email:</p>
                     <input 
                         type='text' 
+                        name='email'
+                        onChange={handleInput}
                         placeholder='Enter your email here...'
                         className='w-[100%] p-4 outline-none border border-slate-300 rounded-lg' />
+                    {errMsg.email &&
+                      <small className='text-red-600'>
+                        {errMsg.email}
+                      </small>
+                    }
                 </div>
                 <div className='w-[100%] mb-4'>
                     <p className='mb-2 font-light'>Password:</p>
                     <input 
                         type='password' 
+                        name='password'
+                        onChange={handleInput}
                         placeholder='Enter Password here...'
                         className='w-[100%] p-4 outline-none border border-slate-300 rounded-lg' />
+                    {errMsg.password &&
+                      <small className='text-red-600'>
+                        {errMsg.password}
+                      </small>
+                    }
                 </div>
                 <div className='w-[100%] mb-6 flex items-center justify-end'>
                    <Link href='#' className='font-light text-green-700 underline hover:no-underline transition-all ease-in-out'>
@@ -29,8 +124,8 @@ export default function LoginEdit() {
                    </Link>
                 </div>
                 <div className='w-[100%] mb-4'>
-                   <button className='w-[100%] rounded-lg py-4 text-white transition-all ease-in-out bg-gradient-to-br from-yellow-500 to-yellow-700 hover:bg-gradient-to-br hover:to-yellow-500 hover:from-yellow-700 hover:drop-shadow-md'>
-                    Submit
+                   <button onClick={() => setIsSubmit(true)} className='w-[100%] rounded-lg py-4 text-white transition-all ease-in-out bg-gradient-to-br from-yellow-500 to-yellow-700 hover:bg-gradient-to-br hover:to-yellow-500 hover:from-yellow-700 hover:drop-shadow-md'>
+                    {isSubmit == true ? 'Porcessing' : 'Submit'}
                    </button>
                 </div>
                 <div className='w-[100%] pt-2 pb-6 flex items-center justify-center font-light text-yellow-600'>
