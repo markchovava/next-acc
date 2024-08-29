@@ -10,9 +10,9 @@ import { IoSearchOutline } from 'react-icons/io5'
 
 
 
-export default function OpportunityList({slug, dbData, sectorData, country_slug, sector_id}) {
+export default function OpportunityList({slug, dbData, sectorsData, country_slug, sector_id}) {
     const [data, setData] = useState(dbData?.data);
-    const [sectors, setSectors] = useState(sectorData?.data);
+    const [sectors, setSectors] = useState(sectorsData?.data);
     const [search, setSearch] = useState('');
     const [isSearch, setIsSearch] = useState(false);
     /* PAGINATION */

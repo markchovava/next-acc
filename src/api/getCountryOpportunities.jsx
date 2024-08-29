@@ -12,7 +12,9 @@ export async function getCountryOpportunities(slug) {
 
 
 export async function getCountrySectorOpportunities(country_slug, sector_id) {
-    const response = await fetch( `${baseURL}country-sector-country?country_slug=${country_slug}&sector_id=${sector_id}`, {cache: 'no-cache'} );
+    const url = `${baseURL}country-sector-opportunity?country_slug=${country_slug}&sector_id=${sector_id}`;
+    console.log(url)
+    const response = await fetch( url, {cache: 'no-cache'} );
     if(!response.ok) {
        throw new Error('Failed to fetch Data.')
     }

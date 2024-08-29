@@ -1,8 +1,10 @@
 import React from 'react'
 import OpportunityList from './components/OpportunityList'
 import { getCountrySectorOpportunities } from '@/api/getCountryOpportunities';
-import { getSector } from '@/api/getSectors';
+import { getSector, getSectorsAll } from '@/api/getSectors';
 import { baseURL } from '@/api/baseURL';
+import Link from 'next/link';
+import { MdOutlineChevronRight } from 'react-icons/md';
 
 
 
@@ -10,8 +12,8 @@ import { baseURL } from '@/api/baseURL';
 export default async function page({ params: {slug, id}}) {
     const sector_id = id;
     const country_slug = slug;
-    const [sectorData, opportunityData] = await Promise.all([
-        getSector(sector_id), getCountrySectorOpportunities(country_slug, sector_id)
+    const [sectorsData, sectorData, opportunityData] = await Promise.all([
+        getSectorsAll(), getSector(sector_id), getCountrySectorOpportunities(country_slug, sector_id)
     ]);
 
    
@@ -36,14 +38,14 @@ export default async function page({ params: {slug, id}}) {
             <li><MdOutlineChevronRight /></li>
             <li><Link href={`/country`}>Countries</Link></li>
             <li><MdOutlineChevronRight /></li>
-            <li><Link href={`/country/${slug}`} className='font-semibold'>{countryData?.data?.name}</Link></li>
+            <li><Link href={`/country/${slug}`} className='font-semibold'>{sectorData?.data?.name}</Link></li>
         </ul>
     </section>
 
     <OpportunityList 
         slug={slug} 
         dbData={opportunityData} 
-        sectorData={sectorData} 
+        sectorsData={sectorsData} 
         country_slug={country_slug} 
         sector_id={sector_id} />
     </>
