@@ -16,6 +16,7 @@ import { toast } from 'react-toastify';
 
 export default function RoleList() {
   const [data, setData] = useState();
+  const [meta, setMeta] = useState();
   const [search, setSearch] = useState('')
   const [isSearch, setIsSearch] = useState(false)
   const { getAuthToken } = tokenAuth();
@@ -33,6 +34,7 @@ export default function RoleList() {
        const result = await axiosClientAPI.get(url, config)
        .then((response) => {
           setData(response.data.data)
+          setMeta(response.data.meta)
           setPrevURL(response.data.links.prev)
           setNextURL(response.data.links.next)
        })
@@ -47,6 +49,7 @@ export default function RoleList() {
       const result = await axiosClientAPI.get(`role`, config)
       .then((response) => {
         setData(response.data.data)
+        setMeta(response.data.meta)
         setPrevURL(response.data.links.prev)
         setNextURL(response.data.links.next)
       })
@@ -68,6 +71,7 @@ export default function RoleList() {
       const result = await axiosClientAPI.get(`role?search=${search}`, config)
       .then((response) => {
         setData(response.data.data)
+        setMeta(response.data.meta)
         setPrevURL(response.data.links.prev)
         setNextURL(response.data.links.next)
         setIsSearch(false);

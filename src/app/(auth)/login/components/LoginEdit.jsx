@@ -1,5 +1,7 @@
 "use client";
 import { baseURL } from '@/api/baseURL';
+import { setAuthCookie } from '@/cookie/setAuthCookieClient';
+import { setRoleCookie } from '@/cookie/setRoleCookieClient';
 import { toastifyDarkBounce } from '@/libs/toastify';
 import { tokenAuth } from '@/tokens/tokenAuth';
 import { tokenRole } from '@/tokens/tokenRole';
@@ -65,10 +67,17 @@ export default function LoginEdit() {
           }
           if(response.data.status == 1){
             toast.success(response.data.message, toastifyDarkBounce);
+            /* ROLE */
             setRoleToken(response.data.role_level);
+            setRoleCookie(response.data.role_level)
+            /* AUTH */
             setAuthToken(response.data.auth_token);
-            router.push('/'); 
+            setAuthCookie(response.data.auth_token);
             setIsSubmit(false);    
+            router.push('/'); 
+            setTimeout(() => {
+              window.location.reload();
+          }, 2000);
           }
         
         })

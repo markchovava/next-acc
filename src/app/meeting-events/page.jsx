@@ -2,10 +2,17 @@ import Link from 'next/link'
 import React from 'react'
 import { MdOutlineChevronRight } from 'react-icons/md'
 import MeetingEvent from './components/MeetingEvent'
+import EventCarousel from './components/EventCarousel'
+import { getNewsByNum } from '@/api/getNews'
+import { getEvents } from '@/api/getEvents'
 
 
 
-export default function page() {
+export default async function page() {
+  const [newsData, eventsData] = await Promise.all([getNewsByNum(6), getEvents()]);
+
+
+
   return (
     <>
 
@@ -28,7 +35,10 @@ export default function page() {
         </ul>
     </section>
 
-    <MeetingEvent />
+    <MeetingEvent dbData={newsData} />
+
+    <EventCarousel dbData={eventsData} />
+
 
     </>
   )

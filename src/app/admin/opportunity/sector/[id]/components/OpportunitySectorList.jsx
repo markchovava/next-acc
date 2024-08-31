@@ -127,6 +127,14 @@ export default function OpportunitySectorList({ id }) {
     <>
     <section className='w-[100%] pb-[6rem]'>
         <div className='w-[90%] mx-auto'>
+             {/* LINK */}
+            <div className='flex items-center justify-end mb-6'>
+                <Link 
+                    href={`/admin/opportunity/${id}`} 
+                    className='px-8 py-3 transition-all ease-in-out rounded-xl text-white bg-gradient-to-br from-yellow-300 to-yellow-700 hover:bg-gradient-to-br hover:to-yellow-300 hover:from-yellow-700' >
+                    Edit
+                </Link>
+            </div>
             <h3 className='mb-2 text-[2rem]'>{opportunity.name}</h3>
             <section className='w-[100%] font-medium bg-slate-300 flex items-center justify-start'>
                 <div className='w-[80%] p-3 text-lg border-r border-white'>NAME</div>

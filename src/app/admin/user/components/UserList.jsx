@@ -16,6 +16,7 @@ import { toast } from 'react-toastify';
 
 export default function UserList() {
   const [data, setData] = useState();
+  const [meta, setMeta] = useState();
   const [search, setSearch] = useState('')
   const [isSearch, setIsSearch] = useState(false)
   const { getAuthToken } = tokenAuth();
@@ -33,6 +34,7 @@ export default function UserList() {
        const result = await axiosClientAPI.get(url, config)
        .then((response) => {
           setData(response.data.data)
+          setMeta(response.data.meta)
           setPrevURL(response.data.links.prev)
           setNextURL(response.data.links.next)
        })
@@ -47,6 +49,7 @@ export default function UserList() {
       const result = await axiosClientAPI.get(`user`, config)
       .then((response) => {
         setData(response.data.data)
+        setMeta(response.data.meta)
         setPrevURL(response.data.links.prev)
         setNextURL(response.data.links.next)
       })
@@ -68,6 +71,7 @@ export default function UserList() {
       const result = await axiosClientAPI.get(`user?search=${search}`, config)
       .then((response) => {
         setData(response.data.data)
+        setMeta(response.data.meta)
         setPrevURL(response.data.links.prev)
         setNextURL(response.data.links.next)
         setIsSearch(false);
@@ -130,6 +134,7 @@ export default function UserList() {
               </button>
             </div>
             <div className='flex items-center justify-end gap-6'>
+              <div className='text-green-700'>Page: {meta.current_page} of {meta.last_page}</div>
               {/* PAGINATION */}
               <div className='flex items-center justify-end gap-3'>
                   {prevURL &&

@@ -8,11 +8,14 @@ import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react'
 import { toast } from 'react-toastify';
 
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
 
 
 
 export default function OpportunityAdd() {
     const router = useRouter()
+    const [description, setDescription] = useState('');
     const {opportunityImageState, opportunityImageDispatch} = MainContextState();
     const [countries, setCountries] = useState();
     const [isSubmit, setIsSubmit] = useState(false);
@@ -57,7 +60,7 @@ export default function OpportunityAdd() {
           expected_return: data?.expected_return,
           amount: data?.amount,
           short_description: data?.short_description,
-          description: data?.description,
+          description: description,
           opportunity_images: images,
         }
     
@@ -123,13 +126,14 @@ export default function OpportunityAdd() {
                     onChange={handleInput} 
                     className='w-[100%] p-3 outline-none rounded-xl border border-slate-300' />
             </div>
-            {/*  */}
-            <div className='w-[100%] mb-6'>
-                <p className='font-light mb-2'>Description:</p>
-                <textarea 
-                    name='description' 
-                    onChange={handleInput} 
-                    className='w-[100%] p-3 outline-none h-[10rem] rounded-xl border border-slate-300'></textarea>
+             {/* DESCRIPTION */}
+            <div className='w-[100%] mb-4'>
+                <p className='mb-1'>Description:</p>
+                <div className='w-[100%] h-[10rem] mb-12'>
+                <ReactQuill theme="snow" 
+                    className='h-[100%] w-[100%]' value={description} 
+                    onChange={setDescription} />
+                </div>
             </div>
             {/*  */}
             <div className='grid md:grid-cols-2 grid-cols-1 gap-6 mb-6'>

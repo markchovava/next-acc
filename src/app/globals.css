@@ -14,6 +14,35 @@
     @apply px-[4rem] py-5 text-white rounded-xl transition-all ease-in-out bg-gradient-to-br from-yellow-300 to-yellow-800 hover:to-yellow-400 hover:from-yellow-900 hover:drop-shadow-lg;
   }
 
+
+  /* DISPLAY QUILL DATA */
+
+  .article p{
+    @apply mb-2;
+  }
+  
+  .article ul{
+    @apply list-disc ml-6 ;
+  }
+  .article ul li{
+    @apply mb-1 leading-tight;
+  }
+  .article i{
+    @apply italic;
+  }
+  .article u{
+    @apply underline;
+  }
+  .article b, .article strong{
+    @apply font-semibold;
+  }
+
+
+  .article strong{
+    @apply font-medium;
+  }
+
+
 }
 
 

@@ -4,16 +4,30 @@ import NavigationMainResponsive from './NavigationMainResponsive'
 import NavTop from './NavTop'
 import NavTopResponsive from './NavTopResponsive'
 
+import { getAuthCookie } from '@/cookie/authCookie'
+import { getRoleCookie } from '@/cookie/roleCookie'
+
 
 export default function Header() {
+
+
   return (
     <>
-        {/*  */}
+    { getAuthCookie() &&
+    <>
+      { getRoleCookie() <= 2 && 
+      <>
         <NavTop />
         <NavTopResponsive />
-        {/*  */}
-        <NavigationMain />
-        <NavigationMainResponsive />
+      </>
+      }
+    </>
+    }
+        
+    {/*  */}
+    <NavigationMain />
+    <NavigationMainResponsive />
+    
     </>
   )
 }

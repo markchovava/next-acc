@@ -1,17 +1,16 @@
 "use client";
-import {setCookie, deleteCookie } from 'cookies-next';
 
 
 
 export const tokenRoleName = 'AFRICACC_ROLE_TOKEN';
-const cookieDuration = 60 * 60 * 24 * 30 * 30;
+
 
 export const tokenRole = () => {
     
     const setRoleToken = (token) => {
         if(typeof window !== 'undefined'){
             localStorage.setItem(tokenRoleName, token);
-            setCookie(tokenRoleName, token, { maxAge: cookieDuration });
+           
         }
     }
 
@@ -25,7 +24,6 @@ export const tokenRole = () => {
     const removeRoleToken = () => {
         if(typeof window !== 'undefined'){
             localStorage.removeItem(tokenRoleName);
-            deleteCookie(tokenRoleName);
         }
     }
 

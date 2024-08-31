@@ -89,7 +89,7 @@ export default function SectorView({ id }) {
           <div className='flex lg:flex-row flex-col lg:items-center justify-start lg:gap-4 gap-2 mb-6'>
             <div className='w-[20%] font-light'>Description:</div>
             <div className='w-[80%]'>
-                {data.description}
+                <div className='article' dangerouslySetInnerHTML={{ __html: data.description }}></div>
             </div>
           </div>
           {/*  */}

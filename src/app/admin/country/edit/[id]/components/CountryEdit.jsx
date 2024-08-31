@@ -9,11 +9,16 @@ import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react'
 import { toast } from 'react-toastify';
 
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
+
+
 
 
 export default function CountryEdit({ id }) {
   const router = useRouter();
   const [data, setData] = useState();
+  const [description, setDescription] = useState('');
   const [images, setImages] = useState({});
   const [isSubmit, setIsSubmit] = useState(false);
   const { getAuthToken } = tokenAuth();
@@ -34,6 +39,7 @@ export default function CountryEdit({ id }) {
       .then((response) => {
         const res = response.data.data
         setData(res)
+        setDescription(res.description)
         setImages({...images, 
           landscape: baseURL + res.landscape, 
           portrait: baseURL + res.portrait,
@@ -47,7 +53,7 @@ export default function CountryEdit({ id }) {
   const postData = async () => {
     const formData = {
       name: data?.name,
-      description: data?.description,
+      description: description,
       priority: data?.priority,
       slug: data?.slug,
       portrait: data?.portrait,
@@ -121,14 +127,14 @@ export default function CountryEdit({ id }) {
                 className='w-[100%] py-3 px-4 rounded-lg outline-none border border-slate-300' />
             </div>
           </div>
+           {/* DESCRIPTION */}
           <div className='w-[100%] mb-4'>
-            <p className='mb-2'>Description:</p>
-            <textarea
-              name='description'
-              onChange={handleInput}
-              value={data.description}
-              placeholder='Enter Description here...' 
-              className='w-[100%] h-[10rem] p-3 rounded-lg outline-none border border-slate-300'></textarea>
+              <p className='mb-1'>Description:</p>
+              <div className='w-[100%] h-[10rem] mb-12'>
+              <ReactQuill theme="snow" 
+                  className='h-[100%] w-[100%]' value={description} 
+                  onChange={setDescription} />
+              </div>
           </div>
           {/*  */}
           <div className='w-[100%] mb-4'>

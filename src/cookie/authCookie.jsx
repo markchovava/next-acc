@@ -6,14 +6,19 @@ import { redirect } from "next/navigation";
 
 
 export const checkAuthCookie = () => {
-    const authCookie = getCookie('AFRICACC_AUTH_TOKEN', { cookies });
+    const authCookie = getCookie('AFRICACC_AUTH_COOKIE', { cookies });
     
     if(authCookie){
         return;
     }else{
         redirect('/login')
     }
+} 
 
+
+export const getAuthCookie = () => {
+    const authCookie = getCookie('AFRICACC_AUTH_COOKIE', { cookies });
+    return authCookie;
 } 
 
 
