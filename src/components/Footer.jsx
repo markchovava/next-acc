@@ -7,7 +7,7 @@ import { IoLogoInstagram } from 'react-icons/io5';
 export default function Footer() {
   return (
     <>
-        <section className='w-[100%] text-white bg-gradient-to-br from-yellow-700 to-orange-800'>
+        <section className='w-[100%] text-white bg-gradient-to-br from-green-700 to-green-950'>
             <div className='mx-auto pt-[4rem] pb-[2rem] w-[90%] grid lg:grid-cols-4 grid-cols-2 lg:gap-4 gap-8'>
                 <div className='w-[100%]'>
                     <h3 className='font-medium text-xl tracking-wider mb-2'>
@@ -69,7 +69,7 @@ export default function Footer() {
                         <div>
                             <h2 className='uppercase text-[1.6rem] font-medium'>
                                 Africa Capital Club</h2>
-                            <p className='text-lg tracking-wide'>Affiliated to Pan-Africa Parliament</p>
+                            <p className='tracking-wide text-center'>Africa Economic & Investment Promotion Hub</p>
                         </div>
                     </div>
                     <div className='flex text-slate-800 items-center justify-center gap-3 text-3xl'>

@@ -1,7 +1,7 @@
 "use client";
 import { baseURL } from '@/api/baseURL';
-import { setAuthCookie } from '@/cookie/setAuthCookieClient';
-import { setRoleCookie } from '@/cookie/setRoleCookieClient';
+import { setAuthCookie } from '@/cookie/authCookieClient';
+import { setRoleCookie } from '@/cookie/roleCookieClient';
 import { toastifyDarkBounce } from '@/libs/toastify';
 import { tokenAuth } from '@/tokens/tokenAuth';
 import { tokenRole } from '@/tokens/tokenRole';
@@ -77,7 +77,7 @@ export default function LoginEdit() {
             router.push('/'); 
             setTimeout(() => {
               window.location.reload();
-          }, 2000);
+            }, 2000);
           }
         
         })

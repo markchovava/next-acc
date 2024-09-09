@@ -14,14 +14,10 @@ export default function Header() {
   return (
     <>
     { getAuthCookie() &&
-    <>
-      { getRoleCookie() <= 2 && 
       <>
         <NavTop />
         <NavTopResponsive />
       </>
-      }
-    </>
     }
         
     {/*  */}

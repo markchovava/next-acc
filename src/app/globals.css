@@ -22,7 +22,7 @@
   }
   
   .article ul{
-    @apply list-disc ml-6 ;
+    @apply list-disc ml-6 mb-2 ;
   }
   .article ul li{
     @apply mb-1 leading-tight;

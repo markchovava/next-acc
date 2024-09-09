@@ -78,7 +78,7 @@ export default function Opportunity({ dbData, sectorsData }) {
   }, [isSearch]);
 
 
-
+  console.log(data);
 
   return (
     <>
@@ -129,7 +129,8 @@ export default function Opportunity({ dbData, sectorsData }) {
                 {/* CONTENT */}
                 <div>
                   {/*  */}
-                  { data.map((i, key) => (
+                  { data.length > 0 ?
+                    data.map((i, key) => (
                     <div key={key} className='px-5 py-6 mb-6 flex md:flex-row flex-col items-center justify-start gap-8 transition-all ease-in-out bg-white drop-shadow-md hover:drop-shadow-lg'>
                       <div className='w-[100%] lg:w-[25%] drop-shadow-md overflow-hidden aspect-[5/4] bg-slate-300 rounded-xl'>
                         <img src={baseURL + i?.opportunity_images[0]?.image} className='w-[100%] h-[100%] object-cover' />
@@ -138,10 +139,10 @@ export default function Opportunity({ dbData, sectorsData }) {
                         {/*  */}
                         <div className='w-[100%] lg:w-[80%]'>
                           <h4 className='md:text-[2rem] text-[2rem] font-light'>{i.name}</h4>
-                          <p>
+                          <p className='text-lg font-light'>
                             {i.short_description ? trimString(i.short_description, 120) : 'Not added.'}
                           </p>
-                          <small>{i?.country?.name}</small>
+                          <p className='text-green-800 italic'>{i?.country?.name}</p>
                         </div>
                         {/*  */}
                         <div className='w-[100%] lg:w-[20%] flex items-center justify-center'>
@@ -150,7 +151,14 @@ export default function Opportunity({ dbData, sectorsData }) {
                         </div>
                       </div>
                     </div>
-                  ))}
+                  ))
+                  :
+                  <div className='w-[100%] py-[3rem]'>
+                    <h4 className='text-[2.5rem] font-light flex items-center justify-center'>
+                      No data available.
+                    </h4>
+                  </div>
+                  }
                  
                 </div>
 

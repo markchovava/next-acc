@@ -20,9 +20,9 @@ export default function MeetingEvent({ dbData }) {
         <div className='w-[90%] mx-auto'>
           <div className='w-[100%] flex items-center justify-between gap-4'>
             <h3 className="lg:text-[2.5rem] text-[1.8rem] leading-tight mb-3">
-              The latest news
+              The latest news and updates
             </h3>
-            <Link href='#' className='transition-all ease-in-out hover:underline text-green-700 hover:text-slate-800'>
+            <Link href='/news' className='transition-all ease-in-out hover:underline text-green-700 hover:text-slate-800'>
               View More</Link>
           </div>
           <div className="w-[100%] grid lg:grid-cols-2 grid-cols-1 lg:gap-6 gap-8">
@@ -38,11 +38,20 @@ export default function MeetingEvent({ dbData }) {
                     className="group-hover:scale-105 transition-all ease-in-out"
                     alt='Image' />
                 </div>
-                <p className="text-md mb-3">{formatDate(i.created_at)}</p>
-                <h5 className='text-2xl mb-4'>{i.title}</h5>
+                <p className="text-md mb-3">
+                  {formatDate(i.created_at)}
+                </p>
+                <h5 className='text-2xl mb-4'>
+                  {i.title}
+                </h5>
                 <div className="flex mb-4">
-                  <Link href='#' className="group px-6 py-4 border border-slate-400 flex items-center justify-center gap-2 hover:bg-slate-400 hover:text-white">
-                    Click More. <FaArrowRightLong className="group-hover:translate-x-1 transition-all duration-200 ease-in-out" /></Link>
+                  <Link 
+                    href={`/news/${i.id}`} 
+                    className="group text-green-800 px-6 py-4 border border-green-800 flex items-center justify-center gap-2 transition-all ease-in-out ">
+                    Click More. 
+                    <FaArrowRightLong 
+                    className="group-hover:translate-x-1 transition-all duration-300 ease-in-out" />
+                  </Link>
                 </div>
               </div>
             ))}

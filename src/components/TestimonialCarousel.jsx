@@ -31,7 +31,29 @@ export default function TestimonialCarousel() {
         className='text-white'
         slidesPerView={1} >
         {/* CAROUSEL */}
-        <SwiperSlide className='w-[100vw] lg:aspect-[5/1] aspect-[2/1] overflow-hidden bg-gradient-to-br from-yellow-700 to-red-700'>
+        <SwiperSlide className='w-[100vw] lg:aspect-[5/1] aspect-[2/1] overflow-hidden bg-gradient-to-br from-green-400 to-green-800'>
+          <div 
+            className='mx-auto w-[90%] h-[100%] relative flex flex-col items-center justify-center'>
+              <p className='text-[1.4rem] mb-2'>
+                "Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia quae totam harum 
+                iste quasi rem hic excepturi ducimus tempore quaerat."
+              </p>
+              <p className='italic text-yellow-200'>Lorem ipsum dolor sit.</p>
+          </div>
+        </SwiperSlide>
+        {/* CAROUSEL */}
+        <SwiperSlide className='w-[100vw] lg:aspect-[5/1] aspect-[2/1] overflow-hidden bg-gradient-to-br from-yellow-400 to-yellow-800'>
+          <div 
+            className='mx-auto w-[90%] h-[100%] relative flex flex-col items-center justify-center'>
+              <p className='text-[1.4rem] mb-2'>
+                "Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia quae totam harum 
+                iste quasi rem hic excepturi ducimus tempore quaerat."
+              </p>
+              <p className='italic text-yellow-200'>Lorem ipsum dolor sit.</p>
+          </div>
+        </SwiperSlide>
+        {/* CAROUSEL */}
+        <SwiperSlide className='w-[100vw] lg:aspect-[5/1] aspect-[2/1] overflow-hidden bg-gradient-to-br from-green-400 to-green-800'>
           <div 
             className='mx-auto w-[90%] h-[100%] relative flex flex-col items-center justify-center'>
               <p className='text-[1.4rem] mb-2'>
@@ -42,7 +64,8 @@ export default function TestimonialCarousel() {
             
           </div>
         </SwiperSlide>
-        <SwiperSlide className='w-[100vw] lg:aspect-[5/1] aspect-[2/1] overflow-hidden bg-gradient-to-br from-yellow-700 to-red-700'>
+        {/* CAROUSEL */}
+        <SwiperSlide className='w-[100vw] lg:aspect-[5/1] aspect-[2/1] overflow-hidden bg-gradient-to-br from-yellow-400 to-yellow-800'>
           <div 
             className='mx-auto w-[90%] h-[100%] relative flex flex-col items-center justify-center'>
               <p className='text-[1.4rem] mb-2'>
@@ -53,17 +76,7 @@ export default function TestimonialCarousel() {
             
           </div>
         </SwiperSlide>
-        <SwiperSlide className='w-[100vw] lg:aspect-[5/1] aspect-[2/1] overflow-hidden bg-gradient-to-br from-yellow-700 to-red-700'>
-          <div 
-            className='mx-auto w-[90%] h-[100%] relative flex flex-col items-center justify-center'>
-              <p className='text-[1.4rem] mb-2'>
-                "Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia quae totam harum 
-                iste quasi rem hic excepturi ducimus tempore quaerat."
-              </p>
-              <p className='italic text-yellow-200'>Lorem ipsum dolor sit.</p>
-            
-          </div>
-        </SwiperSlide>
+       
         
       </Swiper>
     </div>

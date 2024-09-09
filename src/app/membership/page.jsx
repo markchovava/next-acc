@@ -1,11 +1,17 @@
 import Link from 'next/link'
 import React from 'react'
 import { FaAngleRight } from 'react-icons/fa6'
-import Membership from './components/Membership'
+import MemberOption from './components/MemberOption'
+import TestimonialCarousel from '@/components/TestimonialCarousel'
+import Carousel from '@/components/Carousel'
+import MembershipInfo from './components/MembershipInfo'
+import { getMembershipByNum } from '@/api/getMemberships'
 
 
 
-export default function page() {
+export default async function page() {
+    const memberData = await getMembershipByNum(3);
+
   return (
     <>
         {/* HEADER */}
@@ -27,7 +33,13 @@ export default function page() {
             </ul>
         </section>
 
-        <Membership />
+        <MembershipInfo />
+
+        <MemberOption dbData={memberData} />
+
+        <TestimonialCarousel />
+
+        <Carousel />
     </>
   )
 }

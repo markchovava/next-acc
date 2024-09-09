@@ -130,7 +130,8 @@ export default function SectorOpportunityList({ dbData, sectorsData, slug}) {
                 {/* CONTENT */}
                 <div>
                   {/*  */}
-                  { data.map((i, key) => (
+                  { data.length > 0 ? 
+                    data.map((i, key) => (
                     <div key={key} className='px-5 py-6 mb-6 flex md:flex-row flex-col items-center justify-start gap-8 transition-all ease-in-out bg-white drop-shadow-md hover:drop-shadow-lg'>
                       <div className='w-[100%] lg:w-[25%] drop-shadow-md overflow-hidden aspect-[5/4] bg-slate-300 rounded-xl'>
                         <img src={baseURL + i?.opportunity_images[0]?.image} className='w-[100%] h-[100%] object-cover' />
@@ -142,7 +143,7 @@ export default function SectorOpportunityList({ dbData, sectorsData, slug}) {
                           <p>
                             {i.short_description ? trimString(i.short_description, 120) : 'Not added.'}
                           </p>
-                          <p className='italic text-green-700'>{i?.country?.name}</p>
+                          <p className='italic text-green-800'>{i?.country?.name}</p>
                         </div>
                         {/*  */}
                         <div className='w-[100%] lg:w-[20%] flex items-center justify-center'>
@@ -151,8 +152,14 @@ export default function SectorOpportunityList({ dbData, sectorsData, slug}) {
                         </div>
                       </div>
                     </div>
-
-                  ))}
+                  ))
+                  :
+                    <div className='w-[100%] py-[3rem]'>
+                      <h4 className='text-[2.5rem] font-light flex items-center justify-center'>
+                        No data available.
+                      </h4>
+                    </div>
+                  }
                  
                 </div>
 

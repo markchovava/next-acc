@@ -1,11 +1,8 @@
-import Carousel from '@/components/Carousel';
-import TestimonialCarousel from '@/components/TestimonialCarousel';
-import Link from 'next/link';
+
 import React from 'react'
-import { FaArrowRightLong } from "react-icons/fa6";
 
 
-export default function Membership() {
+export default function MembershipInfo() {
   return (
     <>
     {/*  */}
@@ -57,58 +54,6 @@ export default function Membership() {
         </div>
     </section>
 
-    <section className='w-[100%] pb-[6rem]'>
-        <h3 className=' text-center text-[2rem] font-medium mb-6 text-yellow-700'>
-            Membership Options</h3>
-        <div className='mx-auto w-[90%] grid lg:grid-cols-3 grid-cols-1 gap-8 text-lg mb-[1rem]'>
-           {/*  */}
-            <div className='w-[100%] p-[1.6rem] bg-white drop-shadow-md'>
-                <h3 className='mb-4 text-[1.6rem] leading-tight'>Standard Membership</h3>
-                <p className='font-light'>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                    Eaque quidem velit adipisci voluptatibus porro fuga amet,
-                     aspernatur perspiciatis iste est maiores sint consequatur 
-                     aperiam cumque voluptates libero impedit exercitationem 
-                     architecto!
-                </p>
-            </div>
-           {/*  */}
-            <div className='w-[100%] p-[1.6rem] bg-white drop-shadow-md'>
-                <h3 className='mb-4 text-[1.6rem] leading-tight'>Silver Membership</h3>
-                <p className='font-light'>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                    Eaque quidem velit adipisci voluptatibus porro fuga amet,
-                     aspernatur perspiciatis iste est maiores sint consequatur 
-                     aperiam cumque voluptates libero impedit exercitationem 
-                     architecto!
-                </p>
-            </div>
-           {/*  */}
-            <div className='w-[100%] p-[1.6rem] bg-white drop-shadow-md'>
-                <h3 className='mb-4 text-[1.6rem] leading-tight'>Platinum Membership</h3>
-                <p className='font-light'>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                    Eaque quidem velit adipisci voluptatibus porro fuga amet,
-                     aspernatur perspiciatis iste est maiores sint consequatur 
-                     aperiam cumque voluptates libero impedit exercitationem 
-                     architecto!
-                </p>
-            </div>
-
-            <div className='w-[100%]'></div>
-        </div>
-        {/*  */}
-        <div className='flex items-center justify-center '>
-            <Link href='/membership/register' className='group text-lg px-10 py-5 flex items-center justify-center gap-2 rounded-lg text-white hover:drop-shadow-lg bg-gradient-to-br from-yellow-500 to-yellow-800 '>
-                Become a member
-                <FaArrowRightLong className='group-hover:translate-x-1 transition-all ease-in-out' />
-            </Link>
-        </div>
-    </section>
-
-    <TestimonialCarousel />
-
-    <Carousel />
     </>
   )
 }

@@ -27,9 +27,9 @@ export default function EventCarousel({ dbData }) {
                 <section className='hidden lg:block '>
                     <div className='w-[100%] flex items-center justify-between pb-4'>
                         <h6 className="text-[2.5rem] font-medium">
-                            Events
+                            Latest Events and Meetings
                         </h6>
-                        <Link href='#'>
+                        <Link href='/event'>
                             <span className='text-green-700 hover:underline hover:text-slate-800 transition-all ease-in-out'>
                                 View More</span>
                         </Link>
@@ -46,74 +46,24 @@ export default function EventCarousel({ dbData }) {
                         onSlideChange={() => console.log('slide change')}
                         className='card__transparent' >
 
-                       {data.map((i, key) => (
+                        { data.map((i, key) => (
                             <SwiperSlide key={key} className=' bg-white rounded-xl overflow-hidden drop-shadow hover:drop-shadow-md'>
                                 <div className='w-[100%] drop-shadow-md text-white flex flex-col items-center justify-center aspect-[5/3] bg-gradient-to-br from-green-600 to-cyan-700'>
                                         <p className='tracking-[0.5rem] pb-4'>{formatDate(i.date)}</p>
-                                        <h3 className='text-4xl font-bold text-center'>
-                                            {trimString(i.name, 30)}</h3>
+                                        <h3 className='text-4xl font-bold text-center p-4'>
+                                            {trimString(i.name, 20)}</h3>
                                 </div>
                                 <div className='w-[100%] aspect-[5/1] py-4 flex flex-col items-center justify-center'>
                                     <p className='text-center bg-white font-semibold text-lg pb-3'>
                                         {i.duration}
                                     </p>
-                                    <button className='text-white rounded-xl bg-gradient-to-br from-green-600 to-cyan-700 hover:bg-gradient-to-br hover:to-green-600 hover:from-cyan-700 py-2 px-6 mb-3'>
-                                        Book to Attend
-                                    </button>
+                                    <Link href={`/event/${i.id}`} className='text-white rounded-xl bg-gradient-to-br from-green-600 to-cyan-700 hover:bg-gradient-to-br hover:to-green-600 hover:from-cyan-700 py-2 px-6 mb-3'>
+                                        View more
+                                    </Link>
                                 </div>
                             </SwiperSlide>      
-
-                       ))}
-                        <SwiperSlide className=' bg-white rounded-xl overflow-hidden drop-shadow hover:drop-shadow-md'>
-                           <div className='w-[100%] drop-shadow-md text-white flex flex-col items-center justify-center aspect-[5/3] bg-gradient-to-br from-green-600 to-cyan-700'>
-                                <p className='tracking-[0.5rem] pb-4'>11 October 2024</p>
-                                <h3 className='text-4xl font-bold text-center'>
-                                    Big Event of the Year 2024</h3>
-                           </div>
-                           <div className='w-[100%] aspect-[5/1] py-4 flex flex-col items-center justify-center'>
-                            <p className='text-center bg-white font-semibold text-lg pb-3'>
-                                All Day
-                            </p>
-                            <button className='text-white rounded-xl bg-gradient-to-br from-green-600 to-cyan-700 hover:bg-gradient-to-br hover:to-green-600 hover:from-cyan-700 py-2 px-6 mb-3'>
-                                Book to Attend
-                            </button>
-                           </div>
-                        </SwiperSlide>      
-                        <SwiperSlide className=' bg-white rounded-xl overflow-hidden drop-shadow hover:drop-shadow-md'>
-                           <div className='w-[100%] drop-shadow-md text-white flex flex-col items-center justify-center aspect-[5/3] bg-gradient-to-br from-green-600 to-cyan-700'>
-                                <p className='tracking-[0.5rem] pb-4'>11 October 2024</p>
-                                <h3 className='text-4xl font-bold text-center'>
-                                    Big Event of the Year 2024</h3>
-                           </div>
-                           <div className='w-[100%] aspect-[5/1] py-4 flex flex-col items-center justify-center'>
-                            <p className='text-center bg-white font-semibold text-lg pb-3'>
-                                All Day
-                            </p>
-                            <button className='text-white rounded-xl bg-gradient-to-br from-green-600 to-cyan-700 hover:bg-gradient-to-br hover:to-green-600 hover:from-cyan-700 py-2 px-6 mb-3'>
-                                Book to Attend
-                            </button>
-                           </div>
-                        </SwiperSlide>       
-                        <SwiperSlide className=' bg-white rounded-xl overflow-hidden drop-shadow hover:drop-shadow-md'>
-                           <div className='w-[100%] drop-shadow-md text-white flex flex-col items-center justify-center aspect-[5/3] bg-gradient-to-br from-green-600 to-cyan-700'>
-                                <p className='tracking-[0.5rem] pb-4'>11 October 2024</p>
-                                <h3 className='text-4xl font-bold text-center'>
-                                    Big Event of the Year 2024</h3>
-                           </div>
-                           <div className='w-[100%] aspect-[5/1] py-4 flex flex-col items-center justify-center'>
-                            <p className='text-center bg-white font-semibold text-lg pb-3'>
-                                All Day
-                            </p>
-                            <button className='text-white rounded-xl bg-gradient-to-br from-green-600 to-cyan-700 hover:bg-gradient-to-br hover:to-green-600 hover:from-cyan-700 py-2 px-6 mb-3'>
-                                Book to Attend
-                            </button>
-                           </div>
-                        </SwiperSlide>    
-                       
-                       
-                       
-                       
-                        
+                        )) }  
+                                                
                         
                     </Swiper>
                 </section>
@@ -121,9 +71,9 @@ export default function EventCarousel({ dbData }) {
                 <section className='lg:hidden block '>
                     <div className='w-[100%] flex items-center justify-between pb-4'>
                         <h6 className="text-[2.5rem] font-medium">
-                            Title
+                            Latest Events and Meetings
                         </h6>
-                        <Link href='#'>
+                        <Link href='/event'>
                             <span className=''>View More</span>
                         </Link>
                     </div>
@@ -131,7 +81,7 @@ export default function EventCarousel({ dbData }) {
                         modules={[Navigation, Pagination, Scrollbar, A11y]}
                         effect="fade"
                         spaceBetween={30}
-                        slidesPerView={1.5}
+                        slidesPerView={1.3}
                         navigation
                         pagination={{ clickable: true }}
                         scrollbar={{ draggable: true }}
@@ -139,93 +89,23 @@ export default function EventCarousel({ dbData }) {
                         onSlideChange={() => console.log('slide change')}
                         className='card__transparent' >
                        
-                            <SwiperSlide className=' bg-white overflow-hidden hover:drop-shadow-md'>
-                                <div className='relative group w-[100%] rounded-lg overflow-hidden aspect-[10/7] bg-slate-400 mb-3'>
-                                    <img src='/assets/img/10_7/01.jpg' 
-                                        className='absolute w-[100%] h-[100%] object-cover group-hover:scale-105 transition-all ease-in-out' />
-                
-                                    <div className='absolute bottom-0 left-0 w-[100%] h-[50%] bg-gradient-to-b from-transparent to-black opacity-75 text-white'>
-                                    </div>
-                                    <div className='absolute bottom-0 left-0 w-[100%] h-[50%] text-white text-[1.7rem] font-medium flex items-end px-3 pb-4'>
-                                        <Link href={`#`} >
-                                            Name
-                                        </Link>
-                                        
-                                    </div>
+                       {data.map((i, key) => (
+                            <SwiperSlide key={key} className=' bg-white rounded-xl overflow-hidden drop-shadow hover:drop-shadow-md'>
+                                <div className='w-[100%] drop-shadow-md text-white flex flex-col items-center justify-center aspect-[5/3] bg-gradient-to-br from-green-600 to-cyan-700'>
+                                        <p className='tracking-[0.5rem] pb-4'>{formatDate(i.date)}</p>
+                                        <h3 className='text-4xl font-bold text-center'>
+                                            {trimString(i.name, 20)}</h3>
+                                </div>
+                                <div className='w-[100%] aspect-[5/1] py-4 flex flex-col items-center justify-center'>
+                                    <p className='text-center bg-white font-semibold text-lg pb-3'>
+                                        {i.duration}
+                                    </p>
+                                    <Link href={`/event/${i.id}`} className='text-white rounded-xl bg-gradient-to-br from-green-600 to-cyan-700 hover:bg-gradient-to-br hover:to-green-600 hover:from-cyan-700 py-2 px-6 mb-3'>
+                                        View more
+                                    </Link>
                                 </div>
                             </SwiperSlide>      
-                            <SwiperSlide className=' bg-white overflow-hidden hover:drop-shadow-md'>
-                                <div className='relative group w-[100%] rounded-lg overflow-hidden aspect-[10/7] bg-slate-400 mb-3'>
-                                    <img src='/assets/img/10_7/02.jpg' 
-                                        className='absolute w-[100%] h-[100%] object-cover group-hover:scale-105 transition-all ease-in-out' />
-                                    <div className='absolute bottom-0 left-0 w-[100%] h-[50%] bg-gradient-to-b from-transparent to-black opacity-75 text-white'>
-                                    </div>
-                                    <div className='absolute bottom-0 left-0 w-[100%] h-[50%] text-white text-[1.7rem] font-medium flex items-end px-3 pb-4'>
-                                        <Link href={`#`}>
-                                            Name
-                                        </Link>
-                                        
-                                    </div>
-                                </div>
-                            </SwiperSlide>      
-                            <SwiperSlide className=' bg-white overflow-hidden hover:drop-shadow-md'>
-                                <div className='relative group w-[100%] rounded-lg overflow-hidden aspect-[10/7] bg-slate-400 mb-3'>
-                                    <img src='/assets/img/10_7/03.jpg' 
-                                        className='absolute w-[100%] h-[100%] object-cover group-hover:scale-105 transition-all ease-in-out' />
-                                    <div className='absolute bottom-0 left-0 w-[100%] h-[50%] bg-gradient-to-b from-transparent to-black opacity-75 text-white'>
-                                    </div>
-                                    <div className='absolute bottom-0 left-0 w-[100%] h-[50%] text-white text-[1.7rem] font-medium flex items-end px-3 pb-4'>
-                                        <Link href={`#`} className='link__two'>
-                                            Name
-                                        </Link>
-                                        
-                                    </div>
-                                </div>
-                            </SwiperSlide>      
-                            <SwiperSlide className=' bg-white overflow-hidden hover:drop-shadow-md'>
-                                <div className='relative group w-[100%] rounded-lg overflow-hidden aspect-[10/7] bg-slate-400 mb-3'>
-                                    <img src='/assets/img/10_7/04.jpg' 
-                                        className='absolute w-[100%] h-[100%] object-cover group-hover:scale-105 transition-all ease-in-out' />
-                                    <div className='absolute bottom-0 left-0 w-[100%] h-[50%] bg-gradient-to-b from-transparent to-black opacity-75 text-white'>
-                                    </div>
-                                    <div className='absolute bottom-0 left-0 w-[100%] h-[50%] text-white text-[1.7rem] font-medium flex items-end px-3 pb-4'>
-                                        <Link href={`#`} className='link__two'>
-                                            Name
-                                        </Link>
-                                        
-                                    </div>
-                                </div>
-                            </SwiperSlide>      
-                            <SwiperSlide className=' bg-white overflow-hidden hover:drop-shadow-md'>
-                                <div className='relative group w-[100%] rounded-lg overflow-hidden aspect-[10/7] bg-slate-400 mb-3'>
-                                    <img src='/assets/img/10_7/02.jpg' className='absolute w-[100%] h-[100%] object-cover group-hover:scale-105 transition-all ease-in-out' />
-                
-                                    <div className='absolute bottom-0 left-0 w-[100%] h-[50%] bg-gradient-to-b from-transparent to-black opacity-75 text-white'>
-                                    </div>
-                                    <div className='absolute bottom-0 left-0 w-[100%] h-[50%] text-white text-[1.7rem] font-medium flex items-end px-3 pb-4'>
-                                        <Link href={`#`} className='link__two'>
-                                            Name
-                                        </Link>
-                                        
-                                    </div>
-                                </div>
-                            </SwiperSlide>      
-                            <SwiperSlide className=' bg-white overflow-hidden hover:drop-shadow-md'>
-                                <div className='relative group w-[100%] rounded-lg overflow-hidden aspect-[10/7] bg-slate-400 mb-3'>
-                                    <img 
-                                        src='/assets/img/10_7/01.jpg' 
-                                        className='absolute w-[100%] h-[100%] object-cover group-hover:scale-105 transition-all ease-in-out' />
-                
-                                    <div className='absolute bottom-0 left-0 w-[100%] h-[50%] bg-gradient-to-b from-transparent to-black opacity-75 text-white'>
-                                    </div>
-                                    <div className='absolute bottom-0 left-0 w-[100%] h-[50%] text-white text-[1.7rem] font-medium flex items-end px-3 pb-4'>
-                                        <Link href={`#`} className='link__two'>
-                                            Name
-                                        </Link>
-                                        
-                                    </div>
-                                </div>
-                            </SwiperSlide>      
+                       ))}      
                         
                     </Swiper>
                 </section>
