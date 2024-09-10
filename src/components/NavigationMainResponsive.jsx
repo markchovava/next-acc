@@ -64,7 +64,7 @@ export default function NavigationMainResponsive() {
                     <div className='flex items-center justify-start gap-3'>
                         <div className='flex items-center justify-start gap-1'>
                             <FaPhoneAlt style={{fill: 'darkgreen'}} />
-                            <span className='font-light'>+263 782 210021</span>
+                            <span className='font-light'>00971 4447 4669</span>
                         </div>
                     </div>
                     <div className='flex items-center justify-end gap-2 text-xl'>
@@ -97,7 +97,7 @@ export default function NavigationMainResponsive() {
                 <div className='mx-auto w-[90%] flex md:flex-row flex-col items-center justify-between'>
                     <div className='flex justify-start items-center py-3 gap-2'>
                         <div className='aspect-[1/1] w-[6.5rem]'>
-                            <Image src='/assets/logo/small.png' height={300} width={300} alt='Logo' />
+                            <img src='/assets/logo/small.png' className='w-[100%] h-[100%] object-fill' alt='Logo' />
                         </div>
                         <div>
                             <h2 className='uppercase text-[2rem] text-[#3f724a] font-medium'>
@@ -165,7 +165,7 @@ export default function NavigationMainResponsive() {
                     </li>
                     <li className='w-[100%]'>
                         <span className='cursor-pointer hover:bg-slate-100 py-2 hover:text-green-800 text-center transition-all ease-in-out flex items-center justify-center'>
-                        Meetings & Events <FaChevronDown /></span>
+                        Meetings & Events </span>
                     </li>
                     <li className='w-[100%]'>
                         <Link href='/membership' className='hover:bg-slate-100 py-2 hover:text-green-800 text-center transition-all ease-in-out flex items-center justify-center'>

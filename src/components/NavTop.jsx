@@ -31,6 +31,8 @@ export default function NavTop() {
         nine: false,
         ten: false,
         eleven: false,
+        twelve: false,
+        thirteen: false,
     })
     const config = {
         headers: {
@@ -83,9 +85,6 @@ export default function NavTop() {
                         Settings <FaAngleDown /> 
                     </button>
                     <ul className={`absolute z-100 ${isActive.one == true ? 'block' : 'hidden'} rounded-b-lg overflow-hidden drop-shadow-md top-[130%] transition-all ease-in-out duration-150 left-[-0.5rem] w-[10rem] border border-white bg-green-800`}>
-                        <li className='w-[100%] hover:bg-green-900 px-3 py-1'>
-                            <Link href='/admin/app-info' className=''>App Info</Link>
-                        </li>
                         <li className='w-[100%] hover:bg-green-900 px-3 py-1'>
                             <Link href='/admin/role' className=''>Roles</Link>
                         </li>
@@ -205,6 +204,38 @@ export default function NavTop() {
                         </li>
                         <li className='w-[100%] hover:bg-green-900 px-3 py-2'>
                             <Link href='/admin/news' className=''>News List</Link>
+                        </li>
+                    </ul>
+                </li>
+                {/* TESTIMONIALS */}
+                <li className="relative z-20">
+                    <button
+                        onClick={() => setIsActive({twelve: !isActive.twelve})} 
+                        className="flex items-center justify-start gap-1">
+                        Testimonials <FaAngleDown /> 
+                    </button> 
+                    <ul className={`absolute z-100 ${isActive.twelve == true ? 'block' : 'hidden'} rounded-b-lg overflow-hidden drop-shadow-md top-[130%] transition-all ease-in-out duration-150 left-[-0.5rem]  w-[10rem] border border-white bg-green-800`}>
+                        <li className='w-[100%] hover:bg-green-900 px-3 py-2'>
+                            <Link href='/admin/testimonial/add' className=''>Add Testimonial</Link>
+                        </li>
+                        <li className='w-[100%] hover:bg-green-900 px-3 py-2'>
+                            <Link href='/admin/testimonial' className=''>Testimonials List</Link>
+                        </li>
+                    </ul>
+                </li>
+                {/* PARTNERS */}
+                <li className="relative z-20">
+                    <button
+                        onClick={() => setIsActive({thirteen: !isActive.thirteen})} 
+                        className="flex items-center justify-start gap-1">
+                        Partners <FaAngleDown /> 
+                    </button> 
+                    <ul className={`absolute z-100 ${isActive.thirteen == true ? 'block' : 'hidden'} rounded-b-lg overflow-hidden drop-shadow-md top-[130%] transition-all ease-in-out duration-150 left-[-0.5rem]  w-[10rem] border border-white bg-green-800`}>
+                        <li className='w-[100%] hover:bg-green-900 px-3 py-2'>
+                            <Link href='/admin/partner/add' className=''>Add Partner</Link>
+                        </li>
+                        <li className='w-[100%] hover:bg-green-900 px-3 py-2'>
+                            <Link href='/admin/partner' className=''>Partners List</Link>
                         </li>
                     </ul>
                 </li>

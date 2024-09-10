@@ -38,7 +38,7 @@ export default function OpportunityView({id, dbData}) {
                     {data?.name}
                 </h4>
                 <p className='font-light mb-3'>
-                    {data?.short_description}
+                    <div className='article' dangerouslySetInnerHTML={{ __html: data?.short_description }}></div>
                 </p>
                 <div className='flex items-center justify-start gap-2 mb-3'>
                     <p>Status:</p>
@@ -69,9 +69,8 @@ export default function OpportunityView({id, dbData}) {
         {/*  */}
         <div className='mx-auto lg:w-[70%] w-[80%] text-lg font-light'>
             <h3 className='font-medium text-[1.6rem] leading-none mb-3'>Description</h3>
-            <p>
-                {data?.description}
-            </p>
+            <div className='article' dangerouslySetInnerHTML={{ __html: data?.description }}></div>
+           
         </div>
         <div className='pt-[2rem] pb-[2rem] flex items-center justify-center'>
             <button className='flex items-center justify-center gap-2 group transition-all ease-in-out drop-shadow-md rounded-xl py-6 px-12 bg-gradient-to-br from-yellow-400 to-yellow-800 text-white hover:bg-gradient-to-br hover:from-yellow-500 hover:to-yellow-900'>

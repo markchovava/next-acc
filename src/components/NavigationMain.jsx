@@ -69,7 +69,7 @@ export default function NavigationMain() {
                 <div className='flex items-center justify-start gap-3 '>
                     <div className='flex items-center justify-start gap-1'>
                         <FaPhoneAlt style={{fill: 'darkgreen'}} />
-                        <span className='font-light'>+263 782 210021</span>
+                        <span className='font-light'>00971 4447 4669</span>
                     </div>
                 </div>
                 <div className='flex items-center justify-end gap-2 text-xl'>
@@ -87,7 +87,7 @@ export default function NavigationMain() {
             <div className='mx-auto w-[90%] flex items-center justify-between'>
                 <div className='flex justify-start items-center py-3 gap-2'>
                     <div className='aspect-[1/1] w-[6.5rem]'>
-                        <Image src='/assets/logo/small.png' height={300} width={300} alt='Logo' />
+                        <img src='/assets/logo/small.png' className='w-[100%] h-[100%] object-fill' alt='Logo' />
                     </div>
                     <div>
                         <h2 className='uppercase text-[2.4rem] text-[#3f724a] font-medium'>

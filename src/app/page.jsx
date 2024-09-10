@@ -7,16 +7,19 @@ import { FaArrowRightLong } from "react-icons/fa6";
 import { getNewsByNum } from "@/api/getNews";
 import GridNews from "@/components/GridNews";
 import { getCountries } from "@/api/getCountries";
+import { getOpportunitiesByNum } from "@/api/getOpportunities";
+import { getTestimonialsByNum } from "@/api/getTestimonials";
 
 
 
 export default async function Home() {
-    const [newsData, countriesData] = await Promise.all([getNewsByNum(4), getCountries()]);
+    const [newsData, countriesData, opportunitiesData, testimonialsData] = await Promise.all([
+      getNewsByNum(4), getCountries(), getOpportunitiesByNum(3), getTestimonialsByNum(4)]);
   
 
   return (
     <>
-      <SlideMain />
+      <SlideMain dbData={opportunitiesData} />
       <AfricaMap />
 
       {/*  */}
@@ -38,26 +41,26 @@ export default async function Home() {
             <div className="">
               <ul className="text-xl">
                 <li>
-                  <Link href='#' className="group hover:bg-slate-50 flex items-center justify-between border-y border-slate-300 py-2 px-3">
+                  <Link href='/membership' className="group hover:bg-slate-50 flex items-center justify-between border-y border-slate-300 py-2 px-3">
                     <span>Benefits of Membership</span>
                     <FaArrowRightLong className="group-hover:translate-x-1 transition-all ease-in-out"/>
                   </Link>
                 </li>
                 <li>
-                  <Link href='#' className="group hover:bg-slate-50 flex items-center justify-between border-y border-slate-300 py-2 px-3">
+                  <Link href='/opportunity' className="group hover:bg-slate-50 flex items-center justify-between border-y border-slate-300 py-2 px-3">
                     <span>Investment Opportunities</span>
                     <FaArrowRightLong className="group-hover:translate-x-1 transition-all ease-in-out"/>
                   </Link>
                 </li>
                 <li>
-                  <Link href='#' className="group hover:bg-slate-50 flex items-center justify-between border-y border-slate-300 py-2 px-3">
-                    <span>Explore Our Events & Training Opportunities</span>
+                  <Link href='/event' className="group hover:bg-slate-50 flex items-center justify-between border-y border-slate-300 py-2 px-3">
+                    <span>Our Events</span>
                     <FaArrowRightLong className="group-hover:translate-x-1 transition-all ease-in-out"/>
                   </Link>
                 </li>
                 <li>
-                  <Link href='#' className="group hover:bg-slate-50 flex items-center justify-between border-y border-slate-300 py-2 px-3">
-                    <span>Discover Opportunities</span>
+                  <Link href='/news' className="group hover:bg-slate-50 flex items-center justify-between border-y border-slate-300 py-2 px-3">
+                    <span>Our Latest News</span>
                     <FaArrowRightLong className="group-hover:translate-x-1 transition-all ease-in-out"/>
                   </Link>
                 </li>
@@ -70,7 +73,9 @@ export default async function Home() {
       {/* EVENTS */}
       <GridNews dbData={newsData} />
 
-      <TestimonialCarousel />
+      {testimonialsData.data &&
+      <TestimonialCarousel dbData={testimonialsData} />
+      }
 
       {/*  */}
       <Carousel dbData={countriesData} />

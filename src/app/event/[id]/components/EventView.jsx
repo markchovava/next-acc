@@ -37,7 +37,8 @@ export default function EventView({ dbData }) {
                  {/* DESCRIPTION */}
                  <div className='mb-[2rem]'>
                     <p className='mb-1 leading-none'>Description:</p>
-                    <div className='article text-lg font-light' dangerouslySetInnerHTML={{ __html: data.description }}></div>
+                    <div className='article text-lg font-light' 
+                        dangerouslySetInnerHTML={{ __html: data.description }}></div>
                 </div>
 
 

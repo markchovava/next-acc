@@ -22,6 +22,8 @@ export default function NavTopResponsive() {
         nine: false,
         ten: false,
         eleven: false,
+        twelve: false,
+        thirteen: false,
     });
 
 
@@ -48,9 +50,6 @@ export default function NavTopResponsive() {
                         Settings <FaAngleDown /> 
                     </button>
                     <ul className={`relative ${isActive.one == true ? 'block' : 'hidden'} nav__topUl`}>
-                        <li className='w-[100vw] flex items-center justify-center  hover:bg-green-950 px-3 py-2'>
-                            <Link href='/admin/app-info' className=''>App Info</Link>
-                        </li>
                         <li className='w-[100vw] flex items-center justify-center hover:bg-green-950 px-3 py-2'>
                             <Link href='/admin/role' className=''>Roles</Link>
                         </li>
@@ -178,6 +177,38 @@ export default function NavTopResponsive() {
                         </li>
                         <li className='w-[100vw] flex items-center justify-center hover:bg-green-950 px-3 py-2'>
                             <Link href='/admin/news' className=''>News List</Link>
+                        </li>
+                    </ul>
+                </li>
+                {/* TESTIMONIALS */}
+                <li className={`${isActive.twelve == true ? 'bg-green-800' : ''} relative z-20 w-[100%] flex flex-col items-center justify-center`}>
+                    <button 
+                        onClick={() => setIsActive({twelve: !isActive.twelve})} 
+                        className="flex items-center justify-start gap-1 pt-2">
+                        Testimonials <FaAngleDown /> 
+                    </button>
+                    <ul className={`relative ${isActive.twelve == true ? 'block' : 'hidden'} nav__topUl`}>
+                        <li className='w-[100vw] flex items-center justify-center  hover:bg-green-950 px-3 py-2'>
+                            <Link href='/admin/testimonial/add' className=''>Add Testimonial</Link>
+                        </li>
+                        <li className='w-[100vw] flex items-center justify-center hover:bg-green-950 px-3 py-2'>
+                            <Link href='/admin/testimonial' className=''>Testimonials List</Link>
+                        </li>
+                    </ul>
+                </li>
+                {/*  */}
+                <li className={`${isActive.thirteen == true ? 'bg-green-800' : ''} relative z-20 w-[100%] flex flex-col items-center justify-center`}>
+                    <button 
+                        onClick={() => setIsActive({thirteen: !isActive.thirteen})} 
+                        className="flex items-center justify-start gap-1 pt-2">
+                        Partners <FaAngleDown /> 
+                    </button>
+                    <ul className={`relative ${isActive.thirteen == true ? 'block' : 'hidden'} nav__topUl`}>
+                        <li className='w-[100vw] flex items-center justify-center  hover:bg-green-950 px-3 py-2'>
+                            <Link href='/admin/partner/add' className=''>Add Partner</Link>
+                        </li>
+                        <li className='w-[100vw] flex items-center justify-center hover:bg-green-950 px-3 py-2'>
+                            <Link href='/admin/partner' className=''>Partners List</Link>
                         </li>
                     </ul>
                 </li>

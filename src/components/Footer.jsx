@@ -16,19 +16,33 @@ export default function Footer() {
                         <li className='group'>
                             <Link href='#' className='flex items-center justify-start gap-2 group-hover:translate-x-1 transition-all ease-in-out'>
                                 <FaCaretRight className='group-hover:translate-x-1 transition-all ease-in-out' /> 
-                                About Us </Link></li>
+                                About Us 
+                            </Link>
+                        </li>
                         <li className='group'>
-                            <Link href='#' className='flex items-center justify-start gap-2 group-hover:translate-x-1 transition-all ease-in-out'>
+                            <Link href='/opportunity' className='flex items-center justify-start gap-2 group-hover:translate-x-1 transition-all ease-in-out'>
                                 <FaCaretRight className='group-hover:translate-x-1 transition-all ease-in-out' /> 
-                                Privacy</Link></li>
+                                Opportunities
+                            </Link>
+                        </li>
                         <li className='group'>
-                            <Link href='#' className='flex items-center justify-start gap-2 group-hover:translate-x-1 transition-all ease-in-out'>
+                            <Link href='/country' className='flex items-center justify-start gap-2 group-hover:translate-x-1 transition-all ease-in-out'>
                                 <FaCaretRight className='group-hover:translate-x-1 transition-all ease-in-out' /> 
-                                Cookies</Link></li>
+                                Countries
+                            </Link>
+                        </li>
                         <li className='group'>
-                            <Link href='#' className='flex items-center justify-start gap-2 group-hover:translate-x-1 transition-all ease-in-out'>
+                            <Link href='/privacy-policy' className='flex items-center justify-start gap-2 group-hover:translate-x-1 transition-all ease-in-out'>
                                 <FaCaretRight className='group-hover:translate-x-1 transition-all ease-in-out' /> 
-                                Terms</Link></li>
+                                Privacy Policy
+                            </Link>
+                        </li>
+                        <li className='group'>
+                            <Link href='/contact' className='flex items-center justify-start gap-2 group-hover:translate-x-1 transition-all ease-in-out'>
+                                <FaCaretRight className='group-hover:translate-x-1 transition-all ease-in-out' /> 
+                                Contact Us
+                            </Link>
+                        </li>
                     </ul>
                 </div>
                 <div className='w-[100%]'>
@@ -36,35 +50,45 @@ export default function Footer() {
                         Resources</h3>
                     <ul className='ml-2'>
                         <li className='group'>
-                            <Link href='#' className='flex items-center justify-start gap-2 group-hover:translate-x-1 transition-all ease-in-out'>
+                            <Link href='/membership' className='flex items-center justify-start gap-2 group-hover:translate-x-1 transition-all ease-in-out'>
                                 <FaCaretRight className='group-hover:translate-x-1 transition-all ease-in-out' /> 
-                                Member News </Link></li>
+                                Membership </Link></li>
                         <li className='group'>
-                            <Link href='#' className='flex items-center justify-start gap-2 group-hover:translate-x-1 transition-all ease-in-out'>
+                            <Link href='/partner' className='flex items-center justify-start gap-2 group-hover:translate-x-1 transition-all ease-in-out'>
                                 <FaCaretRight className='group-hover:translate-x-1 transition-all ease-in-out' /> 
-                                Industry News</Link></li>
+                                Partners
+                            </Link>
+                        </li>
                         <li className='group'>
-                            <Link href='#' className='flex items-center justify-start gap-2 group-hover:translate-x-1 transition-all ease-in-out'>
+                            <Link href='/news' className='flex items-center justify-start gap-2 group-hover:translate-x-1 transition-all ease-in-out'>
                                 <FaCaretRight className='group-hover:translate-x-1 transition-all ease-in-out' /> 
-                                Afri-Spective Blog</Link></li>
+                                 News
+                            </Link>
+                        </li>
+                        <li className='group'>
+                            <Link href='event' className='flex items-center justify-start gap-2 group-hover:translate-x-1 transition-all ease-in-out'>
+                                <FaCaretRight className='group-hover:translate-x-1 transition-all ease-in-out' /> 
+                                Events</Link></li>
                     </ul>
                 </div>
                 <div className='w-[100%]'>
-                    <h3 className='font-medium text-xl tracking-wider mb-2'>
-                        +263 782210021</h3>
-                    <h3 className='font-medium text-xl tracking-wider mb-2'>
-                        info@email.com</h3>
+                    <h3 className=' text-lg tracking-wider mb-2'>
+                        00971 4447 4669</h3>
+                    <h3 className='text-lg tracking-wider mb-2'>
+                        info@africacapitalclub.com
+                    </h3>
                     <p>
-                        Africa Capital Club <br />
-                        1 Piers Ave <br />
-                        CBD, Harare <br />
-                        Zimbabwe
+                        Meydan Grandstand, <br /> 
+                        6th Floor,  <br />
+                        Meydon Road, <br />
+                        Nad Al Sheba, <br />
+                        Dubai, UAE. <br />
                     </p>
                 </div>
                 <div className='w-[100%]'>
                     <div className='flex flex-col justify-center items-center mb-2'>
                         <div className='aspect-[1/1] w-[6.5rem]'>
-                            <Image src='/assets/logo/small.png' height={300} width={300} alt='Logo' />
+                            <img src='/assets/logo/small.png' className='w-[100%] h-[100%] object-fill' alt='Logo' />
                         </div>
                         <div>
                             <h2 className='uppercase text-[1.6rem] font-medium'>

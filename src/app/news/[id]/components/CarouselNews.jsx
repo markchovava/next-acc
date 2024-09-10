@@ -47,9 +47,7 @@ export default function CarouselNews({ dbData }) {
                         {/*  */}
                         {data.map((i, key) => (
                         <SwiperSlide key={key} className='group relative bg-slate-400 aspect-[5/3] rounded-xl overflow-hidden drop-shadow hover:drop-shadow-md'>
-                        <Image src={baseURL + i.image}
-                            width={600}
-                            height={360}
+                        <img src={baseURL + i.image}
                             className='object-cover w-[100%] h-[100%] absolute z-10 group-hover:scale-110 transition-all ease-in-out' />
                         <div className='absolute z-20 bottom-0 left-0 w-[100%] h-[60%] bg-gradient-to-b from-transparent to-black'></div>
                         <div className='absolute z-30 bottom-0 left-0 w-[100%] h-[50%] flex items-end justify-start p-4'>
@@ -88,9 +86,8 @@ export default function CarouselNews({ dbData }) {
                         
                         { data.map((i, key) => (
                         <SwiperSlide key={key} className='group relative bg-slate-400 aspect-[5/3] rounded-xl overflow-hidden drop-shadow hover:drop-shadow-md'>
-                        <Image src={baseURL + i.image}
-                            width={600}
-                            height={360}
+                        <img
+                            src={baseURL + i.image}
                             className='object-cover w-[100%] h-[100%] absolute z-10 group-hover:scale-110 transition-all ease-in-out' />
                         <div className='absolute z-20 bottom-0 left-0 w-[100%] h-[60%] bg-gradient-to-b from-transparent to-black'></div>
                         <div className='absolute z-30 bottom-0 left-0 w-[100%] h-[50%] flex items-end justify-start p-4'>

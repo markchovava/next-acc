@@ -8,7 +8,6 @@ import { Pagination, Navigation,Scrollbar, A11y} from 'swiper/modules';
 import Link from 'next/link';
 import { useState } from 'react';
 import { baseURL } from '@/api/baseURL';
-import Image from 'next/image';
 
 
 
@@ -44,10 +43,7 @@ export default function Carousel({ dbData }) {
                         {data.map((i, key) => (
                             <SwiperSlide key={key} className=' bg-white overflow-hidden hover:drop-shadow-md'>
                                 <div className='relative group w-[100%] rounded-lg overflow-hidden aspect-[10/7] bg-slate-400 mb-3'>
-                                    <Image
-                                        width={600} 
-                                        height={420} 
-                                        objectFit="cover"
+                                    <img
                                         src={baseURL + i.portrait} 
                                         className="absolute w-[100%] h-[100%] object-cover group-hover:scale-105 transition-all ease-in-out"
                                         alt='Image' />

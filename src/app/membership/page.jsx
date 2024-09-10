@@ -6,11 +6,12 @@ import TestimonialCarousel from '@/components/TestimonialCarousel'
 import Carousel from '@/components/Carousel'
 import MembershipInfo from './components/MembershipInfo'
 import { getMembershipByNum } from '@/api/getMemberships'
+import { getCountries } from '@/api/getCountries'
 
 
 
 export default async function page() {
-    const memberData = await getMembershipByNum(3);
+    const [memberData, countriesData] = await Promise.all([getMembershipByNum(3), getCountries()]);
 
   return (
     <>
@@ -33,13 +34,13 @@ export default async function page() {
             </ul>
         </section>
 
-        <MembershipInfo />
+        {/* <MembershipInfo /> */}
 
         <MemberOption dbData={memberData} />
 
         <TestimonialCarousel />
 
-        <Carousel />
+        <Carousel dbData={countriesData} />
     </>
   )
 }

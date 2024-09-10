@@ -2,7 +2,6 @@
 import { baseURL } from '@/api/baseURL';
 import { formatDate } from '@/libs/formatDate';
 import { trimString } from '@/libs/trimString';
-import Image from 'next/image'
 import Link from 'next/link'
 import React, { useState } from 'react'
 import { FaArrowLeftLong, FaArrowRightLong } from 'react-icons/fa6'
@@ -30,18 +29,15 @@ export default function MeetingEvent({ dbData }) {
             {data.map((i, key) => (
               <div key={key} className="group w-[100%] p-4 bg-white drop-shadow-md">
                 <div className="w-[100%] aspect-[2/1] overflow-hidden mb-4">
-                  <Image
-                    width={900} 
-                    height={450} 
-                    objectFit="cover"
+                  <img
                     src={baseURL + i.image} 
-                    className="group-hover:scale-105 transition-all ease-in-out"
+                    className="w-[100%] h-[100%] object-cover group-hover:scale-105 transition-all ease-in-out"
                     alt='Image' />
                 </div>
                 <p className="text-md mb-3">
                   {formatDate(i.created_at)}
                 </p>
-                <h5 className='text-2xl mb-4'>
+                <h5 className='text-2xl font-light mb-4'>
                   {i.title}
                 </h5>
                 <div className="flex mb-4">

@@ -15,7 +15,7 @@ export default function MemberOption({ dbData }) {
   return (
     data?.length > 0 &&
     <>
-    <section className='w-[100%] pb-[6rem]'>
+    <section className='w-[100%] pt-[4rem] pb-[6rem]'>
         <h3 className=' text-center text-[2rem] font-medium mb-6 text-yellow-700'>
             Membership Options</h3>
         <div className='mx-auto w-[90%] grid lg:grid-cols-3 grid-cols-1 gap-8 text-lg mb-[2rem]'>
