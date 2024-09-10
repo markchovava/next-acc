@@ -80,7 +80,7 @@ export default async function Home() {
       {/*  */}
       <Carousel dbData={countriesData} />
     </>
-  );
+  ); 
 }
 
 

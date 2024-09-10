@@ -95,6 +95,7 @@ export default function NavigationMainResponsive() {
            {/* MID TOP */}
             <section className='w-[100%] h-auto py-3'>
                 <div className='mx-auto w-[90%] flex md:flex-row flex-col items-center justify-between'>
+                    <Link href='/'>
                     <div className='flex justify-start items-center py-3 gap-2'>
                         <div className='aspect-[1/1] w-[6.5rem]'>
                             <img src='/assets/logo/small.png' className='w-[100%] h-[100%] object-fill' alt='Logo' />
@@ -105,6 +106,7 @@ export default function NavigationMainResponsive() {
                             <p className='text-lg tracking-wide'>Africa Economic & Investment Promotion Hub</p>
                         </div>
                     </div>
+                    </Link>
                     <div className='flex items-center justify-end gap-2'>
                         {getAuthToken() ?
                         <>

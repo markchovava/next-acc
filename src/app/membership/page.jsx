@@ -7,11 +7,12 @@ import Carousel from '@/components/Carousel'
 import MembershipInfo from './components/MembershipInfo'
 import { getMembershipByNum } from '@/api/getMemberships'
 import { getCountries } from '@/api/getCountries'
+import { getTestimonialsByNum } from '@/api/getTestimonials'
 
 
 
 export default async function page() {
-    const [memberData, countriesData] = await Promise.all([getMembershipByNum(3), getCountries()]);
+    const [memberData, countriesData, testimonialsData ] = await Promise.all([getMembershipByNum(3), getCountries(), getTestimonialsByNum(4)]);
 
   return (
     <>
@@ -38,7 +39,7 @@ export default async function page() {
 
         <MemberOption dbData={memberData} />
 
-        <TestimonialCarousel />
+        <TestimonialCarousel dbData={testimonialsData} />
 
         <Carousel dbData={countriesData} />
     </>
