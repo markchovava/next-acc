@@ -32,7 +32,7 @@ export default function UserEdit() {
   /* GET DATA */
   async function getData() {
     try{
-      const result = await axiosClientAPI.get(`auth`, config)
+      const result = await axiosClientAPI.get(`profile`, config)
       .then((response) => {
         const res = response.data.data
         setData(res);
@@ -68,7 +68,7 @@ export default function UserEdit() {
     }
 
     try{
-        const result = await axiosClientAPI.post(`auth`, formData, config)
+        const result = await axiosClientAPI.post(`profile`, formData, config)
         .then((response) => {
             if(response.data.status == 0) {
                 const message = response.data.message;

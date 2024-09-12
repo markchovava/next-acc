@@ -20,7 +20,7 @@ export default function ProfileView({ id }) {
   /* GET DATA */
   async function getData() {
     try{
-      const result = await axiosClientAPI.get(`auth`, config)
+      const result = await axiosClientAPI.get(`profile`, config)
       .then((response) => {
         setData(response.data.data)
       })

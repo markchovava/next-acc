@@ -22,6 +22,21 @@ export default async function Home() {
       <SlideMain dbData={opportunitiesData} />
       <AfricaMap />
 
+
+      <section className="w-[100%] pt-[8rem] pb-[4rem]">
+        <div className="w-[80%] mx-auto flex flex-col gap-5 items-center justify-center">
+          <h3 className="leading-tight font-light text-center text-[2.2rem]">
+            Register to become a member of the Africa Capital Club and get access to exclusive and privileged 
+            Investment Opportunities in Africa. Grow your wealth with the richest continent on Earth!
+          </h3>
+          <Link 
+          href='/membership' 
+          className="text-white text-lg rounded-xl transition-all ease-in-out bg-gradient-to-br py-[1.4rem] px-[3rem] from-yellow-300 to-yellow-800 hover:drop-shadow-lg hover:bg-gradient-to-br hover:to-yellow-300 hover:from-yellow-800">
+             Register Now
+          </Link>
+        </div>
+      </section>
+
       {/*  */}
       <section className="w-[100%] pt-[6rem] pb-[4rem]">
         <div className="mx-auto w-[90%]">
