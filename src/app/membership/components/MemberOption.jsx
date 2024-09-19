@@ -18,7 +18,7 @@ export default function MemberOption({ dbData }) {
     <section className='w-[100%] pt-[4rem] pb-[6rem]'>
         <h3 className=' text-center text-[2rem] font-medium mb-6 text-yellow-700'>
             Membership Options</h3>
-        <div className='mx-auto w-[90%] grid lg:grid-cols-3 grid-cols-1 gap-8 text-lg mb-[2rem]'>
+        <div className='mx-auto w-[90%] grid grid-cols-1 gap-8 text-lg mb-[2rem]'>
            {/*  */}
            {data.map((i, key) => (
                 <div key={key} className='w-[100%] p-[1.6rem] bg-white drop-shadow-md'>

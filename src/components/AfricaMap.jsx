@@ -10,7 +10,7 @@ export default function AfricaMap() {
 
   return (
     <>
-      <section id='africa__map' className='w-[100%] bg-gradient-to-br from-yellow-200 to-yellow-800'>
+      <section id='africa__map' className='w-[100%] text-lg bg-gradient-to-br from-yellow-200 to-yellow-800'>
         <div
           className='mx-auto w-[90vw] lg:h-[39rem] h-auto pt-[6rem] overflow-hidden flex lg:flex-row flex-col items-center lg:justify-between'>
           <div className='lg:w-[40%] w-[100%] p-8 lg:mb-0 mb-[4rem]'>

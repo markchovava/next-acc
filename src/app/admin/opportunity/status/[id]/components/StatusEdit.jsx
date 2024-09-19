@@ -86,7 +86,7 @@ export default function StatusEdit({id}) {
     <section className='w-[100%] pb-[6rem]'>
         <div className='w-[90%] mx-auto'>
             <div className=''>
-                <h4 className='text-2xl'>{data.name}</h4>
+                <h4 className='text-2xl mb-4'>{data.name}</h4>
             </div>
             <div className='mb-6'>
                 <p className='font-light text-lg mb-2'>Status:</p>
@@ -95,9 +95,8 @@ export default function StatusEdit({id}) {
                     onClick={(e) => setInputData({...inputData, status: e.target.value})} 
                     className='w-[100%] p-3 outline-none rounded-xl border border-slate-300'>
                     <option value=''>Select an option</option>
-                    <option value='Processing'>Processing</option>
-                    <option value='Active'>Active</option>
-                    <option value='Completed'>Completed</option>
+                    <option value='Available' selected={data.status == 'Available' && 'selected'}>Available</option>
+                    <option value='Archived' selected={data.status == 'Archived' && 'selected'}>Archived</option>
                 </select>
                 {errMsg.status &&
                     <div className='text-red-700'>{errMsg.statuss}</div>

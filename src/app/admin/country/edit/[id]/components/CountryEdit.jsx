@@ -66,7 +66,7 @@ export default function CountryEdit({ id }) {
             if(response.data.status == 1){
               toast.success(response.data.message, toastifyDarkBounce);
               setIsSubmit(false);
-              router.push(`/admin/country`);
+              router.push(`/admin/country/${id}`);
             }
         });    
         } catch (error) {
@@ -99,9 +99,9 @@ export default function CountryEdit({ id }) {
         {/* LINK */}
         <div className='flex items-center justify-end mb-6'>
           <Link 
-            href={`/admin/country/edit/${id}`} 
+            href={`/admin/country/${id}`} 
             className='px-8 py-3 transition-all ease-in-out rounded-xl text-white bg-gradient-to-br from-yellow-300 to-yellow-700 hover:bg-gradient-to-br hover:to-yellow-300 hover:from-yellow-700' >
-            Edit
+            View
           </Link>
         </div>
         <section>

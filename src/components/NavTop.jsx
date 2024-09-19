@@ -118,20 +118,12 @@ export default function NavTop() {
                         <li className='w-[100%] hover:bg-green-900 px-3 py-2'>
                             <Link href='/admin/membership' className=''>Membership List</Link>
                         </li>
-                    </ul>
-                </li>
-                {/* MEMBERS */}
-                <li className="relative z-20">
-                    <button 
-                        onClick={() => setIsActive({eleven: !isActive.eleven})} 
-                        className="flex items-center justify-start gap-1">
-                        Members <FaAngleDown /> </button>
-                    <ul className={`absolute z-100 ${isActive.eleven == true ? 'block' : 'hidden'} rounded-b-lg overflow-hidden drop-shadow-md top-[130%] transition-all ease-in-out duration-150 left-[-0.5rem]  w-[10rem] border border-white bg-green-800`}>
                         <li className='w-[100%] hover:bg-green-900 px-3 py-2'>
-                            <Link href='/admin/member/member-order' className=''>Member Payments</Link>
+                            <Link href='/admin/membership/order' className=''>Member Subscriptions</Link>
                         </li>
                     </ul>
                 </li>
+
                 {/* COUNTRY */}
                 <li className="relative z-20">
                     <button 
@@ -189,6 +181,9 @@ export default function NavTop() {
                         </li>
                         <li className='w-[100%] hover:bg-green-900 px-3 py-2'>
                             <Link href='/admin/event' className=''>Events List</Link>
+                        </li>
+                        <li className='w-[100%] hover:bg-green-900 px-3 py-2'>
+                            <Link href='/admin/event/payment' className=''>Events Payments</Link>
                         </li>
                     </ul>
                 </li>

@@ -106,6 +106,7 @@ export default function OpportunityAdd() {
                     <input type='text' 
                         name='name' 
                         onChange={handleInput} 
+                        placeholder='Enter Name here...'
                         className='w-[100%] p-3 rounded-xl outline-none border border-slate-300' />
                 </div>
                 <div className='w-[100%]'>
@@ -114,6 +115,7 @@ export default function OpportunityAdd() {
                         type='text' 
                         name='slug' 
                         onChange={handleInput} 
+                        placeholder='Enter Name here...'
                         className='w-[100%] p-3 rounded-xl outline-none border border-slate-300' />
                 </div>
             </div>
@@ -124,6 +126,7 @@ export default function OpportunityAdd() {
                     type='text'
                     name='short_description' 
                     onChange={handleInput} 
+                    placeholder='Enter Name here...'
                     className='w-[100%] p-3 outline-none rounded-xl border border-slate-300' />
             </div>
              {/* DESCRIPTION */}
@@ -140,16 +143,18 @@ export default function OpportunityAdd() {
                 <div className='w-[100%]'>
                     <p className='font-light mb-2'>Investment Amount:</p>
                     <input 
-                        type='number' 
+                        type='text' 
                         name='amount' 
                         onChange={handleInput} 
+                        placeholder='Enter Investment Amount here...'
                         className='w-[100%] p-3 rounded-xl outline-none border border-slate-300' />
                 </div>
                 <div className='w-[100%]'>
                     <p className='font-light mb-2'>Expected Return:</p>
                     <input 
-                        type='number'
+                        type='text'
                         name='expected_return' 
+                        placeholder='Enter Expected Return here...'
                         onChange={handleInput} 
                         className='w-[100%] p-3 rounded-xl outline-none border border-slate-300' />
                 </div>

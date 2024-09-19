@@ -35,7 +35,7 @@ export default function MembershipAdd({ dbData }) {
     /* GET DATA */
     async function getData() {
         try{
-        const result = await axiosClientAPI.get(`auth`, config)
+        const result = await axiosClientAPI.get(`profile`, config)
         .then((response) => {
             const res = response.data.data;
             setData({...data, 
@@ -90,16 +90,16 @@ export default function MembershipAdd({ dbData }) {
             setIsSubmit(false);
             return;
         }
-        if(!data.profession){
-            const message = 'Profession is required.';
-            setErrMsg({profession: message});
+        if(!data.who_join){
+            const message = 'Who wants to join is required.';
+            setErrMsg({who_join: message});
             toast.warn(message, toastifyDarkBounce);
             setIsSubmit(false);
             return;
         }
-        if(!membership.id){
-            const message = 'Membership is required.';
-            setErrMsg({membership_id: message});
+        if(!data.profession){
+            const message = 'Profession is required.';
+            setErrMsg({profession: message});
             toast.warn(message, toastifyDarkBounce);
             setIsSubmit(false);
             return;
@@ -111,10 +111,13 @@ export default function MembershipAdd({ dbData }) {
           address: data?.address,
           country: data?.country,
           company_name: data?.company_name,
-          membership_id: membership?.id,
+          membership_id: dbMembership[0]?.id,
           profession: data?.profession,
-          member_fee: membership.fee
+          member_fee: dbMembership[0]?.fee
         };  
+
+        console.log(formData);
+        setIsSubmit(false);
         
         try{
             const result = await axiosClientAPI.post(`member-order`, formData, config)
@@ -151,19 +154,20 @@ export default function MembershipAdd({ dbData }) {
     }
 
 
+
   return (
     <>
         <section className='py-[4rem]'>
             <div className='w-[90%] mx-auto bg-white drop-shadow-md p-[1.6rem]'>
-                <h3 className='text-[2rem] font-medium pb-8 text-center'>
+                <h3 className='text-[2.2rem] pb-8 text-center'>
                     Membership Registration Form
                 </h3>
-                <h4 className='text-[1.6rem] font-light mb-2'>
-                    Personal Information
-                </h4>
+               
+                {/* NAME & EMAIL */}
                 <div className='grid lg:grid-cols-2 grid-cols-1 lg:gap-6 gap-4 mb-4'>
+                    {/* NAME */}
                     <div className='w-[100%]'>
-                        <p className='font-light mb-1'>Full Name:*</p>
+                        <p className='font-light mb-1'>Full Name:<span className='text-red-600'>*</span></p>
                         <input type='text'
                             name='name'
                             onChange={handleInput}
@@ -174,8 +178,9 @@ export default function MembershipAdd({ dbData }) {
                             <div className='text-red-600'>{errMsg.name}</div>
                         }
                     </div>
+                    {/* EMAIL */}
                     <div className='w-[100%]'>
-                        <p className='font-light mb-1'>Email:*</p>
+                        <p className='font-light mb-1'>Email:<span className='text-red-600'>*</span></p>
                         <input 
                             type='email'
                             name='email' 
@@ -188,9 +193,11 @@ export default function MembershipAdd({ dbData }) {
                         }
                     </div>
                 </div>
+                {/* PHONE & COUNTRY */}
                 <div className='grid lg:grid-cols-2 grid-cols-1 lg:gap-6 gap-4 mb-4'>
+                    {/* PHONE */}
                     <div className='w-[100%]'>
-                        <p className='font-light mb-1'>Phone:*</p>
+                        <p className='font-light mb-1'>Phone:<span className='text-red-600'>*</span></p>
                         <input type='text'
                             name='phone'
                             onChange={handleInput}
@@ -201,9 +208,9 @@ export default function MembershipAdd({ dbData }) {
                             <div className='text-red-600'>{errMsg.phone}</div>
                         }
                     </div>
+                    {/* COUNTRY */}
                     <div className='w-[100%]'>
-                        {/* COUNTRY */}
-                        <p className='mb-1 font-light'>Country:*</p>
+                        <p className='mb-1 font-light'>Country:<span className='text-red-600'>*</span></p>
                         <select 
                             name='country'
                             onChange={handleInput}
@@ -223,6 +230,7 @@ export default function MembershipAdd({ dbData }) {
                         }
                     </div>
                 </div>
+                {/* ADDRESS */}
                 <div className='mb-4'>
                     <p className='mb-1 font-light'>Address:*</p>
                     <input type='text'
@@ -235,13 +243,41 @@ export default function MembershipAdd({ dbData }) {
                         <div className='text-red-600'>{errMsg.address}</div>
                     }
                 </div>
-
-                <h4 className='text-[1.6rem] font-light mb-2'>
-                    Profession
-                </h4>
+                {/* WHO WANTS TO JOIN & COUNTRY */}
                 <div className='grid lg:grid-cols-2 grid-cols-1 lg:gap-6 gap-4 mb-4'>
+                    {/* WHO WANTS TO JOIN */}
+                    <div className='w-[100%]'>
+                        <p className='font-light mb-1'>Who wants to join:<span className='text-red-600'>*</span></p>
+                        <select type='text'
+                            name='who_join'
+                            onChange={handleInput}
+                            value={data?.who_join}
+                            placeholder='Enter your Phone...' 
+                            className='w-[100%] font-light rounded-lg p-3 outline-none border border-slate-300'>
+                            <option value=''>Select an option.</option>
+                            <option value='Corporate'>Corporate</option>
+                            <option value='Individual'>Individual</option>
+                        </select>
+                        { errMsg.who_join &&
+                            <div className='text-red-600'>{errMsg.who_join}</div>
+                        }
+                    </div>
+                    {/* WEBSITE */}
+                    <div className='w-[100%]'>
+                        <p className='mb-1 font-light'>Website:<span className='text-red-600'>*</span></p>
+                        <input type='text'
+                            name='website'
+                            onChange={handleInput}
+                            value={data?.website}
+                            placeholder='Enter your Website...' 
+                            className='w-[100%] font-light rounded-lg p-3 outline-none border border-slate-300' />
+                    </div>
+                </div>
+                {/* PROFESSION & COMPANY NAME */}
+                <div className='grid lg:grid-cols-2 grid-cols-1 lg:gap-6 gap-4 mb-4'>
+                    {/* PROFESSION */}
                     <div className=' w-[100%]'>
-                        <p className='font-light mb-1'>Job Title:</p>
+                        <p className='font-light mb-1'>Job Title (Profession):</p>
                         <input 
                             type='text'
                             name='profession'
@@ -249,10 +285,10 @@ export default function MembershipAdd({ dbData }) {
                             value={data?.profession}
                             placeholder='Enter your Profession here...' 
                             className='w-[100%] font-light rounded-lg p-3 outline-none border border-slate-300' />
-                        { errMsg.profession &&
-                            <div className='text-red-600'>{errMsg.profession}</div>
-                        }
+                        {errMsg.profession &&
+                            <div className='text-red-600'>{errMsg.profession}</div>}
                     </div>
+                    {/* COMPANY NAME */}
                     <div className='w-[100%]'>
                         <p className='font-light mb-1'>Company Name:</p>
                         <input 
@@ -262,44 +298,17 @@ export default function MembershipAdd({ dbData }) {
                             value={data?.company_name}
                             placeholder='Enter your Company Name here...' 
                             className='w-[100%] font-light rounded-lg p-3 outline-none border border-slate-300' />
-                        { errMsg.company_name &&
-                            <div className='text-red-600'>{errMsg.company_name}</div>
-                        }
                     </div>
                 </div>
-
-                <h4 className='text-[1.6rem] font-light mb-2'>
-                    Membership
-                </h4>
-                <div className=' mb-4'>   
-                    <p className='font-light mb-1'>Member Level:*</p>
-                    <select 
-                        name='membership_id'
-                        onChange={(e) => {
-                            e.target.value 
-                            ? setMembership(JSON.parse(e.target.value))
-                            : setMembership()
-                        }}
-                        className='w-[100%] font-light rounded-lg p-3 outline-none border border-slate-300'>
-                        <option value=''>Select an option.</option>
-                        { dbMembership?.length > 0 &&
-                            dbMembership?.map((i, key) => (
-                            <option key={key} value={JSON.stringify(i)}>{i.name}</option>
-                        ))}
-                    </select>
-                    { errMsg.membership_id &&
-                        <div className='text-red-600'>{errMsg.membership_id}</div>
-                    }
-                </div>
-
+                
                 {/* BUTTON */}
                 <div className='flex items-center justify-center pt-4 pb-6'>
                     <button 
                         onClick={() => setIsSubmit(true)}
                         className='group text-lg px-12 py-4 flex items-center justify-center gap-2 rounded-xl text-white hover:drop-shadow-lg bg-gradient-to-br from-yellow-500 to-yellow-800 '>
-                        {membership?.fee && <>
+                        {dbMembership[0]?.fee && <>
                         <span className='mr-1'>
-                            {'$' + membership?.fee.toFixed(2)}
+                            {'$' + dbMembership[0]?.fee.toFixed(2)}
                         </span>
                         </>}
                         {isSubmit 

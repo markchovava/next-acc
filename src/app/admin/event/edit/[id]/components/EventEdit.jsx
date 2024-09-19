@@ -50,10 +50,12 @@ export default function EventEdit({ id }) {
       name: data?.name,
       description: description,
       date: data?.date,
+      status: data.status,
       duration: data?.duration,
       priority: data?.priority,
       slug: data?.slug,
-      status: data?.status,
+      location: data?.location,
+      joining_fee: data?.joining_fee,
     }
 
     try{
@@ -96,7 +98,7 @@ export default function EventEdit({ id }) {
             View
           </Link>
         </div>
-        {/*  */}
+        {/* NAME */}
         <div className='w-[100%] mb-4'>
           <p className='mb-1'>Name:</p>
           <input 
@@ -108,7 +110,47 @@ export default function EventEdit({ id }) {
               className='w-[100%] py-3 px-4 rounded-lg outline-none border border-slate-300' />
 
         </div>
-        {/* PRIORITY */}
+
+        {/* ADDRESS */}
+        <div className='w-[100%] mb-4'>
+          <p className='mb-1'>Location / Venue:</p>
+          <input 
+              type='text' 
+              name='location'
+              onChange={handleInput}
+              value={data?.location}
+              placeholder='Enter Location / Venue here...' 
+              className='w-[100%] py-3 px-4 rounded-lg outline-none border border-slate-300' />
+        </div>
+
+      {/* STATUS & JOINING FEE */}
+      <div className='w-[100%] grid md:grid-cols-2 grid-cols-1 gap-6 mb-4'>
+          <div className='w-[100%]'>
+            <p className='mb-1'>Status:</p>
+            <select 
+                name='status'
+                onChange={handleInput}
+                placeholder='Enter  here...' 
+                className='w-[100%] py-3 px-4 rounded-lg outline-none border border-slate-300'>
+                <option value=''>Select an option.</option>
+                <option value='Upcoming' selected={data?.status == 'Upcoming' && 'selected'}>Upcoming</option>
+                <option value='Completed' selected={data?.status == 'Completed' && 'selected'}>Completed</option>
+            </select>
+          </div>
+          <div className='w-[100%]'>
+          <p className='mb-1'>Joining Fee:</p>
+          <input 
+              type='number' 
+              name='joining_fee'
+              onChange={handleInput}
+              value={data?.joining_fee}
+              placeholder='Enter Fee here...' 
+              className='w-[100%] py-3 px-4 rounded-lg outline-none border border-slate-300' />
+        </div>
+
+        </div>
+
+        {/* PRIORITY & SLUG */}
         <div className='w-[100%} grid grid-cols-2 gap-6 mb-4'>
           <div className='w-[100%]'>
             <p className='mb-2'>Priority:</p>
@@ -135,21 +177,7 @@ export default function EventEdit({ id }) {
           </div>
         </div>
        
-        {/* STATUS */}
-        <div className='w-[100%] mb-4'>
-          <p className='mb-1'>Status:</p>
-          <select 
-              name='status'
-              onChange={handleInput}
-              placeholder='Enter  here...' 
-              className='w-[100%] py-3 px-4 rounded-lg outline-none border border-slate-300'>
-              <option value=''>Select an option.</option>
-              <option value='Upcoming' selected={data?.status == 'Upcoming' && 'selected'}>Upcoming</option>
-              <option value='Completed' selected={data?.status == 'Completed' && 'selected'}>Completed</option>
-          </select>
-
-        </div>
-        {/*  */}
+        {/* DATE & DURATION */}
         <div className='w-[100%] grid grid-cols-2 gap-6 mb-4'>
           <div className='w-[100%]'>
             <p className='mb-1'>Date:</p>

@@ -104,20 +104,23 @@ export default function OpportunityView({ id }) {
             </div>
           </div>
           {/*  */}
+          {data.sectors &&
           <div className='flex lg:flex-row flex-col lg:items-center justify-start lg:gap-4 gap-2 mb-6'>
             <div className='w-[20%] font-light'>Sectors:</div>
             <div className='w-[80%]'>
-                {data.sectors.map((i, key) => (
-                  i.name + ', '
-                ))}
+              { data?.sectors.map((i, key) => ( 
+                        key+1 < data.sectors.length ? i.name + ',' : i.name      
+                    )) 
+              }
             </div>
           </div>
+          }
           {/*  */}
           {data.status &&
           <div className='flex lg:flex-row flex-col lg:items-center justify-start lg:gap-4 gap-2 mb-6'>
             <div className='w-[20%] font-light'>Status:</div>
             <div className='w-[80%]'>
-                <span className='rounded-xl px-2 py-2 bg-green-700 text-white'>
+                <span className='rounded-xl px-2 py-2 bg-cyan-600 text-white'>
                   {data.status}
                 </span>
             </div>
@@ -134,14 +137,14 @@ export default function OpportunityView({ id }) {
           <div className='flex lg:flex-row flex-col lg:items-center justify-start lg:gap-4 gap-2 mb-6'>
             <div className='w-[20%] font-light'>Investment Amount:</div>
             <div className='w-[80%]'>
-                {'$' + data?.amount?.toFixed(2)}
+                {data?.amount ? data.amount : 'Not added.'}
             </div>
           </div>
           {/*  */}
           <div className='flex lg:flex-row flex-col lg:items-center justify-start lg:gap-4 gap-2 mb-6'>
             <div className='w-[20%] font-light'>Expected Return:</div>
             <div className='w-[80%]'>
-                {'$' + data?.expected_return?.toFixed(2)}
+                {data?.expected_return ? data?.expected_return : 'Not added'}
             </div>
           </div>
           {/*  */}

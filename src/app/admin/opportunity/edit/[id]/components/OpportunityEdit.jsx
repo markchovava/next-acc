@@ -167,6 +167,7 @@ export default function OpportunityEdit({ id }) {
                         name='name' 
                         onChange={handleInput} 
                         value={data?.name}
+                        placeholder='Enter Name here...'
                         className='w-[100%] p-3 rounded-xl outline-none border border-slate-300' />
                 </div>
                 <div className='w-[100%]'>
@@ -176,6 +177,7 @@ export default function OpportunityEdit({ id }) {
                         name='slug' 
                         onChange={handleInput} 
                         value={data?.slug}
+                        placeholder='Enter Slug here...'
                         className='w-[100%] p-3 rounded-xl outline-none border border-slate-300' />
                 </div>
             </div>
@@ -187,6 +189,7 @@ export default function OpportunityEdit({ id }) {
                     name='short_description' 
                     onChange={handleInput} 
                     value={data?.short_description}
+                    placeholder='Enter Short Description here...'
                     className='w-[100%] p-3 outline-none rounded-xl border border-slate-300' />
             </div>
              {/*  */}
@@ -203,18 +206,20 @@ export default function OpportunityEdit({ id }) {
                 <div className='w-[100%]'>
                     <p className='font-light mb-2'>Investment Amount:</p>
                     <input 
-                        type='number' 
+                        type='text' 
                         name='amount' 
                         onChange={handleInput} 
                         value={data?.amount}
+                        placeholder='Enter Investment Amount here...'
                         className='w-[100%] p-3 rounded-xl outline-none border border-slate-300' />
                 </div>
                 <div className='w-[100%]'>
                     <p className='font-light mb-2'>Expected Return:</p>
                     <input 
-                        type='number'
+                        type='text'
                         name='expected_return' 
                         onChange={handleInput} 
+                        placeholder='Enter Expected Return here...'
                         value={data?.expected_return}
                         className='w-[100%] p-3 rounded-xl outline-none border border-slate-300' />
                 </div>
@@ -229,7 +234,7 @@ export default function OpportunityEdit({ id }) {
                     className='w-[100%] p-3 outline-none rounded-xl border border-slate-300'>
                     <option value=''>Select an option.</option>
                     { countries?.map((i, key) => (
-                        <option key={key} value={i.id} selected={data?.country === i.name && 'selected'}>
+                        <option key={key} value={i.id} selected={data?.country?.id === i.id && 'selected'}>
                             {i.name}
                         </option>
                     ))}

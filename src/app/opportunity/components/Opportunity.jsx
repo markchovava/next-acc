@@ -78,7 +78,7 @@ export default function Opportunity({ dbData, sectorsData }) {
   }, [isSearch]);
 
 
-  console.log(data);
+
 
   return (
     <>
@@ -139,9 +139,17 @@ export default function Opportunity({ dbData, sectorsData }) {
                         {/*  */}
                         <div className='w-[100%] lg:w-[80%]'>
                           <h4 className='md:text-[2rem] text-[2rem] font-light'>{i.name}</h4>
-                          <p className='text-lg font-light'>
+                          <p className='text-lg font-light mb-1'>
                             {i.short_description ? trimString(i.short_description, 120) : 'Not added.'}
                           </p>
+                          { i?.sectors &&
+                            <p className='mb-1'>
+                              { i?.sectors.map((a, key) => ( 
+                                  key+1 < i.sectors.length ? a.name + ',' : a.name      
+                              )) 
+                              }
+                            </p>
+                          }
                           <p className='text-green-800 italic'>{i?.country?.name}</p>
                         </div>
                         {/*  */}

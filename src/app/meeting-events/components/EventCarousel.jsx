@@ -26,8 +26,8 @@ export default function EventCarousel({ dbData }) {
                 {/*  */}
                 <section className='hidden lg:block '>
                     <div className='w-[100%] flex items-center justify-between pb-4'>
-                        <h6 className="text-[2.5rem] font-medium">
-                            Latest Events and Meetings
+                        <h6 className="text-[2.5rem] ">
+                            Upcoming Events and Meetings
                         </h6>
                         <Link href='/event'>
                             <span className='text-green-700 hover:underline hover:text-slate-800 transition-all ease-in-out'>

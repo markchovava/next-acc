@@ -185,10 +185,10 @@ export default function OpportunityList() {
                       </span>
                   </div>
                   <div className='w-[20%] border-r border-blue-300 px-3 py-2'>
-                    {i.amount ? '$' + i.amount?.toFixed(2) : 'Not added.'}
+                    {i.amount ? i.amount : 'Not added.'}
                   </div>
                   <div className='w-[20%] border-r border-blue-300 px-3 py-2'>
-                    {i.expected_return ? '$' + i.expected_return?.toFixed(2) : 'Not added.'}
+                    {i.expected_return ? i.expected_return : 'Not added.'}
                   </div>
                   <div className='w-[20%] border-r border-blue-300 px-3 py-2'>
                     {i.user?.name ? i.user?.name : i.user.email}
@@ -203,7 +203,7 @@ export default function OpportunityList() {
                     <Link title='Edit opportunity Sector' href={`/admin/opportunity/sector/${i.id}`}>
                       <TbCategoryPlus className='hover:text-violet-500 duration-150 hover:scale-110 transition-all ease-in' />
                     </Link>
-                    <Link title='Edit opportunity Sector' href={`/admin/opportunity/status/${i.id}`}>
+                    <Link title='Edit Opportunity Status' href={`/admin/opportunity/status/${i.id}`}>
                       <AiOutlineDashboard className='hover:text-violet-500 duration-150 hover:scale-110 transition-all ease-in' />
                     </Link>
                    

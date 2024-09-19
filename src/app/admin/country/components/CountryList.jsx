@@ -166,8 +166,8 @@ export default function CountryList() {
           {/* TABLE TITLES */}
           <section className='lg:w-[100%] w-[70rem]'>
             <div className='w-[90%] text-lg py-2 mx-auto flex items-center justify-start font-bold font-white bg-slate-200 '>
-              <div className='w-[25%] border-r border-white px-3 py-2'>NAME</div>
-              <div className='w-[40%] border-r border-white px-3 py-2'>DESCRIPTION</div>
+              <div className='w-[35%] border-r border-white px-3 py-2'>NAME</div>
+              <div className='w-[30%] border-r border-white px-3 py-2'>DESCRIPTION</div>
               <div className='w-[20%] border-r border-white px-3 py-2'>AUTHOR</div>
               <div className='w-[15%] px-3 py-2'>ACTION</div>
             </div>
@@ -177,14 +177,16 @@ export default function CountryList() {
             { data.length > 0 ?
               data.map((i, key) => (
                 <div key={key} className='w-[90%] text-lg border-x border-b border-slate-300 mx-auto flex items-center justify-start '>
-                  <div className='w-[25%] border-r border-blue-300 px-3 py-2 flex items-center justify-between'>
+                  <div className='w-[35%] border-r border-blue-300 px-3 py-2 flex items-center justify-between'>
                     <span>{i.name}</span>
+                    {i.priority &&
                       <span className='bg-blue-700 font-medium text-white p-2 py-1 rounded-lg'>
                         {i.priority}
                       </span>
+                    }
                   </div>
-                  <div className='w-[40%] border-r border-blue-300 px-3 py-2'>
-                    {i.description ? trimString(i.description, 25) : 'Not added.'}
+                  <div className='w-[30%] border-r border-blue-300 px-3 py-2'>
+                    {i.slug ? i.slug : 'Not added.'}
                   </div>
                   <div className='w-[20%] border-r border-blue-300 px-3 py-2'>
                     {i.user?.name ? i.user?.name : i.user.email}

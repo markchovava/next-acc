@@ -228,7 +228,7 @@ export default function EventList() {
         </section>
       
         {/* PAGINATION */}
-        <section className='w-[100%] mt-[2rem] mb-[4rem]'>
+        <section className='w-[100%] mt-[2rem] mb-[2rem] pb-[4rem]'>
           <div className='mx-auto w-[90%] flex items-center justify-end gap-3'>
                 {prevURL &&
                   <button 

@@ -7,6 +7,7 @@ import { IoMdAddCircleOutline } from "react-icons/io";
 import { FiMinusCircle } from "react-icons/fi";
 import { toastifyDarkBounce } from '@/libs/toastify';
 import { toast } from 'react-toastify';
+import Link from 'next/link';
 
 
 export default function OpportunitySectorList({ id }) {
@@ -129,10 +130,10 @@ export default function OpportunitySectorList({ id }) {
         <div className='w-[90%] mx-auto'>
              {/* LINK */}
             <div className='flex items-center justify-end mb-6'>
-                <Link 
+                <Link
                     href={`/admin/opportunity/${id}`} 
                     className='px-8 py-3 transition-all ease-in-out rounded-xl text-white bg-gradient-to-br from-yellow-300 to-yellow-700 hover:bg-gradient-to-br hover:to-yellow-300 hover:from-yellow-700' >
-                    Edit
+                    View
                 </Link>
             </div>
             <h3 className='mb-2 text-[2rem]'>{opportunity.name}</h3>

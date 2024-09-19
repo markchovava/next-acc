@@ -54,21 +54,21 @@ export default function MemberOrderView({ id }) {
         <section className='w-[100%] bg-white drop-shadow-md py-[2rem] px-4 text-lg'>
             {/*  */}
             <div className='flex lg:flex-row flex-col lg:items-center justify-start lg:gap-4 gap-2 mb-6'>
-            <div className='w-[20%] font-light'>Name:</div>
+            <div className='lg:w-[20%] font-light'>Name:</div>
             <div className='w-[80%]'>
                 {data.membership?.name}
             </div>
           </div>
           {/*  */}
           <div className='flex lg:flex-row flex-col lg:items-center justify-start lg:gap-4 gap-2 mb-6'>
-            <div className='w-[20%] font-light'>Member Fee:</div>
+            <div className='lg:w-[20%] font-light'>Member Fee:</div>
             <div className='w-[80%]'>
                 {data.membership?.fee ? '$' + data.membership?.fee.toFixed(2) : 'Not added.'}
             </div>
           </div>
           {/*  */}
           <div className='flex lg:flex-row flex-col lg:items-center justify-start lg:gap-4 gap-2 mb-6'>
-            <div className='w-[20%] font-light'>Status:</div>
+            <div className='lg:w-[20%] font-light'>Status:</div>
             <div className='w-[80%]'>
                 <span className='bg-green-700 text-white px-2 py-1 rounded-full'>
                     {data.status ? data.status : 'Not added.'}
@@ -77,14 +77,14 @@ export default function MemberOrderView({ id }) {
           </div>
           {/*  */}
           <div className='flex lg:flex-row flex-col lg:items-center justify-start lg:gap-4 gap-2 mb-6'>
-            <div className='w-[20%] font-light'>Amount Paid:</div>
+            <div className='lg:w-[20%] font-light'>Amount Paid:</div>
             <div className='w-[80%]'>
-                {data.paid_amount ? data.paid_amount.toFixed(2) : 'Not added.'}
+                {data.paid_amount ? '$' + data.paid_amount.toFixed(2) : 'Not added.'}
             </div>
           </div>
           {/*  */}
           <div className='flex lg:flex-row flex-col lg:items-center justify-start lg:gap-4 gap-2 mb-6'>
-            <div className='w-[20%] font-light'>Duration:</div>
+            <div className='lg:w-[20%] font-light'>Duration:</div>
             <div className='w-[80%]'>
                 {data.duration ? data.duration + ' months' : 'Not added.'}
             </div>
@@ -92,9 +92,17 @@ export default function MemberOrderView({ id }) {
           {/*  */}
           {data.start_date &&
           <div className='flex lg:flex-row flex-col lg:items-center justify-start lg:gap-4 gap-2 mb-6'>
-            <div className='w-[20%] font-light'>Start Date:</div>
+            <div className='lg:w-[20%] font-light'>Start Date:</div>
             <div className='w-[80%]'>
-                {data.start_date ? data.duration + ' months' : 'Not added.'}
+                {data.start_date ? formatDate(data.start_date) : 'Not added.'}
+            </div>
+          </div>
+          }
+          {data?.end_date &&
+          <div className='flex lg:flex-row flex-col lg:items-center justify-start lg:gap-4 gap-2 mb-6'>
+            <div className='lg:w-[20%] font-light'>End Date:</div>
+            <div className='w-[80%]'>
+                {data?.end_date ? formatDate(data?.end_date) : 'Not added.'}
             </div>
           </div>
           }
@@ -104,49 +112,49 @@ export default function MemberOrderView({ id }) {
             </div>
           {/*  */}
           <div className='flex lg:flex-row flex-col lg:items-center justify-start lg:gap-4 gap-2 mb-6'>
-            <div className='w-[20%] font-light'>Full Name:</div>
+            <div className='lg:w-[20%] font-light'>Full Name:</div>
             <div className='w-[80%]'>
                 {data.member_order_info?.name}
             </div>
           </div>
           {/*  */}
           <div className='flex lg:flex-row flex-col lg:items-center justify-start lg:gap-4 gap-2 mb-6'>
-            <div className='w-[20%] font-light'>Phone Number:</div>
+            <div className='lg:w-[20%] font-light'>Phone Number:</div>
             <div className='w-[80%]'>
                 {data.member_order_info?.phone}
             </div>
           </div>
           {/*  */}
           <div className='flex lg:flex-row flex-col lg:items-center justify-start lg:gap-4 gap-2 mb-6'>
-            <div className='w-[20%] font-light'>Email:</div>
+            <div className='lg:w-[20%] font-light'>Email:</div>
             <div className='w-[80%]'>
                 {data.member_order_info?.email}
             </div>
           </div>
           {/*  */}
           <div className='flex lg:flex-row flex-col lg:items-center justify-start lg:gap-4 gap-2 mb-6'>
-            <div className='w-[20%] font-light'>Address:</div>
+            <div className='lg:w-[20%] font-light'>Address:</div>
             <div className='w-[80%]'>
                 {data.member_order_info?.address}
             </div>
           </div>
           {/*  */}
           <div className='flex lg:flex-row flex-col lg:items-center justify-start lg:gap-4 gap-2 mb-6'>
-            <div className='w-[20%] font-light'>Address:</div>
+            <div className='lg:w-[20%] font-light'>Address:</div>
             <div className='w-[80%]'>
                 {data.member_order_info?.country}
             </div>
           </div>
           {/*  */}
           <div className='flex lg:flex-row flex-col lg:items-center justify-start lg:gap-4 gap-2 mb-6'>
-            <div className='w-[20%] font-light'>Profession:</div>
+            <div className='lg:w-[20%] font-light'>Profession:</div>
             <div className='w-[80%]'>
                 {data.member_order_info?.profession}
             </div>
           </div>
           {/*  */}
           <div className='flex lg:flex-row flex-col lg:items-center justify-start lg:gap-4 gap-2 mb-6'>
-            <div className='w-[20%] font-light'>Company Name:</div>
+            <div className='lg:w-[20%] font-light'>Company Name:</div>
             <div className='w-[80%]'>
                 {data.member_order_info?.company_name}
             </div>

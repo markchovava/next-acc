@@ -19,7 +19,7 @@ export default function page() {
         className='w-[100%] lg:aspect-[5/1] aspect-[5/2] relative bg-fixed bg-cover bg-no-repeat'>
         <div className='w-[100%] h-[100%] absolute top-0 left-0 opacity-25 bg-gradient-to-br from-slate-700 to-black'></div>
         <div className='w-[100%] h-[100%] lg:text-[4.5rem] text-[3.8rem] text-center leading-none font-medium flex items-center justify-center text-white drop-shadow-md'>
-            Membership Payments
+            Membership Subscriptions
         </div>
     </section>
 
@@ -30,7 +30,7 @@ export default function page() {
             <li><MdOutlineChevronRight /></li>
             <li><Link href={`/membership`}>Membership</Link></li>
             <li><MdOutlineChevronRight /></li>
-            <li><Link href={`/memebership/order`} className='font-semibold'>Membership Payments</Link></li>
+            <li><Link href={`/membership/order`} className='font-semibold'>Membership Subscriptions</Link></li>
         </ul>
     </section>
 

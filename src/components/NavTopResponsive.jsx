@@ -85,18 +85,8 @@ export default function NavTopResponsive() {
                         <li className='w-[100vw] flex items-center justify-center hover:bg-green-950 px-3 py-2'>
                             <Link href='/admin/membership' className=''>Memberships List</Link>
                         </li>
-                    </ul>
-                </li>
-                {/* MEMBERS */}
-                <li className={`${isActive.eleven == true ? 'bg-green-800' : '' } relative z-20 w-[100%] flex flex-col items-center justify-center`}>
-                    <button 
-                        onClick={() => setIsActive({eleven: !isActive.ten})} 
-                        className="flex items-center justify-start gap-2 pt-2">
-                        Members <FaAngleDown /> 
-                    </button>
-                    <ul className={`relative ${isActive.eleven == true ? 'block' : 'hidden'} nav__topUl`}>
-                        <li className='w-[100vw] flex items-center justify-center  hover:bg-green-950 px-3 py-2'>
-                            <Link href='/admin/membership/add' className=''>Member Payments</Link>
+                        <li className='w-[100vw] flex items-center justify-center hover:bg-green-950 px-3 py-2'>
+                            <Link href='/admin/membership/order' className=''>Member Subscriptions</Link>
                         </li>
                     </ul>
                 </li>

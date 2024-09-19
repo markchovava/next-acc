@@ -17,11 +17,15 @@ import { removeRoleCookie } from '@/cookie/roleCookieClient';
 /* toastify */
 import { toast } from 'react-toastify';
 import { toastifyDarkBounce } from '@/libs/toastify';
+import { FaAngleDown } from 'react-icons/fa6';
 
 
 
 export default function NavigationMain() {
     const router = useRouter();
+    const [isActive, setIsActive] = useState({
+        one: false,
+    })
     const { getAuthToken, removeAuthToken } = tokenAuth();
     const { removeRoleToken } = tokenRole();
     const [isLogout, setIsLogout] = useState(false);
@@ -158,6 +162,33 @@ export default function NavigationMain() {
                     <Link href='/contact'>
                         Contact Us</Link>
                 </li>
+                { getAuthToken() &&
+                <li className='relative' 
+                onMouseEnter={() => setIsActive({one: !isActive.one})}
+                onMouseLeave={() => setIsActive({one: !isActive.one})} >
+                    <span
+                    className={`${isActive.one == true ? 'text-green-800' : ''} cursor-pointer flex items-center justify-center gap-1  transition-all ease-in-out`}>
+                        My Account <FaAngleDown /></span>
+                    <ul className={`${isActive.one == true ? 'block opacity-100' : 'hidden opacity-0'} drop-shadow-md text-md absolute transition-all ease-in-out z-50 pt-2 bg-white left-[-10%] w-[140%] rounded-b-lg overflow-hidden`}>
+                        <li className='w-[100%] top-[140%] py-2 px-4 hover:bg-slate-50 hover:text-green-800 transition-all ease-in-out'>
+                            <Link href='/admin/profile' className=''>
+                            My Profile</Link>
+                        </li>
+                        <li className='w-[100%] top-[140%] py-2 px-4 hover:bg-slate-50 hover:text-green-800 transition-all ease-in-out'>
+                            <Link href='/admin/password' className=''>
+                            Password</Link>
+                        </li>
+                        <li className='w-[100%] top-[140%] py-2 px-4 hover:bg-slate-50 hover:text-green-800 transition-all ease-in-out'>
+                            <Link href='/event/event-order' className=''>
+                            My Events</Link>
+                        </li>
+                        <li className='w-[100%] top-[140%] py-2 px-4 hover:bg-slate-50 hover:text-green-800 transition-all ease-in-out'>
+                            <Link href='/membership/order' className=''>
+                            My Subscriptions</Link>
+                        </li>
+                    </ul>
+                </li>
+                }
             </ul> 
         </section>
     </div>

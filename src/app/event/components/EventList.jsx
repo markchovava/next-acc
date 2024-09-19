@@ -130,7 +130,7 @@ export default function EventList({ dbData }) {
                             {i.duration}
                         </p>
                         <Link 
-                          href={`/news/${i.id}`} 
+                          href={`/event/${i.id}`} 
                           className="group text-green-700 px-6 py-4 border border-green-700 flex items-center justify-center gap-2 transition-all ease-in-out ">
                           Click More. 
                           <FaArrowRightLong 

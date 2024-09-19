@@ -13,12 +13,17 @@ export default function Header() {
 
   return (
     <>
-    { getAuthCookie() &&
+    {getAuthCookie() &&
       <>
-        <NavTop />
-        <NavTopResponsive />
-      </>
-    }
+        {getRoleCookie() &&
+        <>
+          {getRoleCookie() <= 2 && 
+          <>
+            <NavTop />
+            <NavTopResponsive />
+          </>}
+        </>}
+      </>}
         
     {/*  */}
     <NavigationMain />

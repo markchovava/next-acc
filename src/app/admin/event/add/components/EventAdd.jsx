@@ -35,6 +35,8 @@ export default function EventAdd() {
       duration: data?.duration,
       priority: data?.priority,
       slug: data?.slug,
+      location: data?.location,
+      joining_fee: data?.joining_fee,
     }
 
     try{
@@ -82,26 +84,45 @@ useEffect(() => {
               onChange={handleInput}
               placeholder='Enter Name here...' 
               className='w-[100%] py-3 px-4 rounded-lg outline-none border border-slate-300' />
-
         </div>
-
-        {/* STATUS */}
+        {/* ADDRESS */}
         <div className='w-[100%] mb-4'>
-          <p className='mb-1'>Status:</p>
-          <select 
-              name='status'
+          <p className='mb-1'>Location / Venue:</p>
+          <input 
+              type='text' 
+              name='location'
               onChange={handleInput}
-              placeholder='Enter  here...' 
-              className='w-[100%] py-3 px-4 rounded-lg outline-none border border-slate-300'>
-              <option value=''>Select an option.</option>
-              <option value='Upcoming' >Upcoming</option>
-              <option value='Completed' >Completed</option>
-          </select>
+              placeholder='Enter Address here...' 
+              className='w-[100%] py-3 px-4 rounded-lg outline-none border border-slate-300' />
+        </div>
+        {/* STATUS & JOINING FEE */}
+        <div className='w-[100%] grid md:grid-cols-2 grid-cols-1 gap-6 mb-4'>
+          <div className='w-[100%]'>
+            <p className='mb-1'>Status:</p>
+            <select 
+                name='status'
+                onChange={handleInput}
+                placeholder='Enter  here...' 
+                className='w-[100%] py-3 px-4 rounded-lg outline-none border border-slate-300'>
+                <option value=''>Select an option.</option>
+                <option value='Upcoming' >Upcoming</option>
+                <option value='Completed' >Completed</option>
+            </select>
+          </div>
+          <div className='w-[100%]'>
+          <p className='mb-1'>Joining Fee:</p>
+          <input 
+              type='number' 
+              name='joining_fee'
+              onChange={handleInput}
+              placeholder='Enter Fee here...' 
+              className='w-[100%] py-3 px-4 rounded-lg outline-none border border-slate-300' />
+        </div>
 
         </div>
 
         {/* PRIORITY & SLUG */}
-         <div className='w-[100%} grid grid-cols-2 gap-6 mb-4'>
+         <div className='w-[100%} grid md:grid-cols-2 grid-cols-1 gap-6 mb-4'>
           <div className='w-[100%]'>
             <p className='mb-2'>Priority:</p>
             <select
@@ -126,7 +147,7 @@ useEffect(() => {
         </div>
 
         {/*  */}
-        <div className='w-[100%] grid grid-cols-2 gap-6 mb-4'>
+        <div className='w-[100%] grid md:grid-cols-2 grid-cols-1 gap-6 mb-4'>
           <div className='w-[100%]'>
             <p className='mb-1'>Date:</p>
             <input 

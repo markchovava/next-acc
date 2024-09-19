@@ -3,14 +3,14 @@ import React from 'react'
 import { MdOutlineChevronRight } from 'react-icons/md'
 import SectorOpportunityList from './components/SectorOpportunityList'
 import { getSectorOpportunityBySlug } from '@/api/getSectorOpportunity';
-import { getSectorsAll } from '@/api/getSectors';
+import { getSectorBySlug, getSectorsAll } from '@/api/getSectors';
 
 
 
 
 
 export default async function page({ params: {slug} }) {
-    const [opportunityData, sectorsData] = await Promise.all([getSectorOpportunityBySlug(slug), getSectorsAll()]);
+    const [opportunityData, sectorsData, sectorData] = await Promise.all([getSectorOpportunityBySlug(slug), getSectorsAll(), getSectorBySlug(slug)]);
 
 
   return (
@@ -18,10 +18,10 @@ export default async function page({ params: {slug} }) {
     {/* HEADER */}
     <section 
         style={{backgroundImage: `url('/assets/img/5_1/01.jpg')`}} 
-        className='w-[100%] lg:aspect-[5/1] aspect-[5/2] relative bg-fixed bg-cover bg-no-repeat'>
+        className='w-[100%] text-center leading-tight lg:aspect-[5/1] aspect-[5/2] relative bg-fixed bg-cover bg-no-repeat'>
         <div className='w-[100%] h-[100%] absolute top-0 left-0 opacity-25 bg-gradient-to-br from-slate-700 to-black'></div>
         <div className='w-[100%] h-[100%] lg:text-[5rem] text-[3.8rem] font-medium flex items-center justify-center text-white drop-shadow-md'>
-            Sector Opportunities
+            {sectorData?.data?.name} Opportunities
         </div>
     </section>
 
@@ -32,7 +32,7 @@ export default async function page({ params: {slug} }) {
             <li><MdOutlineChevronRight /></li>
             <li><Link href={`/sector`}>Sectors</Link></li>
             <li><MdOutlineChevronRight /></li>
-            <li><Link href={`/sector/${slug}`} className='font-semibold'>Sector Opportunities</Link></li>
+            <li><Link href={`/sector/${slug}`} className='font-semibold'>{sectorData?.data?.name} Opportunities</Link></li>
         </ul>
     </section>
 

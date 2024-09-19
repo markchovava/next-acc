@@ -5,7 +5,7 @@ import Image from 'next/image';
 import {  FaPhoneAlt, FaChevronDown } from "react-icons/fa";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { AiOutlineClose } from "react-icons/ai";
-import { FaFacebook, FaWhatsapp, FaYoutube } from 'react-icons/fa6';
+import { FaAngleDown, FaFacebook, FaWhatsapp, FaYoutube } from 'react-icons/fa6';
 import { IoLogoInstagram } from 'react-icons/io5';
 import { tokenAuth } from '@/tokens/tokenAuth';
 import { tokenRole } from '@/tokens/tokenRole';
@@ -18,6 +18,9 @@ import { toastifyDarkBounce } from '@/libs/toastify';
 
 export default function NavigationMainResponsive() {
     const [isOpen, setIsOpen] = useState(false)
+    const [isActive, setIsActive] = useState({
+        one: false
+    })
     const { getAuthToken, removeAuthToken } = tokenAuth();
     const { removeRoleToken } = tokenRole();
     const [isLogout, setIsLogout] = useState(false);
@@ -94,9 +97,9 @@ export default function NavigationMainResponsive() {
 
            {/* MID TOP */}
             <section className='w-[100%] h-auto py-3'>
-                <div className='mx-auto w-[90%] flex md:flex-row flex-col items-center justify-between'>
+                <div className='mx-auto w-[90%] flex md:flex-row flex-col items-center justify-between gap-4'>
                     <Link href='/'>
-                    <div className='flex justify-start items-center py-3 gap-2'>
+                    <div className='flex md:flex-row flex-col justify-start items-center py-3 gap-2'>
                         <div className='aspect-[1/1] w-[6.5rem]'>
                             <img src='/assets/logo/small.png' className='w-[100%] h-[100%] object-fill' alt='Logo' />
                         </div>
@@ -180,6 +183,26 @@ export default function NavigationMainResponsive() {
                     <li className='w-[100%]'>
                         <Link href='/contact' className='hover:bg-slate-100 py-2 hover:text-green-800 text-center transition-all ease-in-out flex items-center justify-center'>
                         Contact Us</Link>
+                    </li>
+                    <li className={`w-[100%] ${isActive.one == true ? 'bg-slate-100' : ''} hover:bg-slate-100 relative`}>
+                        <span
+                        onClick={() => setIsActive({one: !isActive.one})} 
+                        className='cursor-pointer flex items-center justify-center gap-1 py-2 hover:text-green-800 text-center transition-all ease-in-out'>
+                        My Account <FaAngleDown /></span>
+                        <ul className={`${isActive.one == true ? 'block opacity-100' : 'hidden opacity-0'} pb-2 transition-all ease-in-out w-[100%]`}>
+                            <li className='w-[100%] text-center py-1 hover:text-green-800 hover:bg-slate-200'>
+                                <Link href='/admin/profile'>My Profile</Link>
+                            </li>
+                            <li className='w-[100%] text-center py-1 hover:text-green-800 hover:bg-slate-200'>
+                                <Link href='/admin/password'>My Password</Link>
+                            </li>
+                            <li className='w-[100%] text-center py-1 hover:text-green-800 hover:bg-slate-200'>
+                                <Link href='/event/event-order'>My Events</Link>
+                            </li>
+                            <li className='w-[100%] text-center py-1 hover:text-green-800 hover:bg-slate-200'>
+                                <Link href='/membership/order'>My Subscriptions</Link>
+                            </li>
+                        </ul>
                     </li>
                 </ul>
                 }

@@ -68,6 +68,20 @@ export default function EventView({ id }) {
           </div>
           {/*  */}
           <div className='flex lg:flex-row flex-col lg:items-center justify-start lg:gap-4 gap-2 mb-6'>
+            <div className='w-[20%] font-light'>Location:</div>
+            <div className='w-[80%]'>
+                {data?.location ? data.location : 'Not added.'}
+            </div>
+          </div>
+          {/*  */}
+          <div className='flex lg:flex-row flex-col lg:items-center justify-start lg:gap-4 gap-2 mb-6'>
+            <div className='w-[20%] font-light'>Joining Fee:</div>
+            <div className='w-[80%]'>
+                {data?.joining_fee ? '$' + data.joining_fee?.toFixed(2) : 'Not added.'}
+            </div>
+          </div>
+          {/*  */}
+          <div className='flex lg:flex-row flex-col lg:items-center justify-start lg:gap-4 gap-2 mb-6'>
             <div className='w-[20%] font-light'>Date:</div>
             <div className='w-[80%]'>
                 {data.date ? formatDate(data.date) : 'Not added.'}

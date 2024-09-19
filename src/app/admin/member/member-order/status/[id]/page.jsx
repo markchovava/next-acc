@@ -20,7 +20,7 @@ export default async function page({ params: {id} }) {
             <li><MdOutlineChevronRight /></li>
             <li><Link href={`/admin`}>Admin</Link></li>
             <li><MdOutlineChevronRight /></li>
-            <li><Link href={`/admin/member`}>Members</Link></li>
+            <li><Link href={`/admin/member/member-order`}>Members</Link></li>
             <li><MdOutlineChevronRight /></li>
             <li><Link href={`/admin/member/member-order/status/${id}`} className='font-semibold'>Update Member Payment Status</Link></li>
         </ul>

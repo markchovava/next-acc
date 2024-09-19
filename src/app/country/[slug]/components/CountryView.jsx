@@ -139,10 +139,10 @@ export default function CountryView({ slug, dbData, sectorData }) {
                         {/*  */}
                         <div className='w-[100%] lg:w-[80%]'>
                           <h4 className='md:text-[2rem] text-[2rem] font-light'>{i.name}</h4>
-                          <p className='font-light'>
+                          <p className='font-light text-lg'>
                             {i.short_description ? trimString(i.short_description, 120) : 'Not added.'}
                           </p>
-                          <small>{i?.country?.name}</small>
+                          <p className='text-green-700 italic'>{i?.country?.name}</p>
                         </div>
                         {/*  */}
                         <div className='w-[100%] lg:w-[20%] flex items-center justify-center'>
