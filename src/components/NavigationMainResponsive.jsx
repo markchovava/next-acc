@@ -13,6 +13,7 @@ import { removeAuthCookie } from '@/cookie/authCookieClient';
 import { removeRoleCookie } from '@/cookie/roleCookieClient';
 import { toast } from 'react-toastify';
 import { toastifyDarkBounce } from '@/libs/toastify';
+import { tokenMembership } from '@/tokens/tokenMembership';
 
 
 
@@ -20,15 +21,16 @@ export default function NavigationMainResponsive() {
     const [isOpen, setIsOpen] = useState(false)
     const [isActive, setIsActive] = useState({
         one: false
-    })
+    });
     const { getAuthToken, removeAuthToken } = tokenAuth();
     const { removeRoleToken } = tokenRole();
+    const { removeMembershipToken } = tokenMembership();
     const [isLogout, setIsLogout] = useState(false);
     const config = {
         headers: {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${getAuthToken()}`
-    }}
+    }};
      /* LOGOUT */
      async function postLogout() {
         try{
@@ -40,6 +42,7 @@ export default function NavigationMainResponsive() {
                 /*  */
                 removeAuthCookie();
                 removeRoleCookie();
+                removeMembershipToken();
                 setIsLogout(false);
                 toast.success(response.data.message, toastifyDarkBounce);
                 setTimeout(() => {
@@ -169,8 +172,8 @@ export default function NavigationMainResponsive() {
                         Opportunites</Link>
                     </li>
                     <li className='w-[100%]'>
-                        <span className='cursor-pointer hover:bg-slate-100 py-2 hover:text-green-800 text-center transition-all ease-in-out flex items-center justify-center'>
-                        Meetings & Events </span>
+                        <Link href='/news-events' className=' hover:bg-slate-100 py-2 hover:text-green-800 text-center transition-all ease-in-out flex items-center justify-center'>
+                        News & Events </Link>
                     </li>
                     <li className='w-[100%]'>
                         <Link href='/membership' className='hover:bg-slate-100 py-2 hover:text-green-800 text-center transition-all ease-in-out flex items-center justify-center'>

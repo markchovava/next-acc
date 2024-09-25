@@ -14,7 +14,7 @@ import { formatDate } from '@/libs/formatDate';
 
 
 
-export default function AttendList() {
+export default function EventPaymentList() {
   const [data, setData] = useState();
   const [meta, setMeta] = useState();
   const [search, setSearch] = useState('')

@@ -18,7 +18,8 @@ export default async function page({ params: {id} }) {
             <li><MdOutlineChevronRight /></li>
             <li><Link href={`/opportunity`}>Opportunities</Link></li>
             <li><MdOutlineChevronRight /></li>
-            <li><Link href={`/opportunity/${id}`} className='font-semibold'>Opportunity</Link></li>
+            <li><Link href={`/opportunity/${id}`} className='font-semibold'>
+            {opportunityData?.data?.name}</Link></li>
         </ul>
     </section>
 

@@ -4,6 +4,7 @@ import { setAuthCookie } from '@/cookie/authCookieClient';
 import { setRoleCookie } from '@/cookie/roleCookieClient';
 import { toastifyDarkBounce } from '@/libs/toastify';
 import { tokenAuth } from '@/tokens/tokenAuth';
+import { tokenMembership } from '@/tokens/tokenMembership';
 import { tokenRole } from '@/tokens/tokenRole';
 import axios from 'axios';
 import Link from 'next/link'
@@ -19,6 +20,7 @@ export default function LoginEdit() {
   const router = useRouter();
   const { setAuthToken } = tokenAuth()
   const { setRoleToken } = tokenRole()
+  const { setMembershipToken } = tokenMembership()
   const [data, setData] = useState({});
   const [isSubmit, setIsSubmit] = useState(false);
   const [errMsg, setErrMsg] = useState({});
@@ -73,7 +75,10 @@ export default function LoginEdit() {
             /* AUTH */
             setAuthToken(response.data.auth_token);
             setAuthCookie(response.data.auth_token);
-            setIsSubmit(false);    
+            /* MEMBERSHIP */
+            response?.data?.membership && setMembershipToken(response?.data?.membership);
+            setIsSubmit(false);   
+            /*  */ 
             router.push('/membership/add'); 
             setTimeout(() => {
               window.location.reload();

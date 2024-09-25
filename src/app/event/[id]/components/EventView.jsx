@@ -4,6 +4,7 @@ import { formatDate } from '@/libs/formatDate';
 import { toastifyDarkBounce } from '@/libs/toastify';
 import { tokenAuth } from '@/tokens/tokenAuth';
 import { tokenEventCart } from '@/tokens/tokenEventCart';
+import { tokenMembership } from '@/tokens/tokenMembership';
 import axios from 'axios';
 import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react'
@@ -22,6 +23,7 @@ export default function EventView({ dbData }) {
     const { getAuthToken } = tokenAuth()
     const [isSubmit, setIsSubmit] = useState(false);
     const [errMsg, setErrMsg] = useState({});
+    const { getMembershipToken } = tokenMembership();
 
 
     async function postData() {
@@ -93,10 +95,12 @@ export default function EventView({ dbData }) {
                     <p className='leading-none text-2xl font-light'>{formatDate(data?.date)}</p>
                 </div>
                  {/* LOCATION */}
+                 {getMembershipToken() &&
                  <div className='mb-[2rem]'>
                     <p className='mb-1 leading-none'>Location:</p>
                     <p className='leading-none text-2xl font-light'>{data?.location}</p>
                 </div>
+                 }
                  {/* DURATION */}
                  <div className='mb-[2rem]'>
                     <p className='mb-1 leading-none'>Duration:</p>
@@ -104,11 +108,13 @@ export default function EventView({ dbData }) {
                 </div>
 
                  {/* DESCRIPTION */}
+                 {getMembershipToken() &&
                  <div className='mb-[2rem]'>
                     <p className='mb-1 leading-none'>Description:</p>
                     <div className='article text-lg font-light' 
                         dangerouslySetInnerHTML={{ __html: data.description }}></div>
                 </div>
+                 }
 
 
 
@@ -149,11 +155,17 @@ export default function EventView({ dbData }) {
                             className='w-[100%] rounded-xl text-center p-2 text-white transition-all ease-in-out bg-gradient-to-br from-green-600 to-cyan-700 hover:bg-gradient-to-br hover:to-green-700 hover:from-cyan-700'>
                             {getAuthToken() ?
                             <>
+                            <span className='mr-1'>
+                                {data?.event_total ? '$' + data?.event_total.toFixed(2) : '$' + (0).toFixed(2)}
+                            </span>
                             Checkout 
                             </>
                             :
                             <>
-                            Login to Proceed {data?.event_total ? '$' + data?.event_total.toFixed(2) : '$' + (0).toFixed(2)}
+                            <span className='mr-1'>
+                                {data?.event_total ? '$' + data?.event_total.toFixed(2) : '$' + (0).toFixed(2)}
+                            </span>
+                            Login to Proceed 
                             </>
                             }
 

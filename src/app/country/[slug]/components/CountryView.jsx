@@ -1,6 +1,8 @@
 "use client";
 import { baseURL } from '@/api/baseURL';
+import Loader from '@/components/Loader';
 import { trimString } from '@/libs/trimString';
+import { tokenMembership } from '@/tokens/tokenMembership';
 import axios from 'axios';
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
@@ -17,6 +19,7 @@ export default function CountryView({ slug, dbData, sectorData }) {
   /* PAGINATION */
   const [nextURL, setNextURL] = useState(dbData?.links.prev);
   const [prevURL, setPrevURL] = useState(dbData?.links.next);
+  const { getMembershipToken } = tokenMembership();
   /* PAGINATION DATA */
   async function paginationHandler(url) {
     try{
@@ -79,6 +82,12 @@ export default function CountryView({ slug, dbData, sectorData }) {
   }, [isSearch]);
 
 
+  if(!data) { return (<Loader />)}
+
+  console.log('data')
+  console.log(data)
+
+
   return (
     <>
     <section className='w-[100%] pt-[4rem] pb-[8rem]'>
@@ -139,15 +148,29 @@ export default function CountryView({ slug, dbData, sectorData }) {
                         {/*  */}
                         <div className='w-[100%] lg:w-[80%]'>
                           <h4 className='md:text-[2rem] text-[2rem] font-light'>{i.name}</h4>
-                          <p className='font-light text-lg'>
+                          <p className='font-light leading-tight text-lg mb-1'>
                             {i.short_description ? trimString(i.short_description, 120) : 'Not added.'}
                           </p>
-                          <p className='text-green-700 italic'>{i?.country?.name}</p>
+                          {/* SECTORS */}
+                          {i?.sectors?.length > 0 &&
+                          <p className='mb-1'>
+                            {i?.sectors.map((a, key) => (
+                              i?.sectors.length > key ? a.name : a.name + ','
+                            )) }
+                          </p>
+                          }
+                          {/* COUNTRY */}
+                          <p className='text-green-700 italic mb-1'>{i?.country?.name}</p>
                         </div>
                         {/*  */}
                         <div className='w-[100%] lg:w-[20%] flex items-center justify-center'>
-                          <Link href={`/opportunity/${i.id}`} className='py-3 px-6 text-sm transition-all ease-in-out bg-white bg-gradient-to-br hover:from-slate-300 hover:to-slate-800 hover:text-white border border-slate-500 text-slate-600 hover:border-slate-500'>
-                          View More</Link>
+                        { getMembershipToken() ? 
+                            <Link href={`/opportunity/${i.id}`} className='py-3 px-6 text-sm transition-all ease-in-out bg-white bg-gradient-to-br hover:from-slate-300 hover:to-slate-800 hover:text-white border border-slate-500 text-slate-600 hover:border-slate-500'>
+                            View More</Link>
+                            :
+                            <Link href={`/membership`} className='py-3 px-6 text-sm transition-all ease-in-out bg-white bg-gradient-to-br hover:from-slate-300 hover:to-slate-800 hover:text-white border border-slate-500 text-slate-600 hover:border-slate-500'>
+                            Become a Member to view more.</Link>
+                          }
                         </div>
                       </div>
                     </div>

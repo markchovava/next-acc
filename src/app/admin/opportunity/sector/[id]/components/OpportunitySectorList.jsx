@@ -104,9 +104,9 @@ export default function OpportunitySectorList({ id }) {
     
       
     useEffect(() => {
-        getOpportunity();
         getSectors();
         getData();
+        getOpportunity();
     }, []);
 
     useEffect(() => { 
@@ -136,7 +136,9 @@ export default function OpportunitySectorList({ id }) {
                     View
                 </Link>
             </div>
-            <h3 className='mb-2 text-[2rem]'>{opportunity.name}</h3>
+            {opportunity?.name &&
+            <h3 className='mb-2 text-[2rem]'>{opportunity?.name}</h3>
+            }
             <section className='w-[100%] font-medium bg-slate-300 flex items-center justify-start'>
                 <div className='w-[80%] p-3 text-lg border-r border-white'>NAME</div>
                 <div className='w-[20%] p-3 text-lg'>ACTION</div>
@@ -162,7 +164,9 @@ export default function OpportunitySectorList({ id }) {
                 </div>
             </section>
             {/*  */}
-            {data?.length > 0 &&
+            {data && 
+            <>{
+              data?.length > 0 &&
                 data?.map((i, key) => (
                 <>
                 <section key={key} className='w-[100%] flex items-center justify-start'>
@@ -177,6 +181,7 @@ export default function OpportunitySectorList({ id }) {
                 </section>
                 </>
             ))
+            }</>
             }
 
         </div>

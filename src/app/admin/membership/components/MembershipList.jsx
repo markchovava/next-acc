@@ -118,7 +118,7 @@ export default function MembershipList() {
      <section className='w-[100%]'>
           <div className='w-[90%] mx-auto flex items-center justify-between pb-[1rem]'>
             <div className='w-[45%] flex items-center justify-start'>
-              <input 
+           {/*    <input 
                 type='text' 
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
@@ -131,9 +131,7 @@ export default function MembershipList() {
                 ? <span className='animate-pulse w-[15px] h-[15px] rounded-full bg-slate-900'></span> 
                 : <FaSearch />
               }
-                
-              
-              </button>
+              </button> */}
             </div>
             <div className='flex items-center justify-end gap-6'>
               {/* PAGINATION */}
@@ -154,9 +152,9 @@ export default function MembershipList() {
                   }
               
                 </div>
-              <Link href='/admin/membership/add' 
+             {/*  <Link href='/admin/membership/add' 
                 className='px-6 py-3 flex items-center justify-center rounded-xl text-white bg-gradient-to-br from-yellow-300 to-yellow-700 hover:bg-gradient-to-br hover:to-yellow-400 hover:from-yellow-800'>
-                Add</Link>
+                Add</Link> */}
             </div>
           </div>
         </section>

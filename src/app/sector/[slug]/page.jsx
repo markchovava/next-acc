@@ -21,7 +21,7 @@ export default async function page({ params: {slug} }) {
         className='w-[100%] text-center leading-tight lg:aspect-[5/1] aspect-[5/2] relative bg-fixed bg-cover bg-no-repeat'>
         <div className='w-[100%] h-[100%] absolute top-0 left-0 opacity-25 bg-gradient-to-br from-slate-700 to-black'></div>
         <div className='w-[100%] h-[100%] lg:text-[5rem] text-[3.8rem] font-medium flex items-center justify-center text-white drop-shadow-md'>
-            {sectorData?.data?.name} Opportunities
+            {sectorData?.data?.name}
         </div>
     </section>
 
@@ -32,7 +32,7 @@ export default async function page({ params: {slug} }) {
             <li><MdOutlineChevronRight /></li>
             <li><Link href={`/sector`}>Sectors</Link></li>
             <li><MdOutlineChevronRight /></li>
-            <li><Link href={`/sector/${slug}`} className='font-semibold'>{sectorData?.data?.name} Opportunities</Link></li>
+            <li><Link href={`/sector/${slug}`} className='font-semibold'>{sectorData?.data?.name}</Link></li>
         </ul>
     </section>
 

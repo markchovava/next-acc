@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import React from 'react'
 import { MdOutlineChevronRight } from 'react-icons/md'
-import AttendList from './components/EventPaymentList'
+import EventPaymentList from './components/EventPaymentList'
 
 
 
@@ -27,7 +27,7 @@ export default function page() {
       </div>
     </section>
 
-    <AttendList />
+    <EventPaymentList />
     </>
   )
 }

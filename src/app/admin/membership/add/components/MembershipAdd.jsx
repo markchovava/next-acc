@@ -32,8 +32,8 @@ export default function MembershipAdd() {
       name: data?.name,
       description: description,
       slug: data?.slug,
-      level: data?.level,
-      priority: data?.priority,
+      level: 1,
+      priority: 1,
       fee: data.fee
     }
 
@@ -96,7 +96,7 @@ useEffect(() => {
         </div>
 
         {/* PRIORITY & LEVEL */}
-        <div className='w-[100%] grid grid-cols-2 gap-6 mb-4'>
+        {/* <div className='w-[100%] grid grid-cols-2 gap-6 mb-4'>
           <div className='w-[100%]'>
             <p className='mb-1'>Priority:</p>
             <select  
@@ -121,7 +121,7 @@ useEffect(() => {
                 ))}
             </select>
           </div>
-        </div>
+        </div> */}
 
         {/* FEE */}
         <div className='w-[100%] mb-4'>

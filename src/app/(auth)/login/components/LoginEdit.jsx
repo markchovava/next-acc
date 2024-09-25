@@ -4,6 +4,7 @@ import { setAuthCookie } from '@/cookie/authCookieClient';
 import { setRoleCookie } from '@/cookie/roleCookieClient';
 import { toastifyDarkBounce } from '@/libs/toastify';
 import { tokenAuth } from '@/tokens/tokenAuth';
+import { tokenMembership } from '@/tokens/tokenMembership';
 import { tokenRole } from '@/tokens/tokenRole';
 import axios from 'axios';
 import Link from 'next/link'
@@ -19,6 +20,7 @@ export default function LoginEdit() {
   const router = useRouter();
   const { setAuthToken } = tokenAuth()
   const { setRoleToken } = tokenRole()
+  const { setMembershipToken } = tokenMembership();
   const [data, setData] = useState({});
   const [isSubmit, setIsSubmit] = useState(false);
   const [errMsg, setErrMsg] = useState({});
@@ -73,6 +75,8 @@ export default function LoginEdit() {
             /* AUTH */
             setAuthToken(response.data.auth_token);
             setAuthCookie(response.data.auth_token);
+            /* MEMBERSHIP */
+            response?.data?.membership && setMembershipToken(response?.data?.membership);
             setIsSubmit(false);    
             router.push('/'); 
             setTimeout(() => {
@@ -134,7 +138,7 @@ export default function LoginEdit() {
                 </div>
                 <div className='w-[100%] mb-4'>
                    <button onClick={() => setIsSubmit(true)} className='w-[100%] rounded-lg py-4 text-white transition-all ease-in-out bg-gradient-to-br from-yellow-500 to-yellow-700 hover:bg-gradient-to-br hover:to-yellow-500 hover:from-yellow-700 hover:drop-shadow-md'>
-                    {isSubmit == true ? 'Porcessing' : 'Submit'}
+                    {isSubmit == true ? 'Processing' : 'Submit'}
                    </button>
                 </div>
                 <div className='w-[100%] pt-2 pb-6 flex items-center justify-center font-light text-yellow-600'>

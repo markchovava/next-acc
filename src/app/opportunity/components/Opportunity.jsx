@@ -1,6 +1,7 @@
 "use client";
 import { baseURL } from '@/api/baseURL';
 import { trimString } from '@/libs/trimString';
+import { tokenMembership } from '@/tokens/tokenMembership';
 import axios from 'axios';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react'
@@ -13,6 +14,7 @@ export default function Opportunity({ dbData, sectorsData }) {
   const [sectors, setSectors] = useState(sectorsData?.data);
   const [search, setSearch] = useState('');
   const [isSearch, setIsSearch] = useState(false);
+  const { getMembershipToken } = tokenMembership()
   /* PAGINATION */
   const [nextURL, setNextURL] = useState(dbData?.links.prev);
   const [prevURL, setPrevURL] = useState(dbData?.links.next);
@@ -154,8 +156,13 @@ export default function Opportunity({ dbData, sectorsData }) {
                         </div>
                         {/*  */}
                         <div className='w-[100%] lg:w-[20%] flex items-center justify-center'>
-                          <Link href={`/opportunity/${i.id}`} className='py-3 px-6 text-sm transition-all ease-in-out bg-white bg-gradient-to-br hover:from-slate-300 hover:to-slate-800 hover:text-white border border-slate-500 text-slate-600 hover:border-slate-500'>
-                          View More</Link>
+                        { getMembershipToken() ? 
+                            <Link href={`/opportunity/${i.id}`} className='py-3 px-6 text-sm transition-all ease-in-out bg-white bg-gradient-to-br hover:from-slate-300 hover:to-slate-800 hover:text-white border border-slate-500 text-slate-600 hover:border-slate-500'>
+                            View More</Link>
+                            :
+                            <Link href={`/membership`} className='py-3 px-6 text-sm transition-all ease-in-out bg-white bg-gradient-to-br hover:from-slate-300 hover:to-slate-800 hover:text-white border border-slate-500 text-slate-600 hover:border-slate-500'>
+                            Become a Member to view more.</Link>
+                          }
                         </div>
                       </div>
                     </div>

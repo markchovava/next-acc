@@ -9,12 +9,15 @@ import { tokenAuth } from '@/tokens/tokenAuth';
 import { useRouter } from 'next/navigation';
 import { tokenMOrder } from '@/tokens/tokenMemberOrder';
 import Loader from '@/components/Loader';
+import { tokenMembership } from '@/tokens/tokenMembership';
+import Link from 'next/link';
 
 
 
 
 export default function MembershipAdd({ dbData }) {
     const router = useRouter();
+    const { getMembershipToken } = tokenMembership()
     const [data, setData] = useState();
     const [errMsg, setErrMsg] = useState({});
     const [dbMembership, setDbMembership] = useState(dbData?.data);
@@ -115,10 +118,6 @@ export default function MembershipAdd({ dbData }) {
           profession: data?.profession,
           member_fee: dbMembership[0]?.fee
         };  
-
-        console.log(formData);
-        setIsSubmit(false);
-        
         try{
             const result = await axiosClientAPI.post(`member-order`, formData, config)
             .then((response) => {
@@ -303,6 +302,15 @@ export default function MembershipAdd({ dbData }) {
                 
                 {/* BUTTON */}
                 <div className='flex items-center justify-center pt-4 pb-6'>
+                    {getMembershipToken() ? 
+                    <>
+                    <Link href='/membership/order' 
+                        className='group text-lg px-12 py-4 flex items-center justify-center gap-2 rounded-xl text-white hover:drop-shadow-lg bg-gradient-to-br from-yellow-500 to-yellow-800 '>
+                        My Subscriptions
+                        <FaArrowRightLong className='group-hover:translate-x-1 transition-all ease-in-out' />
+                    </Link>
+                    </>
+                    : 
                     <button 
                         onClick={() => setIsSubmit(true)}
                         className='group text-lg px-12 py-4 flex items-center justify-center gap-2 rounded-xl text-white hover:drop-shadow-lg bg-gradient-to-br from-yellow-500 to-yellow-800 '>
@@ -318,6 +326,8 @@ export default function MembershipAdd({ dbData }) {
                         </>
                         }
                     </button>
+                    }
+
                 </div>
                 
             </div>

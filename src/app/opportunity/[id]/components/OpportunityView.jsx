@@ -1,5 +1,6 @@
 "use client";
 import { baseURL } from '@/api/baseURL';
+import { tokenMembership } from '@/tokens/tokenMembership';
 import React, { useState } from 'react'
 import { FaArrowRightLong } from "react-icons/fa6";
 
@@ -8,7 +9,7 @@ import { FaArrowRightLong } from "react-icons/fa6";
 export default function OpportunityView({id, dbData}) {
     const [data, setData] = useState(dbData?.data);
     const [isActive, setActive] = useState(dbData?.data?.opportunity_images[0]?.image)
-    console.log(data);
+    const { getMembershipToken } = tokenMembership();
 
 
 
@@ -39,7 +40,7 @@ export default function OpportunityView({id, dbData}) {
                 <h4 className='text-[2.4rem] leading-tight mb-4'>
                     {data?.name}
                 </h4>
-                {data?.sectors &&
+                {data?.sectors?.length > 0 &&
                 <div className='mb-4'>
                     <p className='font-light'>Sectors</p>
                     <p className='text-lg'>
@@ -59,18 +60,23 @@ export default function OpportunityView({id, dbData}) {
                         {data?.status}
                     </p>
                 </div>
-                <div className='mb-4'>
-                    <p className='font-light leading-none mb-1'> Investments Amount:</p>
-                    <p className='text-[2rem] leading-none text-green-700'> 
-                        {data?.amount ? data?.amount : 'Not added.'}
-                    </p>
-                </div>
-                <div className='mb-4'>
-                    <p className='font-light leading-none mb-1'>Expected Return:</p>
-                    <p className='text-[2rem] leading-none text-blue-700'> 
-                        {data?.expected_return ? data?.expected_return : 'Not added.'}
-                    </p>
-                </div>
+                
+                {getMembershipToken() &&
+                <>
+                    <div className='mb-4'>
+                        <p className='font-light leading-none mb-1'> Investments Amount:</p>
+                        <p className='text-[2rem] leading-none text-green-700'> 
+                            {data?.amount ? data?.amount : 'Not added.'}
+                        </p>
+                    </div>
+                    <div className='mb-4'>
+                        <p className='font-light leading-none mb-1'>Expected Return:</p>
+                        <p className='text-[2rem] leading-none text-blue-700'> 
+                            {data?.expected_return ? data?.expected_return : 'Not added.'}
+                        </p>
+                    </div>
+                </>
+                }
                 <div className='mb-6'>
                     <p className='font-light leading-none mb-2'>Country:</p>
                     <p className='font-bold leading-none'>
@@ -80,16 +86,19 @@ export default function OpportunityView({id, dbData}) {
             </div>
         </div>
         {/*  */}
-        <div className='mx-auto lg:w-[70%] w-[80%] text-lg font-light'>
-            <h3 className='font-light text-[1.6rem] leading-none mb-3'>Description</h3>
-            <div className='article text-lg' dangerouslySetInnerHTML={{ __html: data?.description }}></div>
-           
-        </div>
-        <div className='pt-[2rem] pb-[2rem] flex items-center justify-center'>
-            <button className='flex items-center justify-center gap-2 group transition-all ease-in-out drop-shadow-md rounded-xl py-6 px-12 bg-gradient-to-br from-yellow-400 to-yellow-800 text-white hover:bg-gradient-to-br hover:from-yellow-500 hover:to-yellow-900'>
-                Invest <FaArrowRightLong className='group-hover:translate-x-1 transition-all ease-in-out' />
-            </button>
-        </div>
+        {getMembershipToken() &&
+        <>
+            <div className='mx-auto lg:w-[70%] w-[80%] text-lg font-light'>
+                <h3 className='font-light text-[1.6rem] leading-none mb-3'>Description</h3>
+                <div className='article text-lg' dangerouslySetInnerHTML={{ __html: data?.description }}></div>
+            </div>
+            <div className='pt-[2rem] pb-[2rem] flex items-center justify-center'>
+                <button className='flex items-center justify-center gap-2 group transition-all ease-in-out drop-shadow-md rounded-xl py-6 px-12 bg-gradient-to-br from-yellow-400 to-yellow-800 text-white hover:bg-gradient-to-br hover:from-yellow-500 hover:to-yellow-900'>
+                    Invest <FaArrowRightLong className='group-hover:translate-x-1 transition-all ease-in-out' />
+                </button>
+            </div>
+        </>
+        }
     </section>
     </>
   )

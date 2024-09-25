@@ -1,6 +1,7 @@
 "use client";
 import { baseURL } from '@/api/baseURL';
 import { formatDate } from '@/libs/formatDate';
+import { tokenMembership } from '@/tokens/tokenMembership';
 import axios from 'axios';
 import Image from 'next/image'
 import Link from 'next/link'
@@ -14,8 +15,9 @@ export default function NewsList({ dbData }) {
   const [meta, setMeta] = useState(dbData?.meta);
   const [search, setSearch] = useState('')
   const [isSearch, setIsSearch] = useState(false)
-  const [nextURL, setNextURL] = useState(dbData?.links.next)
-  const [prevURL, setPrevURL] = useState(dbData?.links.prev)
+  const [nextURL, setNextURL] = useState(dbData?.links?.next)
+  const [prevURL, setPrevURL] = useState(dbData?.links?.prev)
+  const { getMembershipToken } = tokenMembership();
   /* PAGINATION DATA */
   async function paginationHandler(url) {
     try{
@@ -133,7 +135,7 @@ export default function NewsList({ dbData }) {
                 </h5>
                 <div className="flex mb-4">
                   <Link 
-                    href={`/news/${i.id}`} 
+                    href={getMembershipToken() ? `/news/${i.id}` : '/member-restrict'} 
                     className="group text-green-800 px-6 py-4 border border-green-800 flex items-center justify-center gap-2 transition-all ease-in-out ">
                     Click More. 
                     <FaArrowRightLong 

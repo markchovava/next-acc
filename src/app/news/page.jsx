@@ -29,7 +29,7 @@ export default async function page() {
         <ul className='mx-auto py-1 w-[90%] border-y border-slate-300 flex items-center justify-start gap-1'>
             <li><Link href={`/`}>Home</Link></li>
             <li><MdOutlineChevronRight /></li>
-            <li><Link href={`/meeting-events`}>Meeting & Events</Link></li>
+            <li><Link href={`/news-events`}>News & Events</Link></li>
             <li><MdOutlineChevronRight /></li>
             <li><Link href={`/news`} className='font-semibold'>News and Updates</Link></li>
         </ul>

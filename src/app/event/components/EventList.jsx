@@ -1,7 +1,9 @@
 "use client";
 import { baseURL } from '@/api/baseURL';
+import Loader from '@/components/Loader';
 import { formatDate } from '@/libs/formatDate';
 import { trimString } from '@/libs/trimString';
+import { tokenMembership } from '@/tokens/tokenMembership';
 import axios from 'axios';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react'
@@ -15,8 +17,9 @@ export default function EventList({ dbData }) {
     const [meta, setMeta] = useState(dbData?.meta);
     const [search, setSearch] = useState('')
     const [isSearch, setIsSearch] = useState(false)
-    const [nextURL, setNextURL] = useState(dbData?.links.next)
-    const [prevURL, setPrevURL] = useState(dbData?.links.prev)
+    const [nextURL, setNextURL] = useState(dbData?.links?.next)
+    const [prevURL, setPrevURL] = useState(dbData?.links?.prev)
+    const { getMembershipToken } = tokenMembership()
 
     /* PAGINATION DATA */
   async function paginationHandler(url) {
@@ -84,6 +87,9 @@ export default function EventList({ dbData }) {
   }, [isSearch]);
 
 
+  if(!data) {return (<Loader />)}
+
+
   return (
     <>
     <section className='w-[100%] mx-auto pt-[4rem] pb-[2rem]'>
@@ -113,7 +119,7 @@ export default function EventList({ dbData }) {
 
             {/*  */}
             <div className='w-[100%] flex items-center justify-between gap-4'>
-                <h3 className="lg:text-[2.5rem] text-[1.8rem] leading-tight mb-3">
+                <h3 className="lg:text-[2.5rem] text-[1.8rem] leading-tight mb-4">
                 The latest events and meetings
                 </h3>
             </div>
@@ -130,7 +136,7 @@ export default function EventList({ dbData }) {
                             {i.duration}
                         </p>
                         <Link 
-                          href={`/event/${i.id}`} 
+                          href={ getMembershipToken() ? `/event/${i.id}` : `/member-restrict`} 
                           className="group text-green-700 px-6 py-4 border border-green-700 flex items-center justify-center gap-2 transition-all ease-in-out ">
                           Click More. 
                           <FaArrowRightLong 

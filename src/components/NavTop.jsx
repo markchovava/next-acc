@@ -113,9 +113,6 @@ export default function NavTop() {
                         Memberships <FaAngleDown /> </button>
                     <ul className={`absolute z-100 ${isActive.ten == true ? 'block' : 'hidden'} rounded-b-lg overflow-hidden drop-shadow-md top-[130%] transition-all ease-in-out duration-150 left-[-0.5rem]  w-[10rem] border border-white bg-green-800`}>
                         <li className='w-[100%] hover:bg-green-900 px-3 py-2'>
-                            <Link href='/admin/membership/add' className=''>Add Memberships</Link>
-                        </li>
-                        <li className='w-[100%] hover:bg-green-900 px-3 py-2'>
                             <Link href='/admin/membership' className=''>Membership List</Link>
                         </li>
                         <li className='w-[100%] hover:bg-green-900 px-3 py-2'>
@@ -123,7 +120,6 @@ export default function NavTop() {
                         </li>
                     </ul>
                 </li>
-
                 {/* COUNTRY */}
                 <li className="relative z-20">
                     <button 
@@ -251,13 +247,13 @@ export default function NavTop() {
                         <li className='w-[100%] hover:bg-green-900 px-3 py-2'>
                             <Link href='/admin/password' className=''>Password</Link>
                         </li>
-                        <li className='w-[100%] hover:bg-green-900 px-3 py-2'>
+                       {/*  <li className='w-[100%] hover:bg-green-900 px-3 py-2'>
                             <button 
                             onClick={() => setIsLogout(true)} 
                             className=''>
                                 Logout
                             </button>
-                        </li>
+                        </li> */}
                     </ul>
                 </li>
             </ul>

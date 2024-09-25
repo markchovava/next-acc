@@ -1,6 +1,7 @@
 "use client";
 import { baseURL } from '@/api/baseURL';
 import { trimString } from '@/libs/trimString';
+import { tokenMembership } from '@/tokens/tokenMembership';
 import axios from 'axios';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react'
@@ -13,6 +14,7 @@ export default function SectorOpportunityList({ dbData, sectorsData, slug}) {
     const [sectors, setSectors] = useState(sectorsData?.data);
     const [search, setSearch] = useState('');
     const [isSearch, setIsSearch] = useState(false);
+    const { getMembershipToken } = tokenMembership();
     /* PAGINATION */
     const [nextURL, setNextURL] = useState(dbData?.links.prev);
     const [prevURL, setPrevURL] = useState(dbData?.links.next);
@@ -29,7 +31,6 @@ export default function SectorOpportunityList({ dbData, sectorsData, slug}) {
          console.error(`Error: ${error}`)
       }     
     }
-  
     /* GET DATA */
     async function getData() {
       try{
@@ -45,7 +46,6 @@ export default function SectorOpportunityList({ dbData, sectorsData, slug}) {
         console.error(`Error Response: ${error.response}`);
       }   
     }   
-    
     /* search DATA */
     async function searchData() {
       if(search === ''){
@@ -68,16 +68,14 @@ export default function SectorOpportunityList({ dbData, sectorsData, slug}) {
         setIsSearch(false);
       }   
     } 
-  
     useEffect(() => {
       getData();
     }, []);
-  
     useEffect(() => {
       isSearch === true && searchData();
     }, [isSearch]);
 
-    console.log(data)
+
   
   return (
     <>
@@ -122,8 +120,6 @@ export default function SectorOpportunityList({ dbData, sectorsData, slug}) {
                       ? <span className='animate-pulse w-[20px] h-[20px] rounded-full bg-slate-900'></span> 
                       : <IoSearchOutline className='text-[1.59rem] ' />
                       }
-                      
-
                     </button>
                 </div>
 
@@ -139,16 +135,30 @@ export default function SectorOpportunityList({ dbData, sectorsData, slug}) {
                       <div className='w-[100%] lg:w-[75%] flex md:flex-row flex-col items-center justify-start gap-4'>
                         {/*  */}
                         <div className='w-[100%] lg:w-[80%]'>
-                          <h4 className='md:text-[2rem] text-[2rem] font-light'>{i.name}</h4>
-                          <p>
+                          <h4 className='md:text-[2rem] text-[2rem] font-light leading-tight'>{i.name}</h4>
+                          <p className='text-lg font-light mb-1'>
                             {i.short_description ? trimString(i.short_description, 120) : 'Not added.'}
                           </p>
+                          { i?.sectors &&
+                            <p className='mb-1'>
+                              { i?.sectors.map((a, key) => ( 
+                                  key+1 < i.sectors.length ? a.name + ',' : a.name      
+                              )) 
+                              }
+                            </p>
+                          }
                           <p className='italic text-green-800'>{i?.country?.name}</p>
                         </div>
                         {/*  */}
                         <div className='w-[100%] lg:w-[20%] flex items-center justify-center'>
-                          <Link href={`/opportunity/${i.id}`} className='py-3 px-6 text-sm transition-all ease-in-out bg-white bg-gradient-to-br hover:from-slate-300 hover:to-slate-800 hover:text-white border border-slate-500 text-slate-600 hover:border-slate-500'>
-                          View More</Link>
+                          { getMembershipToken() ? 
+                            <Link href={`/opportunity/${i.id}`} className='py-3 px-6 text-sm transition-all ease-in-out bg-white bg-gradient-to-br hover:from-slate-300 hover:to-slate-800 hover:text-white border border-slate-500 text-slate-600 hover:border-slate-500'>
+                            View More</Link>
+                            :
+                            <Link href={`/membership`} className='py-3 px-6 text-sm transition-all ease-in-out bg-white bg-gradient-to-br hover:from-slate-300 hover:to-slate-800 hover:text-white border border-slate-500 text-slate-600 hover:border-slate-500'>
+                            Become a Member to view more.</Link>
+                          }
+
                         </div>
                       </div>
                     </div>

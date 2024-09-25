@@ -2,6 +2,7 @@
 import { baseURL } from '@/api/baseURL';
 import { formatDate } from '@/libs/formatDate';
 import { trimString } from '@/libs/trimString';
+import { tokenMembership } from '@/tokens/tokenMembership';
 import Link from 'next/link'
 import React, { useState } from 'react'
 import { FaArrowLeftLong, FaArrowRightLong } from 'react-icons/fa6'
@@ -10,6 +11,7 @@ import { FaArrowLeftLong, FaArrowRightLong } from 'react-icons/fa6'
 
 export default function MeetingEvent({ dbData }) {
   const [data, setData] = useState(dbData?.data);
+  const { getMembershipToken } = tokenMembership()
   
 
   return (
@@ -42,7 +44,7 @@ export default function MeetingEvent({ dbData }) {
                 </h5>
                 <div className="flex mb-4">
                   <Link 
-                    href={`/news/${i.id}`} 
+                    href={getMembershipToken() ? `/news/${i.id}` : '/member-restrict'} 
                     className="group text-green-800 px-6 py-4 border border-green-800 flex items-center justify-center gap-2 transition-all ease-in-out ">
                     Click More. 
                     <FaArrowRightLong 

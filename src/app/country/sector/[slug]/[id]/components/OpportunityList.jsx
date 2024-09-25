@@ -1,6 +1,7 @@
 "use client";
 import { baseURL } from '@/api/baseURL';
 import { trimString } from '@/libs/trimString';
+import { tokenMembership } from '@/tokens/tokenMembership';
 import axios from 'axios';
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
@@ -18,6 +19,7 @@ export default function OpportunityList({slug, dbData, sectorsData, country_slug
     /* PAGINATION */
     const [nextURL, setNextURL] = useState(dbData?.links.prev);
     const [prevURL, setPrevURL] = useState(dbData?.links.next);
+    const { getMembershipToken } = tokenMembership();
     /* PAGINATION DATA */
     async function paginationHandler(url) {
         try{
@@ -31,11 +33,10 @@ export default function OpportunityList({slug, dbData, sectorsData, country_slug
         console.error(`Error: ${error}`)
         }     
     }
-
     /* GET DATA */
     async function getData() {
         try{
-        const result = await axios.get(`${baseURL}country-sector-country?country_slug=${country_slug}&sector_id=${sector_id}`)
+        const result = await axios.get(`${baseURL}country-sector-opportunity?country_slug=${country_slug}&sector_id=${sector_id}`)
         .then((response) => {
             setData(response.data.data)
             setPrevURL(response.data.links.prev)
@@ -47,7 +48,6 @@ export default function OpportunityList({slug, dbData, sectorsData, country_slug
         console.error(`Error Response: ${error.response}`);
         }   
     }   
-    
     /* search DATA */
     async function searchData() {
         if(search === ''){
@@ -56,7 +56,7 @@ export default function OpportunityList({slug, dbData, sectorsData, country_slug
         return;
         }
         try{
-        const result = await axios.get(`${baseURL}country-sector-country?country_slug=${country_slug}&sector_id=${sector_id}&search=${search}`)
+        const result = await axios.get(`${baseURL}country-sector-opportunity?country_slug=${country_slug}&sector_id=${sector_id}&search=${search}`)
         .then((response) => {
             setData(response.data.data)
             setPrevURL(response.data.links.prev)
@@ -140,15 +140,29 @@ export default function OpportunityList({slug, dbData, sectorsData, country_slug
                         {/*  */}
                         <div className='w-[100%] lg:w-[80%]'>
                           <h4 className='md:text-[2rem] text-[2rem] font-light'>{i.name}</h4>
-                          <p className='font-light'>
+                          <p className='font-light text-lg leading-tight mb-1'>
                             {i.short_description ? trimString(i.short_description, 120) : 'Not added.'}
                           </p>
-                          <small>{i?.country?.name}</small>
+                          {/* SECTORS */}
+                          {i?.sectors?.length > 0 &&
+                          <p className='mb-1'>
+                            {i?.sectors.map((a, key) => (
+                              i?.sectors.length > key ? a.name : a.name + ','
+                            )) }
+                          </p>
+                          }
+                          {/* COUNTRY */}
+                          <p className='text-green-700 italic mb-1'>{i?.country?.name}</p>
                         </div>
                         {/*  */}
                         <div className='w-[100%] lg:w-[20%] flex items-center justify-center'>
-                          <Link href={`/opportunity/${i.id}`} className='py-3 px-6 text-sm transition-all ease-in-out bg-white bg-gradient-to-br hover:from-slate-300 hover:to-slate-800 hover:text-white border border-slate-500 text-slate-600 hover:border-slate-500'>
-                          View More</Link>
+                        { getMembershipToken() ? 
+                            <Link href={`/opportunity/${i.id}`} className='py-3 px-6 text-sm transition-all ease-in-out bg-white bg-gradient-to-br hover:from-slate-300 hover:to-slate-800 hover:text-white border border-slate-500 text-slate-600 hover:border-slate-500'>
+                            View More</Link>
+                            :
+                            <Link href={`/membership`} className='py-3 px-6 text-sm transition-all ease-in-out bg-white bg-gradient-to-br hover:from-slate-300 hover:to-slate-800 hover:text-white border border-slate-500 text-slate-600 hover:border-slate-500'>
+                            Become a Member to view more.</Link>
+                          }
                         </div>
                       </div>
                     </div>

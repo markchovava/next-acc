@@ -8,7 +8,7 @@ import React, { useEffect, useState } from 'react'
 
 
 
-export default function ProfileView({ id }) {
+export default function ProfileView() {
   const [data, setData] = useState();
   const { getAuthToken } = tokenAuth()
   const config = {
@@ -36,7 +36,8 @@ export default function ProfileView({ id }) {
 
   if(!data){ return ( <Loader /> ) }
 
-
+  console.log('data');
+  console.log(data);
 
   return (
     <>
@@ -52,7 +53,7 @@ export default function ProfileView({ id }) {
         </div>
 
         {/* VIEW INFO */}
-        <section className='w-[100%] bg-white drop-shadow-md py-[2rem] px-4 text-lg'>
+        <section className='w-[100%] bg-white drop-shadow-md py-[2rem] px-6 text-lg'>
           {/* IMAGE */}
           { data.image &&
             <div className='flex lg:flex-row flex-col lg:items-center justify-start lg:gap-4 gap-2 mb-6'>
@@ -120,6 +121,15 @@ export default function ProfileView({ id }) {
                 {data?.role?.name ? data?.role?.name : 'Not added yet.'}
             </div>
           </div>
+          {/* ROLE */}
+          {data?.membership?.name &&
+          <div className='flex lg:flex-row flex-col lg:items-center justify-start lg:gap-4 gap-2 mb-6'>
+            <div className='w-[20%] font-light'>Membership:</div>
+            <div className='w-[80%]'>
+                {data?.membership?.name ? 'Is Member' : 'Not added yet.'}
+            </div>
+          </div>
+          }
         
           
 

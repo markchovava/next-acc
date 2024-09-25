@@ -18,6 +18,7 @@ import { removeRoleCookie } from '@/cookie/roleCookieClient';
 import { toast } from 'react-toastify';
 import { toastifyDarkBounce } from '@/libs/toastify';
 import { FaAngleDown } from 'react-icons/fa6';
+import { tokenMembership } from '@/tokens/tokenMembership';
 
 
 
@@ -27,6 +28,7 @@ export default function NavigationMain() {
         one: false,
     })
     const { getAuthToken, removeAuthToken } = tokenAuth();
+    const { removeMembershipToken } = tokenMembership()
     const { removeRoleToken } = tokenRole();
     const [isLogout, setIsLogout] = useState(false);
     const config = {
@@ -44,6 +46,7 @@ export default function NavigationMain() {
                 removeRoleToken();
                 removeAuthCookie();
                 removeRoleCookie();
+                removeMembershipToken();
                 setIsLogout(false);
                 toast.success(response.data.message, toastifyDarkBounce)
                 setTimeout(() => {
@@ -147,8 +150,8 @@ export default function NavigationMain() {
                     Opportunites</Link>
                 </li>
                 <li className='hover:text-green-800 transition-all ease-in-out'>
-                    <Link href='/meeting-events'>
-                    Meetings & Events</Link>
+                    <Link href='/news-events'>
+                    News & Events</Link>
                 </li>
                 <li className='hover:text-green-800 transition-all ease-in-out'>
                     <Link href='/membership'>

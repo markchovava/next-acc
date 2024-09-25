@@ -9,14 +9,15 @@ import Link from 'next/link';
 import { useState } from 'react';
 import { formatDate } from '@/libs/formatDate';
 import { trimString } from '@/libs/trimString';
+import { tokenMembership } from '@/tokens/tokenMembership';
 
 
 
 
 
 export default function EventCarousel({ dbData }) {
-    console.log(dbData);
     const [data, setData] = useState(dbData?.data)
+    const { getMembershipToken } = tokenMembership();
 
     return (
         data.length > 0 && 
@@ -57,7 +58,9 @@ export default function EventCarousel({ dbData }) {
                                     <p className='text-center bg-white font-semibold text-lg pb-3'>
                                         {i.duration}
                                     </p>
-                                    <Link href={`/event/${i.id}`} className='text-white rounded-xl bg-gradient-to-br from-green-600 to-cyan-700 hover:bg-gradient-to-br hover:to-green-600 hover:from-cyan-700 py-2 px-6 mb-3'>
+                                    <Link 
+                                    href={getMembershipToken() ? `/event/${i.id}` : `/member-restrict`} 
+                                    className='text-white rounded-xl bg-gradient-to-br from-green-600 to-cyan-700 hover:bg-gradient-to-br hover:to-green-600 hover:from-cyan-700 py-2 px-6 mb-3'>
                                         View more
                                     </Link>
                                 </div>
@@ -100,7 +103,9 @@ export default function EventCarousel({ dbData }) {
                                     <p className='text-center bg-white font-semibold text-lg pb-3'>
                                         {i.duration}
                                     </p>
-                                    <Link href={`/event/${i.id}`} className='text-white rounded-xl bg-gradient-to-br from-green-600 to-cyan-700 hover:bg-gradient-to-br hover:to-green-600 hover:from-cyan-700 py-2 px-6 mb-3'>
+                                    <Link 
+                                    href={getMembershipToken() ? `/event/${i.id}` : `/member-restrict`} 
+                                    className='text-white rounded-xl bg-gradient-to-br from-green-600 to-cyan-700 hover:bg-gradient-to-br hover:to-green-600 hover:from-cyan-700 py-2 px-6 mb-3'>
                                         View more
                                     </Link>
                                 </div>
