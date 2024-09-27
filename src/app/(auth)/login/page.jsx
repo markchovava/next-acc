@@ -2,11 +2,15 @@ import Link from 'next/link'
 import React from 'react'
 import { MdOutlineChevronRight } from "react-icons/md";
 import LoginEdit from './components/LoginEdit'
+import { getAuthCookie } from '@/cookie/authCookie';
+import { redirect } from 'next/dist/server/api-utils';
 
 
 
 
 export default function page() {
+  getAuthCookie() && redirect('/')
+  
   return (
     <>
     {/* HEADER */}

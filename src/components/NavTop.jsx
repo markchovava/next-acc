@@ -165,15 +165,15 @@ export default function NavTop() {
                         </li>
                     </ul>
                 </li>
-                {/* EVENT */}
+                {/* EVENTS & NEWS */}
                 <li className="relative z-20">
                     <button
                         onClick={() => setIsActive({eight: !isActive.eight})} 
                         className="flex items-center justify-start gap-1">
-                        Event <FaAngleDown /> </button> 
+                        Event & News <FaAngleDown /> </button> 
                     <ul className={`absolute z-100 ${isActive.eight == true ? 'block' : 'hidden'} rounded-b-lg overflow-hidden drop-shadow-md top-[130%] transition-all ease-in-out duration-150 left-[-0.5rem]  w-[10rem] border border-white bg-green-800`}>
                         <li className='w-[100%] hover:bg-green-900 px-3 py-2'>
-                            <Link href='/admin/event/add' className=''>Add Event</Link>
+                            <Link href='/admin/news' className=''>News List</Link>
                         </li>
                         <li className='w-[100%] hover:bg-green-900 px-3 py-2'>
                             <Link href='/admin/event' className=''>Events List</Link>
@@ -183,18 +183,15 @@ export default function NavTop() {
                         </li>
                     </ul>
                 </li>
-                {/* NEWS */}
+                {/* INVESTMENTS */}
                 <li className="relative z-20">
                     <button
                         onClick={() => setIsActive({nine: !isActive.nine})} 
                         className="flex items-center justify-start gap-1">
-                        News <FaAngleDown /> </button> 
+                        Investments <FaAngleDown /> </button> 
                     <ul className={`absolute z-100 ${isActive.nine == true ? 'block' : 'hidden'} rounded-b-lg overflow-hidden drop-shadow-md top-[130%] transition-all ease-in-out duration-150 left-[-0.5rem]  w-[10rem] border border-white bg-green-800`}>
                         <li className='w-[100%] hover:bg-green-900 px-3 py-2'>
-                            <Link href='/admin/news/add' className=''>Add News</Link>
-                        </li>
-                        <li className='w-[100%] hover:bg-green-900 px-3 py-2'>
-                            <Link href='/admin/news' className=''>News List</Link>
+                            <Link href='/admin/investment' className=''>Investments List</Link>
                         </li>
                     </ul>
                 </li>

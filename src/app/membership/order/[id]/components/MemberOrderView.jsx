@@ -15,7 +15,6 @@ export default function MemberOrderView({ id }) {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${getAuthToken()}`
   }};
-
   /* GET DATA */
   async function getData() {
     try{
@@ -76,7 +75,7 @@ export default function MemberOrderView({ id }) {
           <div className='flex lg:flex-row flex-col lg:items-center justify-start lg:gap-4 gap-2 mb-6'>
             <div className='w-[20%] font-light'>Amount Paid:</div>
             <div className='w-[80%]'>
-                {data.paid_amount ? data.paid_amount.toFixed(2) : 'Not added.'}
+                {data.paid_amount ? '$' + data.paid_amount.toFixed(2) : 'Not added.'}
             </div>
           </div>
           {/*  */}
@@ -91,7 +90,7 @@ export default function MemberOrderView({ id }) {
           <div className='flex lg:flex-row flex-col lg:items-center justify-start lg:gap-4 gap-2 mb-6'>
             <div className='w-[20%] font-light'>Start Date:</div>
             <div className='w-[80%]'>
-                {data.start_date ? data.duration + ' months' : 'Not added.'}
+                {data.start_date ? data.start_date + ' months' : 'Not added.'}
             </div>
           </div>
           }
@@ -129,7 +128,7 @@ export default function MemberOrderView({ id }) {
           </div>
           {/*  */}
           <div className='flex lg:flex-row flex-col lg:items-center justify-start lg:gap-4 gap-2 mb-6'>
-            <div className='w-[20%] font-light'>Address:</div>
+            <div className='w-[20%] font-light'>Country:</div>
             <div className='w-[80%]'>
                 {data.member_order_info?.country}
             </div>

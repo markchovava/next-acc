@@ -2,11 +2,14 @@ import React from 'react'
 import RegisterEdit from './components/RegisterEdit'
 import { MdOutlineChevronRight } from 'react-icons/md'
 import Link from 'next/link'
+import { getAuthCookie } from '@/cookie/authCookie'
 
 
 
 
 export default function page() {
+  getAuthCookie() && redirect('/')
+
   return (
     <>
      {/* HEADER */}

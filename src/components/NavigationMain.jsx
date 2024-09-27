@@ -80,10 +80,14 @@ export default function NavigationMain() {
                     </div>
                 </div>
                 <div className='flex items-center justify-end gap-2 text-xl'>
-                    <Link href='#'><FaFacebook style={{fill: 'blue'}} /></Link>
-                    <Link href='#'><IoLogoInstagram style={{fill: 'purple'}} /></Link>
-                    <Link href='#'><FaYoutube style={{fill: 'red'}} /></Link>
-                    <Link href='#'><FaWhatsapp style={{fill: 'green'}} /></Link>
+                    <Link href='https//www.facebook.com' passHref={true}>
+                        <FaFacebook style={{fill: 'blue'}} /></Link>
+                    <Link href='https//www.instagram.com' passHref={true}>
+                        <IoLogoInstagram style={{fill: 'purple'}} /></Link>
+                    <Link href='https//www.youtube.com' passHref={true}>
+                        <FaYoutube style={{fill: 'red'}} /></Link>
+                    <Link href='https//www.whatsapp.com' passHref={true}>
+                        <FaWhatsapp style={{fill: 'green'}} /></Link>
                 </div>
             </div>
         </section>
@@ -147,7 +151,7 @@ export default function NavigationMain() {
                 </li>
                 <li className='hover:text-green-800 transition-all ease-in-out'>
                     <Link href='/opportunity' >
-                    Opportunites</Link>
+                    Opportunities</Link>
                 </li>
                 <li className='hover:text-green-800 transition-all ease-in-out'>
                     <Link href='/news-events'>
@@ -188,6 +192,10 @@ export default function NavigationMain() {
                         <li className='w-[100%] top-[140%] py-2 px-4 hover:bg-slate-50 hover:text-green-800 transition-all ease-in-out'>
                             <Link href='/membership/order' className=''>
                             My Subscriptions</Link>
+                        </li>
+                        <li className='w-[100%] top-[140%] py-2 px-4 hover:bg-slate-50 hover:text-green-800 transition-all ease-in-out'>
+                            <Link href='/opportunity/investment' className=''>
+                            My Investments</Link>
                         </li>
                     </ul>
                 </li>

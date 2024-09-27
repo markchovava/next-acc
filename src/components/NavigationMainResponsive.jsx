@@ -169,7 +169,7 @@ export default function NavigationMainResponsive() {
                     </li>
                     <li className='w-[100%]'>
                         <Link href='/opportunity' className='hover:bg-slate-100 py-2 hover:text-green-800 text-center transition-all ease-in-out flex items-center justify-center'>
-                        Opportunites</Link>
+                        Opportunities</Link>
                     </li>
                     <li className='w-[100%]'>
                         <Link href='/news-events' className=' hover:bg-slate-100 py-2 hover:text-green-800 text-center transition-all ease-in-out flex items-center justify-center'>
@@ -204,6 +204,9 @@ export default function NavigationMainResponsive() {
                             </li>
                             <li className='w-[100%] text-center py-1 hover:text-green-800 hover:bg-slate-200'>
                                 <Link href='/membership/order'>My Subscriptions</Link>
+                            </li>
+                            <li className='w-[100%] text-center py-1 hover:text-green-800 hover:bg-slate-200'>
+                                <Link href='/opportunity/investment'>My Investments</Link>
                             </li>
                         </ul>
                     </li>

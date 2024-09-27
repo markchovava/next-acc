@@ -1,6 +1,7 @@
 "use client";
 import { baseURL } from '@/api/baseURL';
 import { tokenMembership } from '@/tokens/tokenMembership';
+import Link from 'next/link';
 import React, { useState } from 'react'
 import { FaArrowRightLong } from "react-icons/fa6";
 
@@ -93,9 +94,11 @@ export default function OpportunityView({id, dbData}) {
                 <div className='article text-lg' dangerouslySetInnerHTML={{ __html: data?.description }}></div>
             </div>
             <div className='pt-[2rem] pb-[2rem] flex items-center justify-center'>
+                <Link href={`/opportunity/investment/edit/${data.id}`}>
                 <button className='flex items-center justify-center gap-2 group transition-all ease-in-out drop-shadow-md rounded-xl py-6 px-12 bg-gradient-to-br from-yellow-400 to-yellow-800 text-white hover:bg-gradient-to-br hover:from-yellow-500 hover:to-yellow-900'>
                     Invest <FaArrowRightLong className='group-hover:translate-x-1 transition-all ease-in-out' />
                 </button>
+                </Link>
             </div>
         </>
         }

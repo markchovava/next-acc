@@ -140,7 +140,7 @@ export default function MemberOrderView({ id }) {
           </div>
           {/*  */}
           <div className='flex lg:flex-row flex-col lg:items-center justify-start lg:gap-4 gap-2 mb-6'>
-            <div className='lg:w-[20%] font-light'>Address:</div>
+            <div className='lg:w-[20%] font-light'>Country:</div>
             <div className='w-[80%]'>
                 {data.member_order_info?.country}
             </div>

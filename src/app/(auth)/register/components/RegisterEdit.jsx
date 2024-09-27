@@ -7,6 +7,10 @@ import { toastifyDarkBounce } from '@/libs/toastify';
 import { baseURL } from '@/api/baseURL';
 import axios from 'axios';
 import { useRouter } from 'next/navigation';
+import { tokenAuth } from '@/tokens/tokenAuth';
+import { tokenMembership } from '@/tokens/tokenMembership';
+import { tokenRole } from '@/tokens/tokenRole';
+import { setAuthCookie } from '@/cookie/authCookieClient';
 
 
 
@@ -15,6 +19,9 @@ export default function RegisterEdit() {
   const [data, setData] = useState({});
   const [isSubmit, setIsSubmit] = useState(false);
   const [errMsg, setErrMsg] = useState({});
+  const { setAuthToken } = tokenAuth()
+  const { setRoleToken } = tokenRole()
+  const { setMembershipToken } = tokenMembership();
 
   const handleInput = (e) => {
     setData({...data, [e.target.name]: e.target.value})
@@ -75,7 +82,12 @@ export default function RegisterEdit() {
           }
           if(response.data.status == 1){
             toast.success(response.data.message, toastifyDarkBounce);
-            router.push('/login'); 
+            /* AUTH */
+            setAuthToken(response.data.auth_token);
+            setAuthCookie(response.data.auth_token);
+            /* MEMBERSHIP */
+            response?.data?.membership && setMembershipToken(response?.data?.membership);
+            router.push('/membership/add'); 
             setIsSubmit(false);    
           }
         

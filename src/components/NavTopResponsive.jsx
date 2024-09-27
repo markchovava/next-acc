@@ -138,35 +138,36 @@ export default function NavTopResponsive() {
                         </li>
                     </ul>
                 </li>
-                {/* EVENTS */}
+                {/* EVENTS & NEWS */}
                 <li className={`${isActive.eight == true ? 'bg-green-800' : ''} relative z-20 w-[100%] flex flex-col items-center justify-center`}>
                     <button 
                         onClick={() => setIsActive({eight: !isActive.eight})} 
                         className="flex items-center justify-start gap-1 pt-2">
-                        Events <FaAngleDown /> 
+                        Events & News <FaAngleDown /> 
                     </button>
                     <ul className={`relative ${isActive.eight == true ? 'block' : 'hidden'} nav__topUl`}>
                         <li className='w-[100vw] flex items-center justify-center  hover:bg-green-950 px-3 py-2'>
-                            <Link href='/admin/event/add' className=''>Add Event</Link>
+                            <Link href='/admin/news' className=''>News List</Link>
                         </li>
-                        <li className='w-[100vw] flex items-center justify-center hover:bg-green-950 px-3 py-2'>
+                        <li className='w-[100vw] flex items-center justify-center  hover:bg-green-950 px-3 py-2'>
                             <Link href='/admin/event' className=''>Events List</Link>
                         </li>
+                        <li className='w-[100vw] flex items-center justify-center  hover:bg-green-950 px-3 py-2'>
+                            <Link href='/admin/event/payment' className=''>Events Payments</Link>
+                        </li>
+                       
                     </ul>
                 </li>
-                {/* NEWS */}
+                {/* INVESTMENTS */}
                 <li className={`${isActive.nine == true ? 'bg-green-800' : ''} relative z-20 w-[100%] flex flex-col items-center justify-center`}>
                     <button 
                         onClick={() => setIsActive({nine: !isActive.nine})} 
                         className="flex items-center justify-start gap-1 pt-2">
-                        News <FaAngleDown /> 
+                        Investments <FaAngleDown /> 
                     </button>
                     <ul className={`relative ${isActive.nine == true ? 'block' : 'hidden'} nav__topUl`}>
                         <li className='w-[100vw] flex items-center justify-center  hover:bg-green-950 px-3 py-2'>
-                            <Link href='/admin/news/add' className=''>Add News</Link>
-                        </li>
-                        <li className='w-[100vw] flex items-center justify-center hover:bg-green-950 px-3 py-2'>
-                            <Link href='/admin/news' className=''>News List</Link>
+                            <Link href='/admin/investment' className=''>Investments List</Link>
                         </li>
                     </ul>
                 </li>
@@ -186,7 +187,7 @@ export default function NavTopResponsive() {
                         </li>
                     </ul>
                 </li>
-                {/*  */}
+                {/* PARTNERS */}
                 <li className={`${isActive.thirteen == true ? 'bg-green-800' : ''} relative z-20 w-[100%] flex flex-col items-center justify-center`}>
                     <button 
                         onClick={() => setIsActive({thirteen: !isActive.thirteen})} 
@@ -201,13 +202,7 @@ export default function NavTopResponsive() {
                             <Link href='/admin/partner' className=''>Partners List</Link>
                         </li>
                     </ul>
-                </li>
-               
-                
-                
-               
-             
-              
+                </li>              
             </ul>
             
             <ul className="flex items-center justify-start gap-4">

@@ -33,8 +33,6 @@ export default function MembershipAdd({ dbData }) {
     const handleInput = (e) => {
         setData({...data, [e.target.name]: e.target.value });
     }
-
-
     /* GET DATA */
     async function getData() {
         try{
@@ -55,7 +53,6 @@ export default function MembershipAdd({ dbData }) {
         console.error(`Error: ${error}`)
         }   
     }  
-
 
     const postData = async () => {
         if(!data.name){
@@ -113,6 +110,7 @@ export default function MembershipAdd({ dbData }) {
           email: data?.email,
           address: data?.address,
           country: data?.country,
+          who_join: data?.who_join,
           company_name: data?.company_name,
           membership_id: dbMembership[0]?.id,
           profession: data?.profession,
@@ -327,7 +325,6 @@ export default function MembershipAdd({ dbData }) {
                         }
                     </button>
                     }
-
                 </div>
                 
             </div>
