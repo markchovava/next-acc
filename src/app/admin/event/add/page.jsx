@@ -1,12 +1,13 @@
 import React from 'react'
-import EventAdd from './components/EventAdd'
 import { MdOutlineChevronRight } from 'react-icons/md'
 import Link from 'next/link'
+import EventAdd from './components/EventAdd'
+import { checkAuthCookie } from '@/cookie/authCookie';
 
 
 
 export default function page() {
-
+  checkAuthCookie();
   
   return (
     <>
@@ -33,6 +34,7 @@ export default function page() {
 
     {/*  */}
     <EventAdd />
+
     </>
   )
 }

@@ -8,7 +8,7 @@ import UserList from "./components/UserList";
 
 
 export default async function page() {
-  checkAuthCookie();
+  //checkAuthCookie();
  
 
 

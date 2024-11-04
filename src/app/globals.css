@@ -10,17 +10,18 @@
     @apply text-slate-800;
   }
 
+  .btn__form {
+    @apply bg-gradient-to-br from-yellow-400 to-yellow-800 hover:bg-gradient-to-tr hover:from-yellow-400 hover:to-yellow-800 hover:drop-shadow-lg transition-all ease-in-out duration-200 rounded-2xl text-white;
+  }
+
   .btn__primary {
     @apply px-[4rem] py-5 text-white rounded-xl transition-all ease-in-out bg-gradient-to-br from-yellow-300 to-yellow-800 hover:to-yellow-400 hover:from-yellow-900 hover:drop-shadow-lg;
   }
 
-
   /* DISPLAY QUILL DATA */
-
   .article p{
     @apply mb-2;
   }
-  
   .article ul{
     @apply list-disc ml-6 mb-2 ;
   }
@@ -36,27 +37,36 @@
   .article b, .article strong{
     @apply font-semibold;
   }
-
-
   .article strong{
     @apply font-medium;
   }
 
-
 }
 
+/* SCROLL BAR WIDTH & COLOR */
+.scroll__width::-webkit-scrollbar {
+  width: 0.5em;
+}
+.scroll__width::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+.scroll__width::-webkit-scrollbar-thumb {
+  background-color: slategrey;
+  outline: 1px solid slategrey;
+}
 
 /* MAP */
 #africa__map path{
-  fill: gray;
+  fill: #3f724a;
+}
+#africa__map path.muted{
+  fill: #e3b92e;
 }
 #africa__map path:hover{
   fill: green;
 }
 
-
-
-
+/* SWIPER */
 .swiper-button-next,
 .swiper-button-prev {
     /* background-color: white;
@@ -72,7 +82,6 @@
     fill: white !important;
     stroke: white !important;
 }
-
 .swiper-pagination-bullet {
     background-color: lightgray !important;
 }

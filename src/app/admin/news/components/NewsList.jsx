@@ -133,9 +133,7 @@ export default function NewsList() {
                 {isSearch === true 
                 ? <span className='animate-pulse w-[15px] h-[15px] rounded-full bg-slate-900'></span> 
                 : <FaSearch />
-              }
-                
-              
+                }
               </button>
             </div>
             <div className='flex items-center justify-end gap-6'>

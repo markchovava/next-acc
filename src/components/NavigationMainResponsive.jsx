@@ -14,6 +14,9 @@ import { removeRoleCookie } from '@/cookie/roleCookieClient';
 import { toast } from 'react-toastify';
 import { toastifyDarkBounce } from '@/libs/toastify';
 import { tokenMembership } from '@/tokens/tokenMembership';
+import { logoutAction } from '@/actions/authActions';
+import { tokenEventCart } from '@/tokens/tokenEventCart';
+import { removeMembershipCookie } from '@/cookie/membershipCookieClient';
 
 
 
@@ -23,34 +26,27 @@ export default function NavigationMainResponsive() {
         one: false
     });
     const { getAuthToken, removeAuthToken } = tokenAuth();
+    const { removeEventCartToken, getEventCartToken } = tokenEventCart();
     const { removeRoleToken } = tokenRole();
     const { removeMembershipToken } = tokenMembership();
     const [isLogout, setIsLogout] = useState(false);
-    const config = {
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${getAuthToken()}`
-    }};
-     /* LOGOUT */
-     async function postLogout() {
+    
+
+    async function postLogout() {
         try{
-        const result = await axiosClientAPI.get(`logout`, config)
-            .then((response) => {
-            if(response.data.status == 1) {
+            const res = await logoutAction(getAuthToken(), getEventCartToken())
+            if(res?.status == 1) {
                 removeAuthToken();
                 removeRoleToken();
-                /*  */
                 removeAuthCookie();
                 removeRoleCookie();
                 removeMembershipToken();
+                removeMembershipCookie()
+                removeEventCartToken();
                 setIsLogout(false);
-                toast.success(response.data.message, toastifyDarkBounce);
-                setTimeout(() => {
-                    window.location.reload();
-                }, 2000);
+                toast.success(res?.message, toastifyDarkBounce)
                 router.push(`/login`);
             }
-            })
         } catch (error) {
             console.error(`Error: ${error}`)
             console.error(`Error Message: ${error.message}`);
@@ -59,9 +55,11 @@ export default function NavigationMainResponsive() {
         } 
     } 
 
+
     useEffect(() => { 
         isLogout == true && postLogout();
     }, [isLogout]);
+
 
     return (
         <div className='lg:hidden block'>

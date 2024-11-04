@@ -2,13 +2,17 @@ import React from 'react'
 import RegisterEdit from './components/RegisterEdit'
 import { MdOutlineChevronRight } from 'react-icons/md'
 import Link from 'next/link'
-import { getAuthCookie } from '@/cookie/authCookie'
+import { redirect } from 'next/navigation'
+import { checkAuthAction } from '@/actions/authActions'
 
 
 
 
-export default function page() {
-  getAuthCookie() && redirect('/')
+export default async function page() {
+  const result = await checkAuthAction();
+  if(result?.message == 'Unauthenticated.'){
+    redirect('/opportunity');
+  }
 
   return (
     <>

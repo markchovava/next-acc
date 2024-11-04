@@ -199,8 +199,8 @@ export default function OpportunityList() {
                     <Link title='View Investment' href={`/admin/investment/${i.id}`}> 
                       <FaEye className='hover:text-blue-500 duration-150 hover:scale-110 transition-all ease-in'/> 
                     </Link>
-                    <Link title='Edit Investment' href={`/admin/investment/edit/${i.id}`}> 
-                      <MdEdit className='hover:text-green-500 duration-150 hover:scale-110 transition-all ease-in' /> 
+                    <Link title='Edit Investment' href={`/admin/investment/status/edit/${i.id}`}> 
+                      <AiOutlineDashboard className='hover:text-green-500 duration-150 hover:scale-110 transition-all ease-in' /> 
                     </Link>                     
                     <button> 
                         <MdDeleteForever 

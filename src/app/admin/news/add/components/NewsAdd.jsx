@@ -1,5 +1,7 @@
 "use client"
 import { axiosClientAPI } from '@/api/axiosClientAPI';
+import { baseURL } from '@/api/baseURL';
+import Loader from '@/components/Loader';
 import { toastifyDarkBounce } from '@/libs/toastify';
 import { tokenAuth } from '@/tokens/tokenAuth';
 import Link from 'next/link';
@@ -22,14 +24,14 @@ export default function NewsAdd() {
     const config = {
         headers: {
             "Content-Type": "multipart/form-data",
-            'Authorization': `Bearer ${getAuthToken()}`
+            "Authorization": `Bearer ${getAuthToken()}`
     }};
 
     const handleInput = (e) => {
         setData({...data, [e.target.name]: e.target.value })
     }
 
-    const postData = async () => {
+    async function postData() {
         const formData = {
         title: data?.title,
         description: description,

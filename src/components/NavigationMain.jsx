@@ -19,6 +19,9 @@ import { toast } from 'react-toastify';
 import { toastifyDarkBounce } from '@/libs/toastify';
 import { FaAngleDown } from 'react-icons/fa6';
 import { tokenMembership } from '@/tokens/tokenMembership';
+import { tokenEventCart } from '@/tokens/tokenEventCart';
+import { logoutAction } from '@/actions/authActions';
+import { removeMembershipCookie } from '@/cookie/membershipCookieClient';
 
 
 
@@ -30,31 +33,24 @@ export default function NavigationMain() {
     const { getAuthToken, removeAuthToken } = tokenAuth();
     const { removeMembershipToken } = tokenMembership()
     const { removeRoleToken } = tokenRole();
+    const { removeEventCartToken, getEventCartToken } = tokenEventCart();
     const [isLogout, setIsLogout] = useState(false);
-    const config = {
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${getAuthToken()}`
-    }}
-     /* LOGOUT */
-     async function postLogout() {
+
+    async function postLogout() {
         try{
-        const result = await axiosClientAPI.get(`logout`, config)
-            .then((response) => {
-            if(response.data.status == 1) {
+            const res = await logoutAction(getAuthToken(), getEventCartToken())
+            if(res?.status == 1) {
                 removeAuthToken();
                 removeRoleToken();
                 removeAuthCookie();
                 removeRoleCookie();
                 removeMembershipToken();
+                removeMembershipCookie()
+                removeEventCartToken();
                 setIsLogout(false);
-                toast.success(response.data.message, toastifyDarkBounce)
-                setTimeout(() => {
-                    window.location.reload();
-                }, 2000);
+                toast.success(res?.message, toastifyDarkBounce)
                 router.push(`/login`);
             }
-            })
         } catch (error) {
             console.error(`Error: ${error}`)
             console.error(`Error Message: ${error.message}`);

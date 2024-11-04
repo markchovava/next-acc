@@ -66,7 +66,7 @@ export default function MemberOrderView({ id }) {
           <div className='flex lg:flex-row flex-col lg:items-center justify-start lg:gap-4 gap-2 mb-6'>
             <div className='w-[20%] font-light'>Status:</div>
             <div className='w-[80%]'>
-                <span className='bg-green-700 text-white px-2 py-1 rounded-full'>
+                <span className='rounded-full text-white bg-gradient-to-br from-cyan-500 to-green-800 px-2 py-1'>
                     {data.status ? data.status : 'Not added.'}
                 </span>
             </div>

@@ -3,13 +3,14 @@ import React from 'react'
 import { MdOutlineChevronRight } from "react-icons/md";
 import LoginEdit from './components/LoginEdit'
 import { getAuthCookie } from '@/cookie/authCookie';
-import { redirect } from 'next/dist/server/api-utils';
+import { redirect } from 'next/navigation';
 
 
 
 
 export default function page() {
   getAuthCookie() && redirect('/')
+
   
   return (
     <>

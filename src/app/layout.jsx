@@ -36,7 +36,6 @@ export default function RootLayout({ children }) {
             theme="colored"
           />
       </MainContextProvider>
-
       </body>
     </html>
   );

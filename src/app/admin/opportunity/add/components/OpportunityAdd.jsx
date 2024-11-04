@@ -1,12 +1,12 @@
 "use client"
-import { axiosClientAPI } from '@/api/axiosClientAPI';
-import Loader from '@/components/Loader';
-import { MainContextState } from '@/context/MainContext';
+import React, { useEffect, useState } from 'react'
 import { toastifyDarkBounce } from '@/libs/toastify';
 import { tokenAuth } from '@/tokens/tokenAuth';
 import { useRouter } from 'next/navigation';
-import React, { useEffect, useState } from 'react'
 import { toast } from 'react-toastify';
+import { MainContextState } from '@/context/MainContext';
+import { axiosClientAPI } from '@/api/axiosClientAPI';
+import Loader from '@/components/Loader';
 
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
@@ -29,7 +29,6 @@ export default function OpportunityAdd() {
     const handleInput = (e) => {
         setData({...data, [e.target.name]: e.target.value })
     }
-
      /* GET COUNTRY */
     async function getCountries() {
         try{
@@ -41,9 +40,7 @@ export default function OpportunityAdd() {
         console.error(`Error: ${error}`)
         }   
     }  
-
     const postData = async () => {
-        
         let images = []
         if(opportunityImageState.images){
             for(let i = 0; i < opportunityImageState.images.length; i++) {
@@ -63,7 +60,6 @@ export default function OpportunityAdd() {
           description: description,
           opportunity_images: images,
         }
-    
         try{
             const result = await axiosClientAPI.post(`opportunity`, formData, config)
             .then((response) => {
@@ -79,20 +75,14 @@ export default function OpportunityAdd() {
                 console.error(`Error Response: ${error.response}`);
                 setIsSubmit(false);
             } 
-    
-      }
-
+    }
     useEffect(() => {
         getCountries();
     }, []);
-
-
     useEffect(() => {
         isSubmit === true && postData();
     }, [isSubmit]);
-
-
-  if(!countries) { return ( <Loader />) }
+    if(!countries) { return ( <Loader />) }
 
 
   return (
@@ -271,3 +261,4 @@ export default function OpportunityAdd() {
     </>
   )
 }
+

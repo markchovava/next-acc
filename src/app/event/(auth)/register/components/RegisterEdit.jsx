@@ -7,6 +7,7 @@ import { toastifyDarkBounce } from '@/libs/toastify';
 import { baseURL } from '@/api/baseURL';
 import axios from 'axios';
 import { useRouter } from 'next/navigation';
+import QRCodeRegisterModal from './QRCodeRegisterModal';
 
 
 
@@ -15,6 +16,7 @@ export default function RegisterEdit() {
   const [data, setData] = useState({});
   const [isSubmit, setIsSubmit] = useState(false);
   const [errMsg, setErrMsg] = useState({});
+  const [isModal, setIsModal] = useState(false);
 
   const handleInput = (e) => {
     setData({...data, [e.target.name]: e.target.value})
@@ -75,7 +77,7 @@ export default function RegisterEdit() {
           }
           if(response.data.status == 1){
             toast.success(response.data.message, toastifyDarkBounce);
-            router.push('/event/login'); 
+            router.push('/event/checkout');
             setIsSubmit(false);    
           }
         
@@ -89,7 +91,6 @@ export default function RegisterEdit() {
   useEffect(() => {
     isSubmit == true && postData();
   }, [isSubmit]);
-
 
   return (
     <>
@@ -178,6 +179,8 @@ export default function RegisterEdit() {
             </div>
         </div>
     </section>
-</>
+
+    <QRCodeRegisterModal isModal={isModal} setIsModal={setIsModal} />
+    </>
   )
 }

@@ -17,7 +17,7 @@ export default function page() {
             <li><MdOutlineChevronRight /></li>
             <li><Link href={`/admin`}>Admin</Link></li>
             <li><MdOutlineChevronRight /></li>
-            <li><Link href={`/admin/opportunity`} className='font-semibold'>Investments</Link></li>
+            <li><Link href={`/admin/investment`} className='font-semibold'>Investments</Link></li>
         </ul>
     </section>
 

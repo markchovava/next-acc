@@ -3,6 +3,8 @@ import React from 'react'
 import { MdOutlineChevronRight } from 'react-icons/md'
 import OpportunityView from './components/OpportunityView'
 
+
+
 export default function page({ params: {id} }) {
   return (
     <>

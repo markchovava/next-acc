@@ -61,23 +61,6 @@ export default function MembershipList() {
     }   
   }    
 
-  /* DELETE DATA */
-  async function deleteData(id) {
-    try{
-      const result = await axiosClientAPI.delete(`membership/${id}`, config)
-      .then((response) => {
-        if(response.data.status == 1) {
-          toast.success(response.data.message, toastifyDarkBounce);
-          getData();
-          return;
-        }
-      })
-    } catch (error) {
-      console.error(`Error: ${error}`);
-      console.error(`Error Message: ${error.message}`);
-      console.error(`Error Response: ${error.response}`);
-    }   
-  }   
 
   useEffect(() => { 
     getData();
@@ -142,7 +125,8 @@ export default function MembershipList() {
                     <span className=''>{i.membership.name}</span>
                   </div>
                   <div className='w-[20%] border-r border-slate-300 px-3 py-2'>
-                    <span>{i.status}</span>
+                    <span className='py-1 px-2 rounded-full text-white bg-gradient-to-br from-cyan-500 to-green-800'>
+                      {i.status}</span>
                   </div>
                   <div className='w-[20%] border-r border-slate-300 px-3 py-2'>
                     {i.duration ? i.duration + ' months' : 'Not added.'} 

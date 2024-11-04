@@ -45,7 +45,6 @@ Reunion --
 Rwanda -- 
 Seychelles 
 Sudan --
-Saint Helena -- 
 Sierra Leone -- 
 Senegal --
 Somalia --
@@ -57,7 +56,6 @@ Togo --
 Tunisia --
 Tanzania -- 
 Uganda --
-Mayotte --
 South Africa --
 Zambia --
 Zimbabwe --

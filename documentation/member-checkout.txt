@@ -1,0 +1,1 @@
+Membership is set on Checkout response, if it is a success

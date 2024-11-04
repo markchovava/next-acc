@@ -1,29 +1,31 @@
+"use client";
 import React from 'react'
 import NavigationMain from './NavigationMain'
 import NavigationMainResponsive from './NavigationMainResponsive'
 import NavTop from './NavTop'
 import NavTopResponsive from './NavTopResponsive'
+import { tokenAuth } from '@/tokens/tokenAuth';
+import { tokenRole } from '@/tokens/tokenRole';
 
-import { getAuthCookie } from '@/cookie/authCookie'
-import { getRoleCookie } from '@/cookie/roleCookie'
 
 
 export default function Header() {
-
+  const { getAuthToken } = tokenAuth();
+  const { getRoleToken } = tokenRole();
 
   return (
     <>
-    {getAuthCookie() &&
+    {getAuthToken() &&
       <>
-        {getRoleCookie() &&
+        {getRoleToken() &&
         <>
-          {getRoleCookie() <= 2 && 
+          {getRoleToken() <= 2 && 
           <>
             <NavTop />
             <NavTopResponsive />
-          </>}
-        </>}
-      </>}
+          </> }
+        </> }
+      </> }
         
     {/*  */}
     <NavigationMain />

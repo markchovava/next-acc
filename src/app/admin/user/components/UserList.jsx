@@ -115,50 +115,50 @@ export default function UserList() {
 
   return (
     <>
-     <section className='w-[100%]'>
-          <div className='w-[90%] mx-auto flex items-center justify-between pb-[1rem]'>
-            <div className='w-[45%] flex items-center justify-start'>
-              <input 
-                type='text' 
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
-                placeholder='Enter name here...'
-                className='w-[85%] h-[3rem] rounded-l-lg p-3 outline-none border border-slate-300' />
+    <section className='w-[100%]'>
+      <div className='w-[90%] mx-auto flex items-center justify-between pb-[1rem]'>
+        <div className='w-[45%] flex items-center justify-start'>
+          <input 
+            type='text' 
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            placeholder='Enter name here...'
+            className='w-[85%] h-[3rem] rounded-l-lg p-3 outline-none border border-slate-300' />
+          <button 
+            onClick={() => setIsSearch(true)}
+            className='w-[15%] h-[3rem] border-y border-r rounded-r-lg text-lg border-slate-300 flex items-center justify-center p-3'>
+            {isSearch === true 
+            ? <span className='animate-pulse w-[15px] h-[15px] rounded-full bg-slate-900'></span> 
+            : <FaSearch />
+          }
+          </button>
+        </div>
+        <div className='flex items-center justify-end gap-6'>
+          <div className='text-green-700'>Page: {meta.current_page} of {meta.last_page}</div>
+          {/* PAGINATION */}
+          <div className='flex items-center justify-end gap-3'>
+              {prevURL &&
               <button 
-                onClick={() => setIsSearch(true)}
-                className='w-[15%] h-[3rem] border-y border-r rounded-r-lg text-lg border-slate-300 flex items-center justify-center p-3'>
-                {isSearch === true 
-                ? <span className='animate-pulse w-[15px] h-[15px] rounded-full bg-slate-900'></span> 
-                : <FaSearch />
+                onClick={() => paginationHandler(prevURL)}
+                className='group flex items-center justify-center gap-2 text-transparent bg-gradient-to-br bg-clip-text from-slate-500 to-slate-700'>
+                <FaArrowLeftLong className='group-hover:-translate-x-2 duration-200 transition-all ease-in-out text-slate-500' /> 
+                  Prev </button>
               }
-              </button>
+              {nextURL &&
+                <button
+                  onClick={(e) => paginationHandler(nextURL)}
+                  className='group flex items-center justify-center gap-2 text-transparent bg-gradient-to-br bg-clip-text from-slate-500 to-slate-700'>
+                    Next <FaArrowRightLong className='text-slate-500 group-hover:translate-x-2 duration-200 transition-all ease-in-out' />
+                </button>
+              }
+          
             </div>
-            <div className='flex items-center justify-end gap-6'>
-              <div className='text-green-700'>Page: {meta.current_page} of {meta.last_page}</div>
-              {/* PAGINATION */}
-              <div className='flex items-center justify-end gap-3'>
-                  {prevURL &&
-                  <button 
-                    onClick={() => paginationHandler(prevURL)}
-                    className='group flex items-center justify-center gap-2 text-transparent bg-gradient-to-br bg-clip-text from-slate-500 to-slate-700'>
-                    <FaArrowLeftLong className='group-hover:-translate-x-2 duration-200 transition-all ease-in-out text-slate-500' /> 
-                      Prev </button>
-                  }
-                  {nextURL &&
-                    <button
-                      onClick={(e) => paginationHandler(nextURL)}
-                      className='group flex items-center justify-center gap-2 text-transparent bg-gradient-to-br bg-clip-text from-slate-500 to-slate-700'>
-                        Next <FaArrowRightLong className='text-slate-500 group-hover:translate-x-2 duration-200 transition-all ease-in-out' />
-                    </button>
-                  }
-              
-                </div>
-              <Link href='/admin/user/add' 
-                className='px-6 py-3 flex items-center justify-center rounded-xl text-white bg-gradient-to-br from-yellow-300 to-yellow-700 hover:bg-gradient-to-br hover:to-yellow-400 hover:from-yellow-800'>
-                Add</Link>
-            </div>
-          </div>
-        </section>
+          <Link href='/admin/user/add' 
+            className='px-6 py-3 flex items-center justify-center rounded-xl text-white bg-gradient-to-br from-yellow-300 to-yellow-700 hover:bg-gradient-to-br hover:to-yellow-400 hover:from-yellow-800'>
+            Add</Link>
+        </div>
+      </div>
+    </section>
 
         <section className="w-[100%] lg:overflow-hidden overflow-scroll">
           {/* TABLE TITLES */}

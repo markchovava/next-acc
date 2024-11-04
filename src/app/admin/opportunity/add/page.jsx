@@ -1,11 +1,13 @@
 import Link from 'next/link'
 import React from 'react'
 import { MdOutlineChevronRight } from 'react-icons/md'
-import OpportunityAdd from './components/OpportunityAdd'
-
+import OpportunityAdd from './components/OpportunityAdd';
+import { checkAuthCookie } from '@/cookie/authCookie';
 
 
 export default function page() {
+  checkAuthCookie();
+
   return (
     <>
     {/* BREADCRUMBS */}
@@ -13,11 +15,11 @@ export default function page() {
         <ul className='mx-auto py-1 w-[90%] border-y border-slate-300 flex items-center justify-start gap-1'>
             <li><Link href={`/`}>Home</Link></li>
             <li><MdOutlineChevronRight /></li>
-            <li><Link href={`/admin`}>Admin</Link></li>
+            <li><Link href='/admin'>Admin</Link></li>
             <li><MdOutlineChevronRight /></li>
-            <li><Link href={`/admin/opportunity`}>Opportunities</Link></li>
+            <li><Link href='/admin/opportunity'>Opportunities</Link></li>
             <li><MdOutlineChevronRight /></li>
-            <li><Link href={`/admin/opportunity/add`} className='font-semibold'>Add Opportunity</Link></li>
+            <li><Link href='/admin/opportunity/add' className='font-semibold'>Add Opportunity</Link></li>
         </ul>
     </section>
 
@@ -29,7 +31,9 @@ export default function page() {
       </div>
     </section>
 
+    {/*  */}
     <OpportunityAdd />
+
     </>
   )
 }

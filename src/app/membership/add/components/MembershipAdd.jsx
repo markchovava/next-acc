@@ -121,7 +121,7 @@ export default function MembershipAdd({ dbData }) {
             .then((response) => {
                 if(response.data.status == 1){
                   const res = response.data;
-                  setMOrderToken(response.data.member_order);
+                  setMOrderToken(response?.data?.member_order);
                   toast.success(res.message, toastifyDarkBounce);
                   setIsSubmit(false);
                   router.push(`/membership/checkout`);

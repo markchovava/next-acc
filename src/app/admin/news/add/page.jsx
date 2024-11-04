@@ -1,11 +1,14 @@
-import Link from 'next/link'
-import React from 'react'
-import { MdOutlineChevronRight } from 'react-icons/md'
-import NewsAdd from './components/NewsAdd'
+import Link from 'next/link';
+import React from 'react';
+import { MdOutlineChevronRight } from 'react-icons/md';
+import NewsAdd from './components/NewsAdd';
+import { checkAuthCookie } from '@/cookie/authCookie';
 
 
 
 export default function page() {
+  checkAuthCookie();
+
   return (
     <>
     {/* BREADCRUMBS */}
@@ -31,6 +34,8 @@ export default function page() {
 
     {/*  */}
     <NewsAdd />
+
+
     </>
   )
 }

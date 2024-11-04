@@ -103,6 +103,9 @@ export default function NavTop() {
                         <li className='w-[100%] hover:bg-green-900 px-3 py-2'>
                             <Link href='/admin/user' className=''>User List</Link>
                         </li>
+                        <li className='w-[100%] hover:bg-green-900 px-3 py-2'>
+                            <Link href='/admin/qrcode' className=''>QRCode List</Link>
+                        </li>
                     </ul>
                 </li>
                 {/* MEMBERSHIPS */}

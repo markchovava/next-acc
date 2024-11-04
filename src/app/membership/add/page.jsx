@@ -31,7 +31,7 @@ export default async function page() {
             <li><MdOutlineChevronRight /></li>
             <li><Link href={`/membership`}>Membership</Link></li>
             <li><MdOutlineChevronRight /></li>
-            <li><Link href={`/memebership/register`} className='font-semibold'>Membership Registration</Link></li>
+            <li><Link href={`/memebership/add`} className='font-semibold'>Membership Registration</Link></li>
         </ul>
     </section>
 

@@ -4,6 +4,7 @@ import Loader from '@/components/Loader';
 import { toastifyDarkBounce } from '@/libs/toastify';
 import { tokenAuth } from '@/tokens/tokenAuth';
 import { tokenMOrder } from '@/tokens/tokenMemberOrder';
+import { tokenMembership } from '@/tokens/tokenMembership';
 import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react'
 import { toast } from 'react-toastify';
@@ -14,7 +15,8 @@ export default function CheckoutEdit() {
     const router = useRouter();
     const [data, setData] = useState();
     const [isSubmit, setIsSubmit] = useState(false);
-    const { getMOrderToken } = tokenMOrder();
+    const { getMOrderToken, removeMOrderToken } = tokenMOrder();
+    const { setMembershipToken } = tokenMembership();
     const { getAuthToken } = tokenAuth();
     const config = {
         headers: {
@@ -48,6 +50,11 @@ export default function CheckoutEdit() {
     }
 
     async function postData(){
+        if(!data.duration){
+            toast.warn('Duration is required.', toastifyDarkBounce);
+            setIsSubmit(false);
+            return;
+        }
         const formData = {
             member_order_id: Number(getMOrderToken()),
             duration: Number(data?.duration),
@@ -57,7 +64,9 @@ export default function CheckoutEdit() {
             const result = await axiosClientAPI.post(`member-order-checkout`, formData, config)
             .then((response) => {
                 if(response.data.status == 1){
-                  toast.success(response.data.message, toastifyDarkBounce);
+                  toast.success(response?.data?.message, toastifyDarkBounce);
+                  setMembershipToken(response?.data?.membership_id),
+                  removeMOrderToken();
                   setIsSubmit(false);
                   router.push(`/membership/order`);
                 }

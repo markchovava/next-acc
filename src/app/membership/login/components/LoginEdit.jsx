@@ -1,4 +1,5 @@
 "use client";
+import { loginAction } from '@/actions/authActions';
 import { baseURL } from '@/api/baseURL';
 import { setAuthCookie } from '@/cookie/authCookieClient';
 import { setRoleCookie } from '@/cookie/roleCookieClient';
@@ -29,74 +30,61 @@ export default function LoginEdit() {
   }
 
   const postData = async () => {
-      if(!data.email) {
-        const message = 'Email is required.';
-        setErrMsg({email: message});
-        toast.warn(message, toastifyDarkBounce)
-        setIsSubmit(false);
-        return;
-      }
-      if(!data.password) {
-        const message = 'Password is required.';
-        setErrMsg({password: message});
-        toast.warn(message, toastifyDarkBounce);
-        setIsSubmit(false);
-        return;
-      }
-      /*  */
-      const formData = {
-        email: data.email,
-        password: data.password,
-        name: data.name,
-      };
-      /*  */
-      try{
-        const result = await axios.post(`${baseURL}login`, formData)
-        .then((response) => {
-          if(response.data.status == 0){
-            const message = response.data.message;
-            setErrMsg({email: message});
-            toast.warn(message, toastifyDarkBounce);
-            setIsSubmit(false);
-            return;
-          }
-          if(response.data.status == 2){
-            const message = response.data.message;
-            setErrMsg({password: message});
-            toast.warn(message, toastifyDarkBounce);
-            setIsSubmit(false);
-            return;
-          }
-          if(response.data.status == 1){
-            toast.success(response.data.message, toastifyDarkBounce);
-            /* ROLE */
-            setRoleToken(response.data.role_level);
-            setRoleCookie(response.data.role_level)
-            /* AUTH */
-            setAuthToken(response.data.auth_token);
-            setAuthCookie(response.data.auth_token);
-            /* MEMBERSHIP */
-            response?.data?.membership && setMembershipToken(response?.data?.membership);
-            setIsSubmit(false);   
-            /*  */ 
-            router.push('/membership/add'); 
-            setTimeout(() => {
-              window.location.reload();
-          }, 2000);
-          }
-        
-        })
-        } catch (error) {
-            console.error(`Error: ${error}`);
-            setIsSubmit(false); 
-      }
+    if(!data.email) {
+      const message = 'Email is required.';
+      setErrMsg({email: message});
+      toast.warn(message, toastifyDarkBounce)
+      setIsSubmit(false);
+      return;
+    }
+    if(!data.password) {
+      const message = 'Password is required.';
+      setErrMsg({password: message});
+      toast.warn(message, toastifyDarkBounce);
+      setIsSubmit(false);
+      return;
+    }
+    const formData = {
+      email: data.email,
+      password: data.password,
+    };
+    try{
+      const res = await loginAction(formData);
+        if(res?.status == 0){
+          const message = res?.message;
+          setErrMsg({email: message});
+          toast.warn(message, toastifyDarkBounce);
+          setIsSubmit(false);
+          return;
+        }
+        if(res?.status == 2){
+          const message = res?.message;
+          setErrMsg({password: message});
+          toast.warn(message, toastifyDarkBounce);
+          setIsSubmit(false);
+          return;
+        }
+        if(res?.status == 1){
+          toast.success(res?.message, toastifyDarkBounce);
+          setRoleToken(res?.role_level);
+          setRoleCookie(res?.role_level)
+          setAuthToken(res?.auth_token);
+          setAuthCookie(res?.auth_token);
+          res?.membership_id && setMembershipToken(res?.membership_id);
+          setIsSubmit(false);    
+          router.push('/membership/add');  
+        }
+
+      } catch (error) {
+          console.error(`Error: ${error}`);
+          setIsSubmit(false); 
+    }
   }
+
 
   useEffect(() => {
     isSubmit == true && postData();
   }, [isSubmit]);
-
-
 
 
   return (
