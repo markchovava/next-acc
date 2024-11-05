@@ -1,18 +1,17 @@
 "use client";
 import { loginAction } from '@/actions/authActions';
-import { baseURL } from '@/api/baseURL';
 import { setAuthCookie } from '@/cookie/authCookieClient';
 import { setRoleCookie } from '@/cookie/roleCookieClient';
 import { toastifyDarkBounce } from '@/libs/toastify';
 import { tokenAuth } from '@/tokens/tokenAuth';
 import { tokenMembership } from '@/tokens/tokenMembership';
 import { tokenRole } from '@/tokens/tokenRole';
-import axios from 'axios';
 import Link from 'next/link'
 import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react'
 import { FaGoogle } from "react-icons/fa";
 import { toast } from 'react-toastify';
+import QRCodeLoginModal from './QRCodeLoginModal';
 
 
 
@@ -25,6 +24,7 @@ export default function LoginEdit() {
   const [data, setData] = useState({});
   const [isSubmit, setIsSubmit] = useState(false);
   const [errMsg, setErrMsg] = useState({});
+  const [isModal, setIsModal] = useState(false);
   const handleInput = (e) => {
     setData({...data, [e.target.name]: e.target.value})
   }
@@ -81,17 +81,23 @@ export default function LoginEdit() {
     }
   }
 
-
   useEffect(() => {
     isSubmit == true && postData();
   }, [isSubmit]);
-
 
   return (
     <>
         <section className='w-[100%] py-[5rem]'>
             <div className='mx-auto lg:w-[50%] w-[80%] bg-white drop-shadow-md p-[1.6rem]'>
                 <h3 className='text-[2rem] mb-6 text-center text-yellow-600'>Login Form</h3>
+                <div className='flex items-center justify-center py-4'>
+                  <button 
+                    onClick={() => 
+                    setIsModal(true)} 
+                    className='px-6 py-3 rounded-xl border border-cyan-600 transition-all ease-in-out duration-200 text-white bg-gradient-to-br from-cyan-500 to-green-700 hover:bg-gradient-to-tl hover:from-cyan-500 hover:to-green-700'>
+                    Login with QR Code
+                  </button>
+                </div>
                 <div className='w-[100%] mb-4'>
                     <p className='mb-2 font-light'>Email:</p>
                     <input 
@@ -147,6 +153,8 @@ export default function LoginEdit() {
                 </div>
             </div>
         </section>
+
+        <QRCodeLoginModal isModal={isModal} setIsModal={setIsModal} />
     </>
   )
 }

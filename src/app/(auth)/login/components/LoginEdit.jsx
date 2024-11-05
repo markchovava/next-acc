@@ -97,7 +97,10 @@ export default function LoginEdit() {
           <div className='mx-auto lg:w-[50%] w-[80%] bg-white drop-shadow-md p-[1.6rem]'>
               <h3 className='text-[2rem] mb-6 text-center text-yellow-600'>Login Form</h3>
               <div className='flex items-center justify-center py-4'>
-                <button onClick={() => setIsModal(true)} className='px-6 py-3 rounded-xl border border-cyan-600 transition-all ease-in-out duration-200 text-white bg-gradient-to-br from-cyan-500 to-green-700 hover:bg-gradient-to-tl hover:from-cyan-500 hover:to-green-700'>
+                <button 
+                  onClick={() => 
+                  setIsModal(true)} 
+                  className='px-6 py-3 rounded-xl border border-cyan-600 transition-all ease-in-out duration-200 text-white bg-gradient-to-br from-cyan-500 to-green-700 hover:bg-gradient-to-tl hover:from-cyan-500 hover:to-green-700'>
                   Login with QR Code
                 </button>
               </div>

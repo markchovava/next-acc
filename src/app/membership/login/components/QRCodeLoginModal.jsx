@@ -81,7 +81,7 @@ export default function QRCodeLoginModal({isModal, setIsModal}) {
           /* MEMBERSHIP */
           res?.membership_id && setMembershipToken(res?.membership_id);
           setIsQrSubmit(false);    
-          router.push('/event/checkout'); 
+          router.push('/membership/add');  
         }
       
         } catch (error) {

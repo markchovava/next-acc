@@ -174,7 +174,7 @@ export default function RegisterEdit() {
             </div>
             <div className='w-[100%] py-4 flex items-center justify-center gap-2 font-light'>
               Don't have an account? 
-              <Link href='/membership/login' className='text-green-600 underline hover:no-underline transition-all ease-in-out'>
+              <Link href='/event/login' className='text-green-600 underline hover:no-underline transition-all ease-in-out'>
                 Login here</Link>
             </div>
         </div>
