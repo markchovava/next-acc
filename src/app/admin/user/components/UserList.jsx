@@ -113,6 +113,8 @@ export default function UserList() {
 
   if(!data){ return (<Loader />) }
 
+  console.log(data);
+
   return (
     <>
     <section className='w-[100%]'>
@@ -176,8 +178,12 @@ export default function UserList() {
             { data.length > 0 ?
               data.map((i, key) => (
                 <div key={key} className='w-[90%] text-lg border-x border-b border-slate-300 mx-auto flex items-center justify-start '>
-                  <div className='w-[25%] border-r border-blue-300 px-3 py-2 flex items-center justify-between'>
+                  <div className='w-[25%] border-r border-blue-300 px-3 py-2 flex items-center justify-between '>
                     {i.name}
+                    {i.qrcode?.code &&
+                      <span className='px-2 py-1 rounded-2xl text-white bg-gradient-to-br from-cyan-500 to-green-700'>
+                        QRCode</span>
+                    }
                   </div>
                   <div className='w-[20%] border-r border-blue-300 px-3 py-2'>
                     {i?.role?.name ? i.role.name : 'Not added.'}

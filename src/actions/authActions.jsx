@@ -79,10 +79,10 @@ export async function qrcodeRegisterAction(data) {
 }
 
 
-export async function registerAction(formData) {
+export async function registerAction(data) {
     const res = await fetch(`${baseURL}register`, {
       'method': 'POST',
-      body: JSON.stringify(formData),
+      body: JSON.stringify(data),
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',

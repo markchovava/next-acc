@@ -5,6 +5,7 @@ import Loader from '@/components/Loader';
 import { tokenAuth } from '@/tokens/tokenAuth';
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
+import UserQrCode from './UserQrCode';
 
 
 
@@ -36,8 +37,7 @@ export default function ProfileView() {
 
   if(!data){ return ( <Loader /> ) }
 
-  console.log('data');
-  console.log(data);
+
 
   return (
     <>
@@ -121,6 +121,24 @@ export default function ProfileView() {
                 {data?.role?.name ? data?.role?.name : 'Not added yet.'}
             </div>
           </div>
+          {data?.qrcode?.code &&
+          <>
+            {/* CODE */}
+            <div className='flex lg:flex-row flex-col lg:items-center justify-start lg:gap-4 gap-2 mb-6'>
+              <div className='w-[20%] font-light'>Code:</div>
+              <div className='w-[80%]'>
+                  {data?.qrcode?.code}
+              </div>
+            </div>
+            {/* QRCODE */}
+            <div className='flex lg:flex-row flex-col lg:items-start justify-start lg:gap-4 gap-2 mb-6'>
+              <div className='w-[20%] font-light lg:pt-2'>QR Code:</div>
+              <div className='w-[80%]'>
+                  <UserQrCode dbData={data?.qrcode?.code} />
+              </div>
+            </div>
+          </>
+          }
           {/* ROLE */}
           {data?.membership?.name &&
           <div className='flex lg:flex-row flex-col lg:items-center justify-start lg:gap-4 gap-2 mb-6'>

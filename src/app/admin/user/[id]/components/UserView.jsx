@@ -5,6 +5,7 @@ import Loader from '@/components/Loader';
 import { tokenAuth } from '@/tokens/tokenAuth';
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
+import UserQrCode from './UserQrCode';
 
 
 
@@ -90,7 +91,7 @@ export default function UserView({ id }) {
                 {data.email}
             </div>
           </div>
-          {/* PHONE */}
+          {/* ADDRESS */}
           <div className='flex lg:flex-row flex-col lg:items-center justify-start lg:gap-4 gap-2 mb-6'>
             <div className='w-[20%] font-light'>Address:</div>
             <div className='w-[80%]'>
@@ -104,10 +105,28 @@ export default function UserView({ id }) {
                 {data.country}
             </div>
           </div>
+          {data?.qrcode?.code &&
+          <>
+            {/* CODE */}
+            <div className='flex lg:flex-row flex-col lg:items-center justify-start lg:gap-4 gap-2 mb-6'>
+              <div className='w-[20%] font-light'>Code:</div>
+              <div className='w-[80%]'>
+                  {data?.qrcode?.code}
+              </div>
+            </div>
+            {/* QRCODE */}
+            <div className='flex lg:flex-row flex-col lg:items-start justify-start lg:gap-4 gap-2 mb-6'>
+              <div className='w-[20%] font-light lg:pt-2'>QR Code:</div>
+              <div className='w-[80%]'>
+                  <UserQrCode dbData={data?.qrcode?.code} />
+              </div>
+            </div>
+          </>
+          }
           {/* ROLE */}
           <div className='flex lg:flex-row flex-col lg:items-center justify-start lg:gap-4 gap-2 mb-6'>
-            <div className='w-[20%] font-light'>User Level:</div>
-            <div className='w-[80%]'>
+            <div className='md:w-[20%] font-light'>User Level:</div>
+            <div className='md:w-[80%]'>
                 {data?.role?.name ? data?.role?.name : 'Not added yet.'}
             </div>
           </div>

@@ -13,7 +13,8 @@ import { toastifyDarkBounce } from '@/libs/toastify';
 
 
 
-export default function QRCodeList() {
+export default function QRCodeList({ dbData }) {
+    console.log(dbData);
     const { getAuthToken } = tokenAuth();
     const [isStatus, setIsStatus] = useState(false);
     const [status, setStatus] = useState();
@@ -249,7 +250,7 @@ export default function QRCodeList() {
     </section>
 
     {/*  */}
-    <GenerateQrCodeModal isModal={isModal} setIsModal={setIsModal} />
+    <GenerateQrCodeModal isModal={isModal} setIsModal={setIsModal} getData={getData} />
 
     </>
   )

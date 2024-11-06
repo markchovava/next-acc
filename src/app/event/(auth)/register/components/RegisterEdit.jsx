@@ -8,6 +8,7 @@ import { baseURL } from '@/api/baseURL';
 import axios from 'axios';
 import { useRouter } from 'next/navigation';
 import QRCodeRegisterModal from './QRCodeRegisterModal';
+import { registerAction } from '@/actions/authActions';
 
 
 
@@ -23,69 +24,67 @@ export default function RegisterEdit() {
   }
 
   const postData = async () => {
-      if(!data.name) {
-        const message = 'Name is required.';
-        setErrMsg({name: message});
-        toast.warn(message, toastifyDarkBounce)
-        setIsSubmit(false);
-        return;
-      }
-      if(!data.email) {
-        const message = 'Email is required.';
+    if(!data.name) {
+      const message = 'Name is required.';
+      setErrMsg({name: message});
+      toast.warn(message, toastifyDarkBounce)
+      setIsSubmit(false);
+      return;
+    }
+    if(!data.email) {
+      const message = 'Email is required.';
+      setErrMsg({email: message});
+      toast.warn(message, toastifyDarkBounce)
+      setIsSubmit(false);
+      return;
+    }
+    if(!data.password) {
+      const message = 'Password is required.';
+      setErrMsg({password: message});
+      toast.warn(message, toastifyDarkBounce);
+      setIsSubmit(false);
+      return;
+    }
+    if(!data.password_confirmation) {
+      const message = 'Password Confirmation is required.';
+      setErrMsg({password_confirmation: message});
+      toast.warn(message, toastifyDarkBounce);
+      setIsSubmit(false);
+      return;
+    }
+    if(data.password != data.password_confirmation) {
+      const message = 'Password does not match.';
+      setErrMsg({password_confirmation: message});
+      toast.warn(message, toastifyDarkBounce);
+      setIsSubmit(false);
+      return;
+    }
+    /*  */
+    const formData = {
+      email: data.email,
+      password: data.password,
+      name: data.name,
+    };
+    /*  */
+    try{
+      const res = await registerAction(formData)
+      if(res.status == 0){
+        const message = res.message;
         setErrMsg({email: message});
-        toast.warn(message, toastifyDarkBounce)
-        setIsSubmit(false);
-        return;
-      }
-      if(!data.password) {
-        const message = 'Password is required.';
-        setErrMsg({password: message});
         toast.warn(message, toastifyDarkBounce);
         setIsSubmit(false);
         return;
       }
-      if(!data.password_confirmation) {
-        const message = 'Password Confirmation is required.';
-        setErrMsg({password_confirmation: message});
-        toast.warn(message, toastifyDarkBounce);
-        setIsSubmit(false);
-        return;
+      if(res.status == 1){
+        toast.success(res.message, toastifyDarkBounce);
+        router.push('/event/checkout');
+        setIsSubmit(false);    
       }
-      if(data.password != data.password_confirmation) {
-        const message = 'Password does not match.';
-        setErrMsg({password_confirmation: message});
-        toast.warn(message, toastifyDarkBounce);
-        setIsSubmit(false);
-        return;
-      }
-      /*  */
-      const formData = {
-        email: data.email,
-        password: data.password,
-        name: data.name,
-      };
-      /*  */
-      try{
-        const result = await axios.post(`${baseURL}register`, formData)
-        .then((response) => {
-          if(response.data.status == 0){
-            const message = response.data.message;
-            setErrMsg({email: message});
-            toast.warn(message, toastifyDarkBounce);
-            setIsSubmit(false);
-            return;
-          }
-          if(response.data.status == 1){
-            toast.success(response.data.message, toastifyDarkBounce);
-            router.push('/event/checkout');
-            setIsSubmit(false);    
-          }
-        
-        })
-        } catch (error) {
-            console.error(`Error: ${error}`);
-            setIsSubmit(false); 
-      }
+      
+      } catch (error) {
+          console.error(`Error: ${error}`);
+          setIsSubmit(false); 
+    }
   }
 
   useEffect(() => {

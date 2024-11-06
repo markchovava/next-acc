@@ -5,8 +5,8 @@ import QRCode from "react-qr-code";
 
 
 
-export default function UserQrCode1({ dbData }) {
-    const [url, setUrl] = useState(dbData?.code);
+export default function UserQrCode({ dbData }) {
+    const [url, setUrl] = useState(dbData);
     const qrCodeRef = useRef(null);
 
     const downloadQRCode = () => {
@@ -15,7 +15,7 @@ export default function UserQrCode1({ dbData }) {
           .then(function (dataUrl) {
             const link = document.createElement("a");
             link.href = dataUrl;
-            link.download = qrCodeData + '.png';
+            link.download = dbData + '.png';
             link.click();
           })
           .catch(function (error) {
@@ -30,11 +30,13 @@ export default function UserQrCode1({ dbData }) {
         <div className="qrcode__container--parent">
             <div className="qrcode__download">
               <div className="w-[300px] p-[25px] bg-white" ref={qrCodeRef}>
-                <QRCode value={url} size={250} />
+                <QRCode value={dbData} size={250} />
               </div>
-            <button className="mx-[25px] bg-slate-700 hover:bg-slate-800 drop-shadow-lg px-[1.2rem] py-[0.8rem] text-white rounded-xl" 
-            onClick={downloadQRCode}>Download QR Code
-            </button>
+              <button 
+                className="mx-[25px] bg-gradient-to-br from-slate-700 to-cyan-700 hover:bg-gradient-to-tr hover:from-slate-700 hover:to-cyan-700 hover:drop-shadow-lg duration-200 ease-in-out transition-all px-12 py-3 text-white rounded-xl" 
+                onClick={downloadQRCode}>
+                Download QR Code
+              </button>
             </div>
         </div>
     </div>

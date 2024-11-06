@@ -12,7 +12,7 @@ export async function qrcodeIndexAction(token) {
         'Authorization': `Bearer ${token}`,
       }
     }); 
-    revalidatePath('/qrcode');
+    //revalidatePath('/admin/qrcode');
     return await res.json();
 }
 
@@ -55,7 +55,7 @@ export async function qrcodeStoreAction(data, token) {
         'Authorization': `Bearer ${token}`,
       }
     }); 
-    revalidatePath('/qrcode');
+    revalidatePath('/admin/qrcode');
     return await res.json();
 }
 

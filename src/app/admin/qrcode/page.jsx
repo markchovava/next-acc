@@ -4,15 +4,21 @@ import { MdOutlineChevronRight } from 'react-icons/md'
 import QRCodeList from './components/QRCodeList'
 import { checkAuthAction } from '@/actions/authActions';
 import { redirect } from 'next/dist/server/api-utils';
+import { getAuthCookie } from '@/cookie/authCookie';
+import { qrcodeIndexAction } from '@/actions/qrcodeActions';
 
 
 
 
 export default async function page() {
-  const result = await checkAuthAction();
-  if(result?.message == 'Unauthenticated.'){
+  const authCookie = await getAuthCookie()
+  const checkAuth = await checkAuthAction();
+  if(checkAuth?.message == 'Unauthenticated.'){
     redirect('/login'); 
   }
+
+  const qrCodeData = await qrcodeIndexAction(authCookie);
+ 
 
   return (
     <>
@@ -35,7 +41,7 @@ export default async function page() {
       </div>
     </section>
 
-    <QRCodeList />
+    <QRCodeList dbData={qrCodeData} />
 
     
     </>

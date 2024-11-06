@@ -16,27 +16,28 @@ const contentVariant = {
             duration: 1, }},
 };
 
-export default function GenerateQrCodeModal({ isModal, setIsModal }) {
+export default function GenerateQrCodeModal({ isModal, setIsModal, getData }) {
     const [isSubmit, setIsSubmit] = useState(false);
-    const [data, setData] = useState({});
+    const [inputData, setInputData] = useState({});
     const { getAuthToken } = tokenAuth();
 
     const handleInput = (e) => {
-        setData({...data, [e.target.name]: e.target.value})
+        setInputData({...inputData, [e.target.name]: e.target.value})
     }
 
     async function postData(){
-        if(!data.quantity) {
+        if(!inputData.quantity) {
             const message = 'Quantity is required.';
             toast.warn(message, toastifyDarkBounce);
             setIsSubmit(false);
             return;
         }
         const formData = {
-            quantity: data?.quantity,
+            quantity: inputData?.quantity,
         };
         try{
             const res = await qrcodeStoreByNumAction( formData, getAuthToken() );
+            getData();
             toast.success(res.message, toastifyDarkBounce);
             setIsSubmit(false);
             setIsModal(false);
@@ -72,7 +73,7 @@ export default function GenerateQrCodeModal({ isModal, setIsModal }) {
                     <IoClose className='text-2xl' />
                 </button>
                 </div>
-                <form action={() => setIsSubmit(true)} method='POST' className='W-[100%]'>
+                <form action={() => setIsSubmit(true)} className='W-[100%]'>
                     <h3 className='text-[2rem] font-light mb-4'>Generate QR Code</h3>
                     {/* QUANTITY */}
                     <div className='w-[100%] mb-6'>
